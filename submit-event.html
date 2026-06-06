@@ -24,11 +24,12 @@
     /* NAV */
     nav { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0 5%; }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1280px; margin: 0 auto; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; text-decoration: none; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; text-decoration: none; }
     .logo span { color: var(--navy); }
-    .nav-links { display: flex; align-items: center; gap: 8px; }
-    .nav-back { font-size: 0.875rem; color: var(--muted); text-decoration: none; padding: 8px 14px; border-radius: 24px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
-    .nav-back:hover { background: #f2ede8; color: var(--navy); }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .nav-link { font-size: 0.875rem; font-weight: 500; color: var(--navy); text-decoration: none; padding: 8px 14px; border-radius: 24px; transition: background 0.15s; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+    .nav-link:hover { background: #f2ede8; }
+    .nav-link.active { color: var(--coral); font-weight: 600; }
 
     /* HERO */
     .hero { background: var(--navy); color: white; padding: 64px 5% 60px; text-align: center; }
@@ -86,9 +87,11 @@
 <nav>
   <div class="nav-inner">
     <a class="logo" href="index.html">Tren<span>Events</span></a>
-    <div class="nav-links">
-      <a class="nav-back" href="work-with-us.html">For Event Hosts</a>
-      <a class="nav-back" href="index.html">← Back to events</a>
+    <div class="nav-right">
+      <a class="nav-link" href="index.html">Events</a>
+      <a class="nav-link active" href="submit-event.html">Submit an Event</a>
+      <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
+      <a class="nav-link" href="index.html#saved">♡ Saved</a>
     </div>
   </div>
 </nav>

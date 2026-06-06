@@ -22,18 +22,19 @@
   body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--navy); min-height: 100vh; }
 
   nav { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0 5%; }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1280px; margin: 0 auto; gap: 16px; }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; cursor: pointer; flex-shrink: 0; }
+  .nav-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 72px; max-width: 1280px; margin: 0 auto; gap: 16px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; cursor: pointer; }
   .logo span { color: var(--navy); }
-  .search-bar { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 40px; padding: 8px 8px 8px 20px; gap: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; flex: 1; max-width: 420px; }
+  .search-bar { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 40px; padding: 8px 8px 8px 20px; gap: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; width: 420px; max-width: 100%; }
   .search-bar:focus-within { box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-color: #ccc; }
   .search-bar input { border: none; outline: none; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--navy); background: transparent; width: 100%; }
   .search-bar input::placeholder { color: var(--muted); }
   .search-btn { background: var(--coral); border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; transition: background 0.2s, transform 0.1s; flex-shrink: 0; }
   .search-btn:hover { background: var(--coral-dark); transform: scale(1.05); }
-  .nav-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .nav-right { display: flex; align-items: center; gap: 8px; justify-self: end; }
   .nav-link { font-size: 0.875rem; font-weight: 500; color: var(--navy); text-decoration: none; padding: 8px 14px; border-radius: 24px; transition: background 0.15s; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
   .nav-link:hover { background: #f2ede8; }
+  .nav-link.active { color: var(--coral); font-weight: 600; }
   .saved-count { background: var(--coral); color: white; font-size: 0.7rem; font-weight: 700; border-radius: 50%; width: 18px; height: 18px; display: none; align-items: center; justify-content: center; }
   .saved-count.visible { display: flex; }
 
@@ -46,7 +47,7 @@
   .hero p { color: rgba(255,255,255,0.6); font-size: 1rem; font-weight: 300; position: relative; z-index: 1; }
 
   .filters-wrap { background: white; border-bottom: 1px solid var(--border); padding: 0 5%; position: sticky; top: 72px; z-index: 90; }
-  .filters { display: flex; max-width: 1280px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .filters { display: flex; justify-content: center; max-width: 1280px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
   .filters::-webkit-scrollbar { display: none; }
   .filter-tab { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 22px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.18s; color: var(--muted); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; }
   .filter-tab .icon { font-size: 1.25rem; }
@@ -173,6 +174,7 @@
       <button class="search-btn"><svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
     </div>
     <div class="nav-right">
+      <span class="nav-link active" onclick="showAll()">Events</span>
       <a class="nav-link" href="submit-event.html">Submit an Event</a>
       <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
       <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
@@ -970,6 +972,7 @@ function openModal(id) {
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; currentModalId=null; }
 function closeModalOnBackdrop(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if(e.key==='Escape'){closeModal();closeSavedPanel();} });
+if (window.location.hash === '#saved') { openSavedPanel(); history.replaceState(null,'',window.location.pathname); }
 
 // Save / heart
 function toggleSave(e, id) {
