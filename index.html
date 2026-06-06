@@ -161,6 +161,32 @@
   .footer-links { display: flex; gap: 20px; }
   .footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.15s; }
   .footer-links a:hover { color: var(--navy); }
+
+  /* Auth nav */
+  .auth-btn { font-size: 0.875rem; font-weight: 500; color: var(--navy); background: none; border: 1.5px solid var(--border); padding: 7px 14px; border-radius: 24px; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+  .auth-btn:hover { background: #f2ede8; }
+  .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; cursor: pointer; border: 2px solid var(--coral); display: block; }
+  .user-avatar-initial { width: 32px; height: 32px; border-radius: 50%; background: var(--coral); color: white; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid var(--coral); }
+  .auth-dropdown { position: relative; display: inline-block; }
+  .auth-dropdown-menu { position: absolute; right: 0; top: 42px; background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-hover); padding: 8px; min-width: 160px; display: none; z-index: 200; }
+  .auth-dropdown-menu.open { display: block; }
+  .auth-dropdown-name { font-size: 0.78rem; color: var(--muted); padding: 6px 10px 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .auth-dropdown-item { display: block; width: 100%; text-align: left; font-size: 0.875rem; font-weight: 500; color: var(--navy); background: none; border: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+  .auth-dropdown-item:hover { background: #f2ede8; }
+
+  /* Sign-in modal */
+  .signin-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .signin-overlay.open { opacity: 1; pointer-events: all; }
+  .signin-card { background: white; border-radius: 20px; padding: 36px 32px; max-width: 380px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: translateY(16px); transition: transform 0.2s; }
+  .signin-overlay.open .signin-card { transform: translateY(0); }
+  .signin-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .signin-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .signin-subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+  .btn-google { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 20px; background: white; border: 1.5px solid var(--border); border-radius: 12px; font-size: 0.9rem; font-weight: 500; color: var(--navy); cursor: pointer; transition: background 0.15s, box-shadow 0.15s; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; }
+  .btn-google:hover { background: #f8f8f8; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .signin-close-btn { font-size: 0.82rem; color: var(--muted); cursor: pointer; background: none; border: none; text-decoration: underline; font-family: 'DM Sans', sans-serif; }
+  .signin-close-btn:hover { color: var(--navy); }
+  .signin-error { font-size: 0.82rem; color: var(--coral); margin-top: 10px; min-height: 18px; }
 </style>
 </head>
 <body>
@@ -178,6 +204,7 @@
       <a class="nav-link" href="submit-event.html">Submit an Event</a>
       <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
       <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
+      <div id="authNav"></div>
     </div>
   </div>
 </nav>
@@ -257,6 +284,20 @@
   <div class="saved-panel-body" id="savedPanelBody"></div>
 </div>
 
+<div class="signin-overlay" id="signinOverlay" onclick="closeSignInModal(event)">
+  <div class="signin-card">
+    <div class="signin-icon">♡</div>
+    <div class="signin-title">Save your events</div>
+    <div class="signin-subtitle">Sign in so your saved events show up on any device you use.</div>
+    <button class="btn-google" onclick="signInWithGoogle()">
+      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continue with Google
+    </button>
+    <div id="signinError" class="signin-error"></div>
+    <button class="signin-close-btn" onclick="closeSignInModal()">Maybe later</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <footer>
@@ -271,6 +312,9 @@
   </div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script>
 
 /* ============================================================
@@ -783,11 +827,85 @@ const EVENTS = [
    ENGINE — no need to edit below this line
    ============================================================ */
 
-let saved = new Set(JSON.parse(localStorage.getItem('trenevents-saved') || '[]'));
+// ─── Firebase setup ──────────────────────────────────────────
+const firebaseConfig = {
+  apiKey: "AIzaSyDBE_OaP7shrY3_4uMU0G0Zo7p5M6ilnUY",
+  authDomain: "trenevents.firebaseapp.com",
+  projectId: "trenevents",
+  storageBucket: "trenevents.firebasestorage.app",
+  messagingSenderId: "828886152836",
+  appId: "1:828886152836:web:2e1eefbad735fc9e6f74d1"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let currentUser = null;
+let saved = new Set();
 let activeFilter = 'all';
 let currentModalId = null;
 
-function persistSaved(){ localStorage.setItem('trenevents-saved', JSON.stringify([...saved])); }
+// Watch for sign-in / sign-out
+auth.onAuthStateChanged(async user => {
+  currentUser = user;
+  updateAuthUI();
+  if (user) {
+    await loadSavedFromFirestore();
+  } else {
+    saved = new Set();
+    updateSavedCount();
+    filterAndRender();
+    renderSavedPanel();
+  }
+});
+
+async function loadSavedFromFirestore() {
+  try {
+    const doc = await db.collection('users').doc(currentUser.uid).get();
+    saved = new Set(doc.data()?.saved || []);
+  } catch(err) { saved = new Set(); }
+  updateSavedCount();
+  filterAndRender();
+  renderSavedPanel();
+}
+
+async function persistSaved() {
+  if (!currentUser) return;
+  try {
+    await db.collection('users').doc(currentUser.uid).set({ saved: [...saved] }, { merge: true });
+  } catch(err) { console.error('Save error:', err); }
+}
+
+// Auth UI
+function updateAuthUI() {
+  const navEl = document.getElementById('authNav');
+  if (!navEl) return;
+  if (currentUser) {
+    const name = currentUser.displayName || currentUser.email || 'You';
+    const initial = name.charAt(0).toUpperCase();
+    const avatarHTML = currentUser.photoURL
+      ? `<img class="user-avatar" src="${currentUser.photoURL}" alt="${name}" onclick="toggleAuthDropdown()">`
+      : `<div class="user-avatar-initial" onclick="toggleAuthDropdown()">${initial}</div>`;
+    navEl.innerHTML = `<div class="auth-dropdown">${avatarHTML}<div class="auth-dropdown-menu" id="authDropdown"><div class="auth-dropdown-name">${name}</div><button class="auth-dropdown-item" onclick="doSignOut()">Sign out</button></div></div>`;
+  } else {
+    navEl.innerHTML = `<button class="auth-btn" onclick="showSignInModal()">Sign In</button>`;
+  }
+}
+function toggleAuthDropdown() { document.getElementById('authDropdown')?.classList.toggle('open'); }
+document.addEventListener('click', e => { if (!e.target.closest('.auth-dropdown')) document.getElementById('authDropdown')?.classList.remove('open'); });
+
+// Sign-in modal
+function showSignInModal() { document.getElementById('signinOverlay').classList.add('open'); document.getElementById('signinError').textContent = ''; }
+function closeSignInModal(e) { if (!e || e.target === document.getElementById('signinOverlay')) { document.getElementById('signinOverlay').classList.remove('open'); } }
+function signInWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(() => { closeSignInModal(); showToast('Signed in!'); })
+    .catch(err => { document.getElementById('signinError').textContent = 'Sign-in failed. Please try again.'; });
+}
+function doSignOut() {
+  auth.signOut().then(() => { showToast('Signed out'); });
+}
 
 // Sort events by sortDate ascending
 const sortedEvents = [...EVENTS].sort((a,b) => a.sortDate.localeCompare(b.sortDate));
@@ -929,47 +1047,53 @@ if (window.location.hash === '#saved') { openSavedPanel(); history.replaceState(
 // Save / heart
 function toggleSave(e, id) {
   e.stopPropagation();
+  if (!currentUser) { showSignInModal(); return; }
   const nowSaved = !saved.has(id);
-  if(nowSaved){ saved.add(id); }else{ saved.delete(id); }
-  persistSaved(); applyHeartUI(id,nowSaved); updateSavedCount();
-  if(currentModalId===id){ const msb=document.getElementById('modalSaveBtn'); msb.textContent=nowSaved?'♥':'♡'; msb.style.color=nowSaved?'var(--coral)':''; }
-  showToast(nowSaved?'Saved!':'Removed from saved');
+  if (nowSaved) { saved.add(id); } else { saved.delete(id); }
+  persistSaved(); applyHeartUI(id, nowSaved); updateSavedCount();
+  if (currentModalId === id) { const msb = document.getElementById('modalSaveBtn'); msb.textContent = nowSaved ? '♥' : '♡'; msb.style.color = nowSaved ? 'var(--coral)' : ''; }
+  showToast(nowSaved ? 'Saved!' : 'Removed from saved');
   renderSavedPanel();
 }
 function toggleSaveFromModal() {
-  if(!currentModalId) return;
-  const id=currentModalId, nowSaved=!saved.has(id);
-  if(nowSaved){ saved.add(id); }else{ saved.delete(id); }
-  persistSaved(); applyHeartUI(id,nowSaved); updateSavedCount();
-  const msb=document.getElementById('modalSaveBtn'); msb.textContent=nowSaved?'♥':'♡'; msb.style.color=nowSaved?'var(--coral)':'';
-  showToast(nowSaved?'Saved!':'Removed from saved'); renderSavedPanel();
+  if (!currentModalId) return;
+  if (!currentUser) { showSignInModal(); return; }
+  const id = currentModalId, nowSaved = !saved.has(id);
+  if (nowSaved) { saved.add(id); } else { saved.delete(id); }
+  persistSaved(); applyHeartUI(id, nowSaved); updateSavedCount();
+  const msb = document.getElementById('modalSaveBtn'); msb.textContent = nowSaved ? '♥' : '♡'; msb.style.color = nowSaved ? 'var(--coral)' : '';
+  showToast(nowSaved ? 'Saved!' : 'Removed from saved'); renderSavedPanel();
 }
-function applyHeartUI(id,isSaved){
-  const btn=document.getElementById(`heart-${id}`);
-  if(!btn) return;
-  btn.textContent=isSaved?'♥':'♡'; btn.style.color=isSaved?'var(--coral)':'';
+function applyHeartUI(id, isSaved) {
+  const btn = document.getElementById(`heart-${id}`);
+  if (!btn) return;
+  btn.textContent = isSaved ? '♥' : '♡'; btn.style.color = isSaved ? 'var(--coral)' : '';
 }
-function updateSavedCount(){
-  const el=document.getElementById('savedCount'); el.textContent=saved.size; el.classList.toggle('visible',saved.size>0);
+function updateSavedCount() {
+  const el = document.getElementById('savedCount'); el.textContent = saved.size; el.classList.toggle('visible', saved.size > 0);
 }
 
 // Saved panel
-function openSavedPanel(){ renderSavedPanel(); document.getElementById('savedPanel').classList.add('open'); document.getElementById('savedBackdrop').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeSavedPanel(){ document.getElementById('savedPanel').classList.remove('open'); document.getElementById('savedBackdrop').classList.remove('open'); document.body.style.overflow=''; }
-function renderSavedPanel(){
-  const body=document.getElementById('savedPanelBody');
-  if(saved.size===0){ body.innerHTML=`<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>No saved events yet.<br>Tap the heart on any event to save it here.</p></div>`; return; }
-  const sorted=[...saved].map(id=>eventMap[id]).filter(Boolean).sort((a,b)=>a.sortDate.localeCompare(b.sortDate));
-  body.innerHTML=sorted.map(e=>`
+function openSavedPanel() { renderSavedPanel(); document.getElementById('savedPanel').classList.add('open'); document.getElementById('savedBackdrop').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeSavedPanel() { document.getElementById('savedPanel').classList.remove('open'); document.getElementById('savedBackdrop').classList.remove('open'); document.body.style.overflow = ''; }
+function renderSavedPanel() {
+  const body = document.getElementById('savedPanelBody');
+  if (!currentUser) {
+    body.innerHTML = `<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>Sign in to save events and access them from any device.</p><button class="auth-btn" style="margin-top:16px" onclick="closeSavedPanel();showSignInModal()">Sign In</button></div>`;
+    return;
+  }
+  if (saved.size === 0) { body.innerHTML = `<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>No saved events yet.<br>Tap the heart on any event to save it here.</p></div>`; return; }
+  const sorted = [...saved].map(id => eventMap[id]).filter(Boolean).sort((a, b) => a.sortDate.localeCompare(b.sortDate));
+  body.innerHTML = sorted.map(e => `
     <div class="saved-item" onclick="closeSavedPanel();setTimeout(()=>openModal(${e.id}),150)">
-      <div class="saved-item-emoji" style="background:${e.bg}">${e.image?`<img src="${e.image}" alt="">`:e.emoji}</div>
+      <div class="saved-item-emoji" style="background:${e.bg}">${e.image ? `<img src="${e.image}" alt="">` : e.emoji}</div>
       <div class="saved-item-info"><div class="saved-item-title">${e.title}</div><div class="saved-item-date">${e.date}</div></div>
       <button class="saved-item-remove" onclick="event.stopPropagation();removeSaved(${e.id})" title="Remove">✕</button>
     </div>`).join('');
 }
-function removeSaved(id){
-  saved.delete(id); persistSaved(); applyHeartUI(id,false); updateSavedCount(); renderSavedPanel();
-  if(currentModalId===id){ const msb=document.getElementById('modalSaveBtn'); msb.textContent='♡'; msb.style.color=''; }
+function removeSaved(id) {
+  saved.delete(id); persistSaved(); applyHeartUI(id, false); updateSavedCount(); renderSavedPanel();
+  if (currentModalId === id) { const msb = document.getElementById('modalSaveBtn'); msb.textContent = '♡'; msb.style.color = ''; }
   showToast('Removed from saved');
 }
 
