@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit an Event — TrenEvents</title>
+  <meta name="description" content="Submit your local event to TrenEvents — covering Lancaster, York & Harrisburg, PA.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF5A5F;
+      --coral-dark: #e04a4f;
+      --navy: #1a1a2e;
+      --warm-white: #F8F6F2;
+      --card-bg: #ffffff;
+      --muted: #717171;
+      --border: #e8e4de;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+      --radius: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--navy); min-height: 100vh; }
+
+    /* NAV */
+    nav { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0 5%; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1280px; margin: 0 auto; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-back { font-size: 0.875rem; color: var(--muted); text-decoration: none; padding: 8px 14px; border-radius: 24px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-back:hover { background: #f2ede8; color: var(--navy); }
+
+    /* HERO */
+    .hero { background: var(--navy); color: white; padding: 64px 5% 60px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); margin-bottom: 14px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; line-height: 1.2; margin-bottom: 14px; }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    /* MAIN */
+    main { max-width: 680px; margin: 0 auto; padding: 52px 5% 80px; }
+
+    /* INFO BOX */
+    .info-box { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 32px; display: flex; gap: 16px; align-items: flex-start; }
+    .info-box-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .info-box p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+    .info-box strong { color: var(--navy); }
+
+    /* FORM CARD */
+    .form-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); }
+
+    /* FORM FIELDS */
+    .form-section { margin-bottom: 32px; }
+    .form-section-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } .form-card { padding: 24px; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group:last-child { margin-bottom: 0; }
+    label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+    label .optional { font-weight: 400; color: var(--muted); margin-left: 4px; }
+    input, select, textarea { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--navy); background: var(--warm-white); border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 14px; width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,26,46,0.07); }
+    textarea { resize: vertical; min-height: 110px; line-height: 1.55; }
+    select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23717171' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    /* SUBMIT BUTTON */
+    .form-submit { width: 100%; background: var(--coral); color: white; border: none; border-radius: 12px; padding: 15px 24px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 8px; }
+    .form-submit:hover { background: var(--coral-dark); }
+    .form-submit:active { transform: scale(0.99); }
+
+    /* THANK YOU */
+    .thank-you { display: none; text-align: center; padding: 60px 24px; background: white; border: 1.5px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .thank-you-icon { font-size: 3rem; margin-bottom: 20px; }
+    .thank-you h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+    .thank-you p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 400px; margin: 0 auto 24px; }
+    .thank-you a { display: inline-block; color: var(--coral); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+    .thank-you a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 32px 5%; background: white; text-align: center; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--coral); font-weight: 600; margin-bottom: 6px; }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Tren<span>Events</span></a>
+    <div class="nav-links">
+      <a class="nav-back" href="work-with-us.html">For Event Hosts</a>
+      <a class="nav-back" href="index.html">← Back to events</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Free to Submit</div>
+  <h1>Submit Your Event</h1>
+  <p>Know about something happening in Lancaster, York, or Harrisburg? Share the details and we'll review it for the site.</p>
+</div>
+
+<main>
+
+  <div class="info-box">
+    <div class="info-box-icon">📋</div>
+    <p><strong>How it works:</strong> Fill out the form below and hit Submit — it'll open your email app with everything pre-filled and ready to send. We review every submission and typically add approved events within a few days. Listing your event is always <strong>free</strong>. Want it featured? Check out <a href="work-with-us.html" style="color:var(--coral);text-decoration:none;font-weight:600">For Event Hosts</a>.</p>
+  </div>
+
+  <div class="form-card" id="formCard">
+    <form id="submitForm" onsubmit="sendByEmail(event)" novalidate>
+
+      <!-- EVENT DETAILS -->
+      <div class="form-section">
+        <div class="form-section-title">Event Details</div>
+        <div class="form-group">
+          <label for="eventName">Event Name</label>
+          <input type="text" id="eventName" name="eventName" placeholder="e.g. Lancaster Strawberry Festival" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="Festival">Festival</option>
+              <option value="Live Music">Live Music</option>
+              <option value="Family">Family</option>
+              <option value="Food & Drink">Food & Drink</option>
+              <option value="Outdoors">Outdoors</option>
+              <option value="Community">Community</option>
+              <option value="Heritage">Heritage</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startTime">Start Time <span class="optional">(optional)</span></label>
+            <input type="time" id="startTime" name="startTime">
+          </div>
+          <div class="form-group">
+            <label for="endTime">End Time <span class="optional">(optional)</span></label>
+            <input type="time" id="endTime" name="endTime">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Tell people what makes this event worth attending…" required></textarea>
+        </div>
+      </div>
+
+      <!-- LOCATION -->
+      <div class="form-section">
+        <div class="form-section-title">Location</div>
+        <div class="form-group">
+          <label for="venueName">Venue / Location Name</label>
+          <input type="text" id="venueName" name="venueName" placeholder="e.g. Riverfront Park, York Expo Center" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address <span class="optional">(optional)</span></label>
+          <input type="text" id="address" name="address" placeholder="e.g. 123 Main St, Lancaster, PA 17601">
+        </div>
+      </div>
+
+      <!-- TICKETS & LINKS -->
+      <div class="form-section">
+        <div class="form-section-title">Tickets & Links</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admission">Admission</label>
+            <select id="admission" name="admission">
+              <option value="Free">Free</option>
+              <option value="Paid">Paid — tickets required</option>
+              <option value="Free with paid options">Free with paid options</option>
+              <option value="Donation-based">Donation-based</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="price">Price / Ticket Range <span class="optional">(optional)</span></label>
+            <input type="text" id="price" name="price" placeholder="e.g. $10–$25">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="website">Event Website or Ticket Link <span class="optional">(optional)</span></label>
+          <input type="url" id="website" name="website" placeholder="https://…">
+        </div>
+        <div class="form-group">
+          <label for="photoUrl">Photo / Image URL <span class="optional">(optional)</span></label>
+          <input type="url" id="photoUrl" name="photoUrl" placeholder="Link to an event photo if you have one">
+        </div>
+      </div>
+
+      <!-- YOUR INFO -->
+      <div class="form-section">
+        <div class="form-section-title">Your Contact Info</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="contactName" placeholder="First and last name" required>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Your Email</label>
+            <input type="email" id="contactEmail" name="contactEmail" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="notes">Anything else we should know? <span class="optional">(optional)</span></label>
+          <textarea id="notes" name="notes" placeholder="Recurring dates, accessibility info, parking, etc." style="min-height:80px"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="form-submit">Submit Event →</button>
+
+    </form>
+  </div>
+
+  <div class="thank-you" id="thankYou">
+    <div class="thank-you-icon">✉️</div>
+    <h2>You're all set!</h2>
+    <p>Your email app should have opened with everything ready to send. Once you hit send, we'll review your submission and be in touch if we have questions.</p>
+    <a href="index.html">← Back to events</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">TrenEvents</div>
+  <p>Lancaster · York · Harrisburg, PA &nbsp;·&nbsp; <a href="mailto:bjdoersom@gmail.com" style="color:var(--coral);text-decoration:none">bjdoersom@gmail.com</a></p>
+</footer>
+
+<script>
+function formatTime(val) {
+  if (!val) return '';
+  const [h, m] = val.split(':');
+  const hour = parseInt(h);
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const h12 = hour % 12 || 12;
+  return `${h12}:${m} ${ampm}`;
+}
+
+function sendByEmail(e) {
+  e.preventDefault();
+  const f = document.getElementById('submitForm');
+
+  // Basic validation
+  const required = ['eventName','category','eventDate','description','venueName','contactName','contactEmail'];
+  let missing = false;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.style.borderColor = 'var(--coral)';
+      missing = true;
+    } else {
+      el.style.borderColor = '';
+    }
+  });
+  if (missing) {
+    window.scrollTo({top: document.getElementById('formCard').offsetTop - 20, behavior: 'smooth'});
+    return;
+  }
+
+  const startTime = formatTime(document.getElementById('startTime').value);
+  const endTime   = formatTime(document.getElementById('endTime').value);
+  const timeStr   = startTime ? (endTime ? `${startTime} – ${endTime}` : startTime) : 'Not specified';
+
+  const lines = [
+    '--- EVENT SUBMISSION ---',
+    '',
+    'EVENT NAME: '    + document.getElementById('eventName').value,
+    'CATEGORY: '      + document.getElementById('category').value,
+    'DATE: '          + document.getElementById('eventDate').value,
+    'TIME: '          + timeStr,
+    '',
+    'VENUE: '         + document.getElementById('venueName').value,
+    'ADDRESS: '       + (document.getElementById('address').value || 'Not provided'),
+    '',
+    'ADMISSION: '     + document.getElementById('admission').value,
+    'PRICE: '         + (document.getElementById('price').value || 'N/A'),
+    'WEBSITE: '       + (document.getElementById('website').value || 'Not provided'),
+    'PHOTO URL: '     + (document.getElementById('photoUrl').value || 'Not provided'),
+    '',
+    'DESCRIPTION:',
+    document.getElementById('description').value,
+    '',
+    'ADDITIONAL NOTES:',
+    document.getElementById('notes').value || 'None',
+    '',
+    '--- SUBMITTED BY ---',
+    'NAME: '  + document.getElementById('contactName').value,
+    'EMAIL: ' + document.getElementById('contactEmail').value,
+  ];
+
+  const subject = `Event Submission: ${document.getElementById('eventName').value}`;
+  const body    = lines.join('\n');
+  window.location.href = `mailto:bjdoersom@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Show thank you after a short delay (email client takes a moment to open)
+  setTimeout(() => {
+    document.getElementById('formCard').style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 800);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Event Hosts — TrenEvents</title>
+  <meta name="description" content="Feature your event, or book a photographer and videographer for your next event in Lancaster, York & Harrisburg, PA.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF5A5F;
+      --coral-dark: #e04a4f;
+      --navy: #1a1a2e;
+      --warm-white: #F8F6F2;
+      --card-bg: #ffffff;
+      --muted: #717171;
+      --border: #e8e4de;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 32px rgba(0,0,0,0.14);
+      --radius: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--navy); min-height: 100vh; }
+
+    /* NAV */
+    nav { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0 5%; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1280px; margin: 0 auto; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--navy); }
+    .nav-back { font-size: 0.875rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
+    .nav-back:hover { color: var(--navy); }
+
+    /* HERO */
+    .hero { background: var(--navy); color: white; padding: 80px 5% 72px; text-align: center; }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); margin-bottom: 16px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; line-height: 1.2; margin-bottom: 16px; }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+    /* MAIN */
+    main { max-width: 900px; margin: 0 auto; padding: 64px 5% 80px; }
+
+    /* SECTION HEADER */
+    .section-header { margin-bottom: 32px; }
+    .section-tag { display: inline-block; background: var(--coral); color: white; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; margin-bottom: 8px; }
+    .section-header p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 600px; }
+
+    /* OFFER CARDS */
+    .offer-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 36px; margin-bottom: 20px; display: flex; gap: 28px; align-items: flex-start; box-shadow: var(--shadow); transition: box-shadow 0.2s, border-color 0.2s; }
+    .offer-card:hover { box-shadow: var(--shadow-hover); border-color: #ccc; }
+    .offer-icon { font-size: 2.4rem; flex-shrink: 0; line-height: 1; margin-top: 4px; }
+    .offer-body { flex: 1; }
+    .offer-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; }
+    .offer-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 16px; }
+    .offer-includes { list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .offer-includes li { font-size: 0.875rem; color: var(--navy); display: flex; align-items: flex-start; gap: 8px; }
+    .offer-includes li::before { content: "✓"; color: var(--coral); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .offer-price { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--coral); margin-bottom: 16px; }
+    .offer-price span { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+    .offer-price .was { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 400; color: var(--muted); text-decoration: line-through; margin-right: 6px; }
+    .sale-badge { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-left: 8px; vertical-align: middle; position: relative; top: -3px; }
+    .offer-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; border: none; border-radius: 10px; padding: 12px 22px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .offer-cta:hover { background: var(--coral-dark); }
+    .offer-cta-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); margin-left: 10px; }
+    .offer-cta-outline:hover { background: var(--warm-white); border-color: var(--navy); }
+
+    /* DIVIDER */
+    .section-divider { border: none; border-top: 1.5px solid var(--border); margin: 52px 0; }
+
+    /* PAYMENT SECTION */
+    .payment-section { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 36px; box-shadow: var(--shadow); }
+    .payment-section h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; }
+    .payment-section .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; line-height: 1.5; }
+    .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+    @media (max-width: 560px) { .payment-methods { grid-template-columns: 1fr 1fr; } }
+    .payment-method { border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; display: flex; align-items: center; gap: 14px; }
+    .payment-method-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .payment-method-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+    .payment-method-detail { font-size: 0.8rem; color: var(--muted); }
+    .invoice-note { background: var(--warm-white); border-radius: 10px; padding: 18px 20px; font-size: 0.875rem; color: var(--navy); line-height: 1.6; }
+    .invoice-note strong { color: var(--coral); }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; gap: 0; margin-top: 32px; }
+    .step { flex: 1; text-align: center; padding: 0 16px; position: relative; }
+    .step:not(:last-child)::after { content: '→'; position: absolute; right: -8px; top: 16px; color: var(--border); font-size: 1.2rem; }
+    .step-num { width: 36px; height: 36px; background: var(--coral); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; margin: 0 auto 10px; }
+    .step-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    @media (max-width: 600px) {
+      .offer-card { flex-direction: column; gap: 16px; padding: 24px; }
+      .steps { flex-direction: column; gap: 16px; }
+      .step::after { display: none; }
+    }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 32px 5%; background: white; text-align: center; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--coral); font-weight: 600; margin-bottom: 6px; }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Tren<span>Events</span></a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <a class="nav-back" href="submit-event.html" style="margin-right:8px">Submit an Event</a>
+      <a class="nav-back" href="index.html">← Back to events</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">For Event Hosts</div>
+  <h1>Reach More People.<br>Make Your Event Unforgettable.</h1>
+  <p>TrenEvents is Lancaster, York & Harrisburg's curated local events guide — no ads, no algorithm, just real events people actually care about.</p>
+</div>
+
+<main>
+
+  <!-- FEATURED LISTINGS -->
+  <div class="section-header">
+    <span class="section-tag">For Event Organizers</span>
+    <h2>Get Your Event Featured</h2>
+    <p>Featured events appear at the top of TrenEvents with a special badge, larger card, and priority placement — putting your event in front of the right local audience.</p>
+  </div>
+
+  <div class="offer-card">
+    <div class="offer-icon">⭐</div>
+    <div class="offer-body">
+      <div class="offer-title">Featured Event Listing</div>
+      <div class="offer-desc">Stand out from the crowd. Your event gets a premium card placement, featured badge, and appears in the dedicated Featured category — plus priority position when people browse All Events.</div>
+      <ul class="offer-includes">
+        <li>Featured badge on your event card</li>
+        <li>Larger, highlighted card design</li>
+        <li>Appears in the Featured category tab</li>
+        <li>Priority placement in All Events view</li>
+        <li>Your event photo displayed (if available)</li>
+        <li>Listed for the full duration leading up to your event</li>
+      </ul>
+      <div class="offer-price"><span class="was">$35</span>$25 <span>/ per event listing</span><span class="sale-badge">Launch Sale</span></div>
+      <a class="offer-cta" href="mailto:bjdoersom@gmail.com?subject=Featured Event Listing Inquiry&body=Hey TrenEvents!%0A%0AI've got an event I'd love to see featured on the site. Here's what I have:%0A%0AEvent name: %0AEvent date: %0AEvent location: %0AAnything else you should know: ">Get Featured →</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- PHOTO & VIDEO -->
+  <div class="section-header">
+    <span class="section-tag">Photo & Video</span>
+    <h2>Event Photography & Videography</h2>
+    <p>Professional photo and video coverage for your event in the Lancaster, York & Harrisburg area. Great for festivals, community events, concerts, and more.</p>
+  </div>
+
+  <div class="offer-card">
+    <div class="offer-icon">📷</div>
+    <div class="offer-body">
+      <div class="offer-title">Event Photography</div>
+      <div class="offer-desc">Professional photography that captures the energy, moments, and people that make your event worth remembering. Delivered photos are fully edited and ready to use for your website, social media, or press.</div>
+      <ul class="offer-includes">
+        <li>Professional on-site photography</li>
+        <li>Fully edited, high-resolution images</li>
+        <li>Digital delivery within 5–7 business days</li>
+        <li>Commercial usage rights included</li>
+        <li>Coverage throughout the Lancaster, York & Harrisburg area</li>
+      </ul>
+      <div class="offer-price">$250 <span>/ 2–3 hour coverage</span></div>
+      <a class="offer-cta" href="mailto:bjdoersom@gmail.com?subject=Event Photography Inquiry&body=Hey TrenEvents!%0A%0AI'm interested in the photography package for my event and would love to learn more. Here's a little about what I have going on:%0A%0AEvent name: %0AEvent date: %0AEvent location: %0AExpected duration: %0AAnything else you should know: ">Get in Touch →</a>
+    </div>
+  </div>
+
+  <div class="offer-card">
+    <div class="offer-icon">🎥</div>
+    <div class="offer-body">
+      <div class="offer-title">Event Videography</div>
+      <div class="offer-desc">Cinematic video coverage that captures the best moments of your event in a shareable highlight reel — perfect for social media, your website, or promoting future events.</div>
+      <ul class="offer-includes">
+        <li>Professional on-site video coverage</li>
+        <li>Edited highlight reel</li>
+        <li>Optimized for YouTube, Instagram, and Facebook</li>
+        <li>Digital delivery within 7–10 business days</li>
+        <li>Commercial usage rights included</li>
+        <li>Coverage throughout the Lancaster, York & Harrisburg area</li>
+      </ul>
+      <div class="offer-price">$500 <span>/ highlight reel</span></div>
+      <a class="offer-cta" href="mailto:bjdoersom@gmail.com?subject=Event Videography Inquiry&body=Hey TrenEvents!%0A%0AI'm interested in the videography package for my event and would love to learn more. Here's a little about what I have going on:%0A%0AEvent name: %0AEvent date: %0AEvent location: %0AExpected duration: %0AAnything else you should know: ">Get in Touch →</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- HOW IT WORKS -->
+  <div class="section-header">
+    <h2>How It Works</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">Reach out by email with your event details and what you're looking for</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">We'll confirm availability, discuss your needs, and send you an invoice</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Pay via PayPal or Venmo — no surprises, no contracts required for listings</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">Your listing goes live or we show up ready to capture your event</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- PAYMENT -->
+  <div class="payment-section">
+    <h3>Payment & Invoicing</h3>
+    <p class="sub">We keep it simple. Pay via PayPal or Venmo — whichever works best for you. For photo and video services, you'll receive a professional invoice before any work begins.</p>
+    <div class="payment-methods">
+      <div class="payment-method">
+        <div class="payment-method-icon">💙</div>
+        <div>
+          <div class="payment-method-name">PayPal</div>
+          <div class="payment-method-detail">bjdoersom@gmail.com</div>
+        </div>
+      </div>
+      <div class="payment-method">
+        <div class="payment-method-icon">💜</div>
+        <div>
+          <div class="payment-method-name">Venmo</div>
+          <div class="payment-method-detail">Share your handle when you reach out</div>
+        </div>
+      </div>
+      <div class="payment-method">
+        <div class="payment-method-icon">💵</div>
+        <div>
+          <div class="payment-method-name">Cash</div>
+          <div class="payment-method-detail">Accepted in person at time of service</div>
+        </div>
+      </div>
+      <div class="payment-method">
+        <div class="payment-method-icon">📝</div>
+        <div>
+          <div class="payment-method-name">Check</div>
+          <div class="payment-method-detail">Made out to Bryan Doersom</div>
+        </div>
+      </div>
+    </div>
+    <div class="invoice-note">
+      <strong>Photo & Video bookings</strong> receive a formal invoice via PayPal before work begins — clearly outlining the scope, date, and total. Featured listings can be paid directly via PayPal or Venmo after we confirm your event details by email.
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">TrenEvents</div>
+  <p>Lancaster · York · Harrisburg, PA &nbsp;·&nbsp; <a href="mailto:bjdoersom@gmail.com" style="color:var(--coral);text-decoration:none">bjdoersom@gmail.com</a></p>
+</footer>
+
+</body>
+</html>

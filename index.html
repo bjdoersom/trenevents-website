@@ -152,19 +152,6 @@
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   /* Eat Nearby */
-  .eat-nearby-section { margin-top: 20px; }
-  .eat-nearby-btn { width: 100%; background: var(--warm-white); border: 1.5px solid var(--border); border-radius: 12px; padding: 13px 18px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: border-color 0.2s, background 0.2s; }
-  .eat-nearby-btn:hover { border-color: var(--navy); background: #f0ece6; }
-  .eat-nearby-btn .eat-arrow { transition: transform 0.25s; font-size: 0.75rem; }
-  .eat-nearby-btn.open .eat-arrow { transform: rotate(180deg); }
-  .eat-nearby-panel { margin-top: 12px; }
-  .eat-nearby-panel.hidden { display: none; }
-  .eat-nearby-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-  .eat-nearby-cat { background: var(--warm-white); border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 12px; color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 7px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-  .eat-nearby-cat:hover { border-color: var(--navy); background: #f0ece6; }
-  .eat-nearby-cat.active { border-color: var(--navy); background: var(--navy); color: white; }
-  .eat-map-frame { width: 100%; height: 280px; border: none; border-radius: 10px; display: none; }
-  .eat-map-frame.visible { display: block; }
 
   footer { border-top: 1px solid var(--border); padding: 32px 5%; background: white; }
   .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
@@ -186,8 +173,9 @@
       <button class="search-btn"><svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
     </div>
     <div class="nav-right">
+      <a class="nav-link" href="submit-event.html">Submit an Event</a>
+      <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
       <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
-      <span class="nav-link">About</span>
     </div>
   </div>
 </nav>
@@ -209,6 +197,7 @@
 <div class="filters-wrap">
   <div class="filters">
     <div class="filter-tab active" onclick="setFilter('all',this)"><span class="icon">✦</span>All Events</div>
+    <div class="filter-tab" onclick="setFilter('featured',this)"><span class="icon">⭐</span>Featured</div>
     <div class="filter-tab" onclick="setFilter('festival',this)"><span class="icon">🎪</span>Festivals</div>
     <div class="filter-tab" onclick="setFilter('music',this)"><span class="icon">🎶</span>Live Music</div>
     <div class="filter-tab" onclick="setFilter('family',this)"><span class="icon">🏡</span>Family</div>
@@ -253,13 +242,6 @@
         <a class="btn-primary" id="modalCtaBtn" href="#" target="_blank" rel="noopener"></a>
         <button class="btn-secondary" onclick="closeModal()">Close</button>
       </div>
-      <div class="eat-nearby-section">
-        <button class="eat-nearby-btn" id="eatNearbyBtn" onclick="toggleEatNearby()">
-          <span>🍴 Eat Nearby</span>
-          <span class="eat-arrow">▼</span>
-        </button>
-        <div class="eat-nearby-panel hidden" id="eatNearbyPanel"></div>
-      </div>
     </div>
   </div>
 </div>
@@ -279,7 +261,8 @@
   <div class="footer-inner">
     <div class="footer-logo">TrenEvents <span>· Lancaster · York · Harrisburg, PA · Updated weekly</span></div>
     <div class="footer-links">
-      <a href="#">Submit an Event</a>
+      <a href="submit-event.html">Submit an Event</a>
+      <a href="work-with-us.html">For Event Hosts</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
     </div>
@@ -907,7 +890,7 @@ function filterAndRender() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   const grid = document.getElementById('eventsGrid');
   const filtered = sortedEvents.filter(e => {
-    const matchCat = activeFilter === 'all' || e.category === activeFilter;
+    const matchCat = activeFilter === 'all' || (activeFilter === 'featured' ? e.featured === true : e.category === activeFilter);
     const matchQ = !q || (e.title+e.description+e.location+e.date+e.tags.join(' ')).toLowerCase().includes(q);
     return matchCat && matchQ;
   });
@@ -981,37 +964,10 @@ function openModal(id) {
   const cta = document.getElementById('modalCtaBtn');
   cta.textContent = e.ctaLabel; cta.href = e.ctaUrl;
 
-  // Eat Nearby — reset panel and build category buttons + embedded map
-  const addr = encodeURIComponent(e.address);
-  const eatCats = [
-    { label: '🍽️ Local Restaurants', q: `independent+restaurant+near+${addr}` },
-    { label: '☕ Cafes & Coffee',     q: `local+cafe+coffee+shop+near+${addr}` },
-    { label: '🍺 Breweries & Bars',  q: `craft+brewery+local+bar+near+${addr}` },
-    { label: '⭐ Hidden Gems',        q: `hidden+gem+highly+rated+restaurant+near+${addr}` }
-  ];
-  document.getElementById('eatNearbyPanel').innerHTML = `
-    <div class="eat-nearby-cats">
-      ${eatCats.map((c,i) => `<button class="eat-nearby-cat" onclick="showEatMap(this,'https://maps.google.com/maps?q=${c.q}&output=embed')">${c.label}</button>`).join('')}
-    </div>
-    <iframe class="eat-map-frame" id="eatMapFrame" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>`;
-  document.getElementById('eatNearbyPanel').classList.add('hidden');
-  document.getElementById('eatNearbyBtn').classList.remove('open');
-
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; currentModalId=null; }
-function toggleEatNearby() {
-  document.getElementById('eatNearbyPanel').classList.toggle('hidden');
-  document.getElementById('eatNearbyBtn').classList.toggle('open');
-}
-function showEatMap(btn, mapUrl) {
-  document.querySelectorAll('.eat-nearby-cat').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const frame = document.getElementById('eatMapFrame');
-  frame.src = mapUrl;
-  frame.classList.add('visible');
-}
 function closeModalOnBackdrop(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if(e.key==='Escape'){closeModal();closeSavedPanel();} });
 
