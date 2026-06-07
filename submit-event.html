@@ -106,11 +106,11 @@
 
   <div class="info-box">
     <div class="info-box-icon">📋</div>
-    <p><strong>How it works:</strong> Fill out the form below and hit Submit — it'll open your email app with everything pre-filled and ready to send. We review every submission and typically add approved events within a few days. Listing your event is always <strong>free</strong>. Want it featured? Check out <a href="work-with-us.html" style="color:var(--coral);text-decoration:none;font-weight:600">For Event Hosts</a>.</p>
+    <p><strong>How it works:</strong> Fill out the form below and hit Submit — we'll review your event and typically add approved events within a few days. Listing your event is always <strong>free</strong>. Want it featured? Check out <a href="work-with-us.html" style="color:var(--coral);text-decoration:none;font-weight:600">For Event Hosts</a>.</p>
   </div>
 
   <div class="form-card" id="formCard">
-    <form id="submitForm" onsubmit="sendByEmail(event)" novalidate>
+    <form id="submitForm" onsubmit="submitToFirestore(event)" novalidate>
 
       <!-- EVENT DETAILS -->
       <div class="form-section">
@@ -220,9 +220,9 @@
   </div>
 
   <div class="thank-you" id="thankYou">
-    <div class="thank-you-icon">✉️</div>
-    <h2>You're all set!</h2>
-    <p>Your email app should have opened with everything ready to send. Once you hit send, we'll review your submission and be in touch if we have questions.</p>
+    <div class="thank-you-icon">🎉</div>
+    <h2>Submission received!</h2>
+    <p>Thanks for submitting! We'll review your event and reach out if we have any questions. Approved events are typically added within a few days.</p>
     <a href="index.html">← Back to events</a>
   </div>
 
@@ -233,7 +233,19 @@
   <p>Lancaster · York · Harrisburg, PA &nbsp;·&nbsp; <a href="mailto:bjdoersom@gmail.com" style="color:var(--coral);text-decoration:none">bjdoersom@gmail.com</a></p>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script>
+firebase.initializeApp({
+  apiKey: "AIzaSyDBE_OaP7shrY3_4uMU0G0Zo7p5M6ilnUY",
+  authDomain: "trenevents.firebaseapp.com",
+  projectId: "trenevents",
+  storageBucket: "trenevents.firebasestorage.app",
+  messagingSenderId: "828886152836",
+  appId: "1:828886152836:web:2e1eefbad735fc9e6f74d1"
+});
+const db = firebase.firestore();
+
 function formatTime(val) {
   if (!val) return '';
   const [h, m] = val.split(':');
@@ -243,68 +255,51 @@ function formatTime(val) {
   return `${h12}:${m} ${ampm}`;
 }
 
-function sendByEmail(e) {
+async function submitToFirestore(e) {
   e.preventDefault();
-  const f = document.getElementById('submitForm');
 
-  // Basic validation
   const required = ['eventName','category','eventDate','description','venueName','contactName','contactEmail'];
   let missing = false;
   required.forEach(id => {
     const el = document.getElementById(id);
-    if (!el.value.trim()) {
-      el.style.borderColor = 'var(--coral)';
-      missing = true;
-    } else {
-      el.style.borderColor = '';
-    }
+    if (!el.value.trim()) { el.style.borderColor = 'var(--coral)'; missing = true; }
+    else { el.style.borderColor = ''; }
   });
-  if (missing) {
-    window.scrollTo({top: document.getElementById('formCard').offsetTop - 20, behavior: 'smooth'});
-    return;
-  }
+  if (missing) { window.scrollTo({top: document.getElementById('formCard').offsetTop - 20, behavior: 'smooth'}); return; }
 
-  const startTime = formatTime(document.getElementById('startTime').value);
-  const endTime   = formatTime(document.getElementById('endTime').value);
-  const timeStr   = startTime ? (endTime ? `${startTime} – ${endTime}` : startTime) : 'Not specified';
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
 
-  const lines = [
-    '--- EVENT SUBMISSION ---',
-    '',
-    'EVENT NAME: '    + document.getElementById('eventName').value,
-    'CATEGORY: '      + document.getElementById('category').value,
-    'DATE: '          + document.getElementById('eventDate').value,
-    'TIME: '          + timeStr,
-    '',
-    'VENUE: '         + document.getElementById('venueName').value,
-    'ADDRESS: '       + (document.getElementById('address').value || 'Not provided'),
-    '',
-    'ADMISSION: '     + document.getElementById('admission').value,
-    'PRICE: '         + (document.getElementById('price').value || 'N/A'),
-    'WEBSITE: '       + (document.getElementById('website').value || 'Not provided'),
-    'PHOTO URL: '     + (document.getElementById('photoUrl').value || 'Not provided'),
-    '',
-    'DESCRIPTION:',
-    document.getElementById('description').value,
-    '',
-    'ADDITIONAL NOTES:',
-    document.getElementById('notes').value || 'None',
-    '',
-    '--- SUBMITTED BY ---',
-    'NAME: '  + document.getElementById('contactName').value,
-    'EMAIL: ' + document.getElementById('contactEmail').value,
-  ];
-
-  const subject = `Event Submission: ${document.getElementById('eventName').value}`;
-  const body    = lines.join('\n');
-  window.location.href = `mailto:bjdoersom@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  // Show thank you after a short delay (email client takes a moment to open)
-  setTimeout(() => {
+  try {
+    await db.collection('submissions').add({
+      type: 'event',
+      status: 'new',
+      submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      eventName:    document.getElementById('eventName').value.trim(),
+      category:     document.getElementById('category').value,
+      eventDate:    document.getElementById('eventDate').value,
+      startTime:    formatTime(document.getElementById('startTime').value),
+      endTime:      formatTime(document.getElementById('endTime').value),
+      description:  document.getElementById('description').value.trim(),
+      venueName:    document.getElementById('venueName').value.trim(),
+      address:      document.getElementById('address').value.trim(),
+      admission:    document.getElementById('admission').value,
+      price:        document.getElementById('price').value.trim(),
+      website:      document.getElementById('website').value.trim(),
+      photoUrl:     document.getElementById('photoUrl').value.trim(),
+      contactName:  document.getElementById('contactName').value.trim(),
+      contactEmail: document.getElementById('contactEmail').value.trim(),
+      notes:        document.getElementById('notes').value.trim(),
+    });
     document.getElementById('formCard').style.display = 'none';
     document.getElementById('thankYou').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 800);
+  } catch(err) {
+    btn.textContent = 'Submit Event →';
+    btn.disabled = false;
+    alert('Something went wrong. Please try again in a moment.');
+  }
 }
 </script>
 

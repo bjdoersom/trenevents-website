@@ -98,6 +98,30 @@
     footer { border-top: 1px solid var(--border); padding: 32px 5%; background: white; text-align: center; }
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--coral); font-weight: 600; margin-bottom: 6px; }
     footer p { font-size: 0.8rem; color: var(--muted); }
+
+    /* INQUIRY MODAL */
+    .inq-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; padding: 20px; }
+    .inq-overlay.open { opacity: 1; pointer-events: all; }
+    .inq-card { background: white; border-radius: 20px; padding: 40px; max-width: 520px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: translateY(16px); transition: transform 0.2s; max-height: 90vh; overflow-y: auto; }
+    .inq-overlay.open .inq-card { transform: translateY(0); }
+    .inq-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 6px; }
+    .inq-subtitle { font-size: 0.875rem; color: var(--muted); margin-bottom: 28px; line-height: 1.5; }
+    .inq-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .inq-group label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+    .inq-group label .opt { font-weight: 400; color: var(--muted); }
+    .inq-group input, .inq-group textarea { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--navy); background: var(--warm-white); border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 14px; width: 100%; outline: none; transition: border-color 0.2s; }
+    .inq-group input:focus, .inq-group textarea:focus { border-color: var(--navy); }
+    .inq-group textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+    .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .inq-actions { display: flex; gap: 12px; margin-top: 8px; }
+    .inq-submit { flex: 1; background: var(--coral); color: white; border: none; border-radius: 10px; padding: 13px 20px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .inq-submit:hover { background: var(--coral-dark); }
+    .inq-cancel { background: none; border: 1.5px solid var(--border); color: var(--muted); border-radius: 10px; padding: 13px 20px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; cursor: pointer; transition: background 0.15s; }
+    .inq-cancel:hover { background: var(--warm-white); }
+    .inq-success { text-align: center; padding: 20px 0; }
+    .inq-success-icon { font-size: 2.8rem; margin-bottom: 14px; }
+    .inq-success h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 8px; }
+    .inq-success p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -143,7 +167,7 @@
         <li>Listed for the full duration leading up to your event</li>
       </ul>
       <div class="offer-price"><span class="was">$35</span>$25 <span>/ per event listing</span><span class="sale-badge">Launch Sale</span></div>
-      <a class="offer-cta" href="mailto:bjdoersom@gmail.com?subject=Featured Event Listing Inquiry&body=Hey TrenEvents!%0A%0AI've got an event I'd love to see featured on the site. Here's what I have:%0A%0AEvent name: %0AEvent date: %0AEvent location: %0AAnything else you should know: ">Get Featured →</a>
+      <button class="offer-cta" onclick="openInquiry('featured')">Get Featured →</button>
     </div>
   </div>
 
@@ -169,7 +193,7 @@
         <li>Coverage throughout the Lancaster, York & Harrisburg area</li>
       </ul>
       <div class="offer-price">$250 <span>/ 2–3 hour coverage</span></div>
-      <a class="offer-cta" href="mailto:bjdoersom@gmail.com?subject=Event Photography Inquiry&body=Hey TrenEvents!%0A%0AI'm interested in the photography package for my event and would love to learn more. Here's a little about what I have going on:%0A%0AEvent name: %0AEvent date: %0AEvent location: %0AExpected duration: %0AAnything else you should know: ">Get in Touch →</a>
+      <button class="offer-cta" onclick="openInquiry('photography')">Get in Touch →</button>
     </div>
   </div>
 
@@ -187,7 +211,7 @@
         <li>Coverage throughout the Lancaster, York & Harrisburg area</li>
       </ul>
       <div class="offer-price">$500 <span>/ highlight reel</span></div>
-      <a class="offer-cta" href="mailto:bjdoersom@gmail.com?subject=Event Videography Inquiry&body=Hey TrenEvents!%0A%0AI'm interested in the videography package for my event and would love to learn more. Here's a little about what I have going on:%0A%0AEvent name: %0AEvent date: %0AEvent location: %0AExpected duration: %0AAnything else you should know: ">Get in Touch →</a>
+      <button class="offer-cta" onclick="openInquiry('videography')">Get in Touch →</button>
     </div>
   </div>
 
@@ -264,5 +288,145 @@
   <p>Lancaster · York · Harrisburg, PA &nbsp;·&nbsp; <a href="mailto:bjdoersom@gmail.com" style="color:var(--coral);text-decoration:none">bjdoersom@gmail.com</a></p>
 </footer>
 
+<!-- INQUIRY MODAL -->
+<div class="inq-overlay" id="inqOverlay" onclick="closeInquiryOnBackdrop(event)">
+  <div class="inq-card">
+    <div id="inqForm">
+      <div class="inq-title" id="inqTitle">Get in Touch</div>
+      <div class="inq-subtitle" id="inqSubtitle">Fill out the form below and we'll get back to you shortly.</div>
+      <div class="inq-row">
+        <div class="inq-group">
+          <label for="inqName">Your Name</label>
+          <input type="text" id="inqName" placeholder="First and last name">
+        </div>
+        <div class="inq-group">
+          <label for="inqEmail">Your Email</label>
+          <input type="email" id="inqEmail" placeholder="you@email.com">
+        </div>
+      </div>
+      <div class="inq-row">
+        <div class="inq-group">
+          <label for="inqEventName">Event Name</label>
+          <input type="text" id="inqEventName" placeholder="Name of your event">
+        </div>
+        <div class="inq-group">
+          <label for="inqEventDate">Event Date</label>
+          <input type="date" id="inqEventDate">
+        </div>
+      </div>
+      <div class="inq-group">
+        <label for="inqLocation">Event Location</label>
+        <input type="text" id="inqLocation" placeholder="Venue name or address">
+      </div>
+      <div class="inq-group" id="inqDurationGroup" style="display:none">
+        <label for="inqDuration">Expected Duration <span class="opt">(optional)</span></label>
+        <input type="text" id="inqDuration" placeholder="e.g. 4 hours, full day">
+      </div>
+      <div class="inq-group">
+        <label for="inqNotes">Anything else we should know? <span class="opt">(optional)</span></label>
+        <textarea id="inqNotes" placeholder="Details about your event, questions, anything helpful…"></textarea>
+      </div>
+      <div id="inqError" style="font-size:0.82rem;color:var(--coral);margin-bottom:8px;min-height:18px"></div>
+      <div class="inq-actions">
+        <button class="inq-submit" onclick="submitInquiry()">Send Inquiry →</button>
+        <button class="inq-cancel" onclick="closeInquiry()">Cancel</button>
+      </div>
+    </div>
+    <div class="inq-success" id="inqSuccess" style="display:none">
+      <div class="inq-success-icon">🎉</div>
+      <h3>Got it!</h3>
+      <p>Thanks for reaching out. We'll review your inquiry and get back to you within a day or two.</p>
+      <button class="inq-submit" style="max-width:200px;margin:0 auto;display:block" onclick="closeInquiry()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+firebase.initializeApp({
+  apiKey: "AIzaSyDBE_OaP7shrY3_4uMU0G0Zo7p5M6ilnUY",
+  authDomain: "trenevents.firebaseapp.com",
+  projectId: "trenevents",
+  storageBucket: "trenevents.firebasestorage.app",
+  messagingSenderId: "828886152836",
+  appId: "1:828886152836:web:2e1eefbad735fc9e6f74d1"
+});
+const db = firebase.firestore();
+
+let currentInquiryType = '';
+
+const inquiryConfig = {
+  featured:    { title: 'Get Your Event Featured', subtitle: 'Tell us about your event and we\'ll get it set up with a featured listing.' },
+  photography: { title: 'Event Photography Inquiry', subtitle: 'Tell us about your event and we\'ll follow up to discuss details and availability.' },
+  videography: { title: 'Event Videography Inquiry', subtitle: 'Tell us about your event and we\'ll follow up to discuss details and availability.' },
+};
+
+function openInquiry(type) {
+  currentInquiryType = type;
+  const cfg = inquiryConfig[type];
+  document.getElementById('inqTitle').textContent = cfg.title;
+  document.getElementById('inqSubtitle').textContent = cfg.subtitle;
+  document.getElementById('inqDurationGroup').style.display = (type === 'photography' || type === 'videography') ? 'flex' : 'none';
+  document.getElementById('inqForm').style.display = 'block';
+  document.getElementById('inqSuccess').style.display = 'none';
+  document.getElementById('inqError').textContent = '';
+  ['inqName','inqEmail','inqEventName','inqEventDate','inqLocation','inqDuration','inqNotes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.value = ''; el.style.borderColor = ''; }
+  });
+  document.getElementById('inqOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeInquiry() {
+  document.getElementById('inqOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeInquiryOnBackdrop(e) {
+  if (e.target === document.getElementById('inqOverlay')) closeInquiry();
+}
+
+async function submitInquiry() {
+  const name  = document.getElementById('inqName').value.trim();
+  const email = document.getElementById('inqEmail').value.trim();
+  const eName = document.getElementById('inqEventName').value.trim();
+  const eDate = document.getElementById('inqEventDate').value;
+  const loc   = document.getElementById('inqLocation').value.trim();
+
+  let missing = false;
+  [['inqName', name], ['inqEmail', email], ['inqEventName', eName], ['inqLocation', loc]].forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (!val) { el.style.borderColor = 'var(--coral)'; missing = true; }
+    else { el.style.borderColor = ''; }
+  });
+  if (missing) { document.getElementById('inqError').textContent = 'Please fill in the required fields above.'; return; }
+
+  const btn = document.querySelector('.inq-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    await db.collection('inquiries').add({
+      type: currentInquiryType,
+      status: 'new',
+      submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      name, email,
+      eventName: eName,
+      eventDate: eDate,
+      location:  loc,
+      duration:  document.getElementById('inqDuration').value.trim(),
+      notes:     document.getElementById('inqNotes').value.trim(),
+    });
+    document.getElementById('inqForm').style.display = 'none';
+    document.getElementById('inqSuccess').style.display = 'block';
+  } catch(err) {
+    document.getElementById('inqError').textContent = 'Something went wrong. Please try again.';
+    btn.textContent = 'Send Inquiry →';
+    btn.disabled = false;
+  }
+}
+</script>
 </body>
 </html>
