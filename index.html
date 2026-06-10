@@ -69,6 +69,7 @@
   /* If you use a real image instead of an emoji, add an <img> tag inside .card-img-placeholder */
   .card-img-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .card-badge { position: absolute; top: 12px; left: 12px; background: white; color: var(--navy); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; z-index: 1; }
+  .card-badge-featured { background: #f5c518; color: #1a1a2e; top: auto; left: auto; bottom: 10px; right: 10px; }
   .card-save { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: transform 0.15s; z-index: 2; backdrop-filter: blur(4px); }
   .card-save:hover { transform: scale(1.18); }
 
@@ -1776,6 +1777,86 @@ const EVENTS = [
     ctaUrl:      "https://www.lancastercraftbeerfest.com/"
   },
 
+  /* ── NEW EVENTS ADDED 2026-06-10 (second batch) ────────────── */
+
+  {
+    id: 57,
+    sortDate:    "2026-06-21",
+    category:    "music",
+    categories:  ["music","community","food"],
+    featured:    false,
+    badge:       "Juneteenth",
+    emoji:       "🎺",
+    image:       "",
+    bg:          "linear-gradient(135deg,#1a1a2e,#ffd166)",
+    title:       "Freedom Jazz Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Sunday, June 21, 2026",
+    time:        "Afternoon & Evening",
+    duration:    "All day",
+    location:    "Ewell Plaza & Binns Park",
+    address:     "100 N Queen Street, Lancaster, PA 17603",
+    spotsLabel:  "Free · All welcome",
+    spotsUrgent: false,
+    description: "Inspired by the spirit of Juneteenth, the Freedom Jazz Festival is a free outdoor celebration of music, culture, community, and joy in the heart of downtown Lancaster. The festival highlights the rich history and cultural significance of jazz and African-American artistry, with live performances, a diverse selection of food vendors, artisan vendors showcasing African American crafts and products, and an all-around festive atmosphere. Bring a blanket or lawn chair and enjoy a free afternoon and evening in downtown Lancaster City.",
+    tags:        ["Free","Lancaster","Juneteenth","Jazz","Outdoor","Food Vendors","Community","Cultural","Downtown","All Ages"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://ewellplaza.com/event/freedom-jazz-festival/"
+  },
+
+  {
+    id: 58,
+    sortDate:    "2026-06-19",
+    category:    "community",
+    categories:  ["community","music","food","festival"],
+    featured:    false,
+    badge:       "7th Annual",
+    emoji:       "✊",
+    image:       "",
+    bg:          "linear-gradient(135deg,#1a1a2e,#c1121f)",
+    title:       "JuneteenthHBG — Jubilee Block Party & Parade",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "June 19–20, 2026",
+    time:        "Block Party June 19 · Parade noon June 20",
+    duration:    "2-day celebration",
+    location:    "Harrisburg Riverfront & Downtown",
+    address:     "Harrisburg, PA 17101",
+    spotsLabel:  "75,000+ expected",
+    spotsUrgent: false,
+    description: "The seventh annual JuneteenthHBG — the largest Juneteenth celebration in Pennsylvania — returns to Harrisburg June 14–20, 2026, led by the Young Professionals of Color Greater Harrisburg. The centerpiece events are the Juneteenth Jubilee Block Party at the riverfront on June 19 (food, music, thousands of community members) and the 2nd Annual JuneteenthHBG Parade on June 20 at noon through downtown Harrisburg. Themed 'Built for This Moment: Radically Reimagining Our Next Chapter.' Free and open to all.",
+    tags:        ["Free","Harrisburg","Juneteenth","Community","Parade","Block Party","Live Music","Food","Cultural","Annual"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://ypoc-hbg.org/%23juneteenthhbg"
+  },
+
+  {
+    id: 59,
+    sortDate:    "2026-07-18",
+    category:    "food",
+    categories:  ["food","music","community","outdoors"],
+    featured:    false,
+    badge:       "14th Annual",
+    emoji:       "🍻",
+    image:       "",
+    bg:          "linear-gradient(135deg,#7f4f24,#d4a017)",
+    title:       "Dauphin County BrewFest",
+    price:       "$40 advance",
+    priceClass:  "paid",
+    date:        "Saturday, July 18, 2026",
+    time:        "3:00–7:00 PM (Doors 2:00 PM)",
+    duration:    "4 hours",
+    location:    "Fort Hunter Mansion & Park",
+    address:     "5300 N Front St, Harrisburg, PA 17110",
+    spotsLabel:  "50+ craft beers · Limited tickets",
+    spotsUrgent: true,
+    description: "The 14th annual Dauphin County BrewFest returns to the stunning grounds of Fort Hunter Mansion & Park along the Susquehanna River. Taste over 50 craft beers from local and regional breweries, enjoy live music, and sample gourmet food — all set against the scenic backdrop of one of Harrisburg's most beautiful historic parks. Tickets are $40 in advance ($50 day-of) with limited availability; designated driver tickets are $15. Must be 21+ with valid ID.",
+    tags:        ["Harrisburg","Craft Beer","Ticketed","21+","Live Music","Fort Hunter","Outdoor","Scenic","Annual","Gourmet Food"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://events.ticketleap.com/tickets/dauphin-county-parks-recreation/2026-brewfest"
+  }
+
   /* ── ADD NEW EVENTS ABOVE THIS LINE ──────────────────────────
      Copy one of the event blocks above, paste it here,
      increment the id, and fill in your details.
@@ -1886,13 +1967,21 @@ function buildCardHTML(e) {
   const heartChar = isSaved ? '♥' : '♡';
   const heartColor = isSaved ? 'style="color:var(--coral)"' : '';
 
-  const emojiSize = e.featured ? '4.5rem' : '3.4rem';
+  const isFeaturedView = activeFilter === 'featured';
+  const featuredClass = (e.featured && isFeaturedView) ? ' featured' : '';
+  const emojiSize = (e.featured && isFeaturedView) ? '4.5rem' : '3.4rem';
   const imgContent = e.image
     ? `<img src="${e.image}" alt="${e.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="font-size:${emojiSize};position:relative;z-index:1;display:none">${e.emoji}</span>`
     : `<span style="font-size:${emojiSize};position:relative;z-index:1">${e.emoji}</span>`;
 
-  const badgeHTML = e.badge ? `<div class="card-badge">${e.badge}</div>` : '';
-  const featuredClass = e.featured ? ' featured' : '';
+  // Show ⭐ Featured badge when a featured event appears outside the Featured filter
+  let badgeHTML = '';
+  if (e.featured && !isFeaturedView) {
+    badgeHTML = `<div class="card-badge card-badge-featured">⭐ Featured</div>`;
+    if (e.badge) badgeHTML += `<div class="card-badge" style="top:40px">${e.badge}</div>`;
+  } else if (e.badge) {
+    badgeHTML = `<div class="card-badge">${e.badge}</div>`;
+  }
 
   return `
     <div class="event-card${featuredClass}" data-id="${e.id}" data-category="${e.category}" onclick="openModal(${e.id})">
