@@ -228,6 +228,7 @@
   <div class="filters">
     <div class="filter-tab active" onclick="setFilter('all',this)"><span class="icon">✦</span>All Events</div>
     <div class="filter-tab" onclick="setFilter('featured',this)"><span class="icon">⭐</span>Featured</div>
+    <div class="filter-tab" onclick="setFilter('free',this)"><span class="icon">🆓</span>Free</div>
     <div class="filter-tab" onclick="setFilter('festival',this)"><span class="icon">🎪</span>Festivals</div>
     <div class="filter-tab" onclick="setFilter('music',this)"><span class="icon">🎶</span>Live Music</div>
     <div class="filter-tab" onclick="setFilter('family',this)"><span class="icon">🏡</span>Family</div>
@@ -2012,7 +2013,7 @@ function filterAndRender() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   const grid = document.getElementById('eventsGrid');
   const filtered = sortedEvents.filter(e => {
-    const matchCat = activeFilter === 'all' || (activeFilter === 'featured' ? e.featured === true : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
+    const matchCat = activeFilter === 'all' || (activeFilter === 'featured' ? e.featured === true : activeFilter === 'free' ? e.priceClass === 'free' : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
     const matchQ = !q || (e.title+e.description+e.location+e.date+e.tags.join(' ')).toLowerCase().includes(q);
     return matchCat && matchQ;
   });
