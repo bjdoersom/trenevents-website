@@ -2029,6 +2029,7 @@ function setFilter(cat, el) {
   document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
   filterAndRender();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function showAll() {
   document.getElementById('searchInput').value = '';
