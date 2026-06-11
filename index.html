@@ -60,6 +60,7 @@
   .section-count { font-size: 0.85rem; color: var(--muted); }
 
   .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 28px; }
+  .events-grid.featured-view { grid-template-columns: repeat(auto-fit, minmax(290px, 340px)); justify-content: center; }
 
   .event-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.22s ease, box-shadow 0.22s ease; cursor: pointer; display: flex; flex-direction: column; animation: fadeUp 0.5s ease both; }
   .event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
@@ -2241,6 +2242,7 @@ function buildCardHTML(e) {
 function filterAndRender() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   const grid = document.getElementById('eventsGrid');
+  grid.classList.toggle('featured-view', activeFilter === 'featured');
   const filtered = sortedEvents.filter(e => {
     const matchCat = activeFilter === 'all' || (activeFilter === 'featured' ? e.featured === true : activeFilter === 'free' ? e.priceClass === 'free' : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
     const matchQ = !q || (e.title+e.description+e.location+e.date+e.tags.join(' ')).toLowerCase().includes(q);
