@@ -2527,11 +2527,10 @@ async function loadSavedFromFirestore() {
     saved = new Set(doc.data()?.saved || []);
     const providerName = currentUser.providerData?.[0]?.displayName || currentUser.displayName || '';
     const providerEmail = currentUser.providerData?.[0]?.email || currentUser.email || '';
-    console.log('Writing user info:', { name: providerName, email: providerEmail });
     await db.collection('users').doc(currentUser.uid).set({
       name: providerName,
       email: providerEmail
-    }, { merge: true }).then(() => console.log('User info saved')).catch(e => console.error('User info write failed:', e));
+    }, { merge: true });
   } catch(err) { saved = new Set(); }
   updateSavedCount();
   filterAndRender();
