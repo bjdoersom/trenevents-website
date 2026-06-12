@@ -2525,6 +2525,12 @@ async function loadSavedFromFirestore() {
   try {
     const doc = await db.collection('users').doc(currentUser.uid).get();
     saved = new Set(doc.data()?.saved || []);
+    const providerName = currentUser.providerData?.[0]?.displayName || currentUser.displayName || '';
+    const providerEmail = currentUser.providerData?.[0]?.email || currentUser.email || '';
+    await db.collection('users').doc(currentUser.uid).set({
+      name: providerName,
+      email: providerEmail
+    }, { merge: true });
   } catch(err) { saved = new Set(); }
   updateSavedCount();
   filterAndRender();
