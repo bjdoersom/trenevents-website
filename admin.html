@@ -258,7 +258,32 @@ async function loadSubmissions() {
   list.innerHTML = snap.docs.map(doc => {
     const d = doc.data();
     const isNew = d.status === 'new';
-    const time  = d.startTime && d.endTime ? `${d.startTime} – ${d.endTime}` : (d.startTime || '—');
+    const isLink = d.type === 'link';
+
+    if (isLink) {
+      // Link submission — compact layout
+      return `
+      <div class="sub-card${isNew ? ' is-new' : ''}">
+        <div class="sub-card-header">
+          <div>
+            <div class="sub-card-title">${d.eventName ? esc(d.eventName) : '<em style="opacity:0.5">No name provided</em>'} <span style="font-size:0.75rem;background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:20px;font-weight:600;margin-left:6px;">🔗 Link</span></div>
+            <div class="sub-card-meta">Submitted ${fmtDate(d.submittedAt)}</div>
+          </div>
+          <span class="badge ${isNew ? 'badge-new' : 'badge-reviewed'}">${isNew ? 'New' : 'Reviewed'}</span>
+        </div>
+        <div class="sub-fields">
+          ${linkField('Event URL', d.eventUrl)}
+          ${d.notes ? field('Notes', d.notes, true) : ''}
+        </div>
+        <div class="sub-card-footer">
+          <div class="sub-contact">${esc(d.contactName)} · <a href="mailto:${esc(d.contactEmail)}">${esc(d.contactEmail)}</a></div>
+          ${isNew ? `<button class="mark-reviewed-btn" onclick="markReviewed('submissions','${doc.id}',this)">Mark as Reviewed</button>` : '<span class="already-reviewed">✓ Reviewed</span>'}
+        </div>
+      </div>`;
+    }
+
+    // Full manual submission
+    const time = d.startTime && d.endTime ? `${d.startTime} – ${d.endTime}` : (d.startTime || '—');
     return `
     <div class="sub-card${isNew ? ' is-new' : ''}">
       <div class="sub-card-header">
