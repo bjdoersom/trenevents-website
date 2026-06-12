@@ -2534,7 +2534,11 @@ async function loadSavedFromFirestore() {
 async function persistSaved() {
   if (!currentUser) return;
   try {
-    await db.collection('users').doc(currentUser.uid).set({ saved: [...saved] }, { merge: true });
+    await db.collection('users').doc(currentUser.uid).set({
+      saved: [...saved],
+      name: currentUser.displayName || '',
+      email: currentUser.email || ''
+    }, { merge: true });
   } catch(err) { console.error('Save error:', err); }
 }
 
