@@ -77,8 +77,13 @@
     .sub-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid var(--border); }
     .sub-contact { font-size: 0.85rem; color: var(--navy); }
     .sub-contact a { color: var(--coral); text-decoration: none; }
-    .mark-reviewed-btn { font-size: 0.8rem; font-weight: 600; color: var(--green); background: var(--green-bg); border: none; border-radius: 8px; padding: 6px 14px; cursor: pointer; transition: background 0.15s; font-family: 'DM Sans', sans-serif; }
-    .mark-reviewed-btn:hover { background: #c8e6c9; }
+    .approve-btn { font-size: 0.8rem; font-weight: 600; color: var(--green); background: var(--green-bg); border: none; border-radius: 8px; padding: 6px 14px; cursor: pointer; transition: background 0.15s; font-family: 'DM Sans', sans-serif; }
+    .approve-btn:hover { background: #c8e6c9; }
+    .delete-btn { font-size: 0.8rem; font-weight: 600; color: #c62828; background: #ffebee; border: none; border-radius: 8px; padding: 6px 14px; cursor: pointer; transition: background 0.15s; font-family: 'DM Sans', sans-serif; margin-left: 8px; }
+    .delete-btn:hover { background: #ffcdd2; }
+    .badge-approved { background: #e3f2fd; color: #1565c0; }
+    .badge-published { background: var(--green-bg); color: var(--green); }
+    .sub-card-actions { display: flex; align-items: center; gap: 0; }
     .already-reviewed { font-size: 0.8rem; color: var(--muted); font-style: italic; }
 
     .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
@@ -226,15 +231,32 @@ function linkField(label, val) {
   return `<div class="sub-field"><div class="sub-field-label">${label}</div><div class="sub-field-value"><a href="${esc(val)}" target="_blank" rel="noopener">${esc(val)}</a></div></div>`;
 }
 
+async function markApproved(docId, btnEl) {
+  await db.collection('submissions').doc(docId).update({ status: 'approved' });
+  const card = btnEl.closest('.sub-card');
+  card.classList.remove('is-new');
+  card.querySelector('.badge').textContent = 'Approved';
+  card.querySelector('.badge').className = 'badge badge-approved';
+  btnEl.replaceWith(Object.assign(document.createElement('span'), { className: 'already-reviewed', textContent: '✓ Approved — will be added on next site update' }));
+  loadSubmissions();
+}
+
+async function deleteSubmission(collection, docId, cardEl) {
+  if (!confirm('Delete this submission? This cannot be undone.')) return;
+  await db.collection(collection).doc(docId).delete();
+  cardEl.remove();
+  loadSubmissions();
+  loadInquiries();
+}
+
+// Legacy — kept for inquiries which still use reviewed status
 async function markReviewed(collection, docId, btnEl) {
   await db.collection(collection).doc(docId).update({ status: 'reviewed' });
   btnEl.closest('.sub-card').classList.remove('is-new');
   const badge = btnEl.closest('.sub-card').querySelector('.badge');
   badge.textContent = 'Reviewed';
   badge.className = 'badge badge-reviewed';
-  btnEl.replaceWith(Object.assign(document.createElement('span'), { className: 'already-reviewed', textContent: '✓ Marked as reviewed' }));
-  // Update tab count
-  loadSubmissions();
+  btnEl.replaceWith(Object.assign(document.createElement('span'), { className: 'already-reviewed', textContent: '✓ Reviewed' }));
   loadInquiries();
 }
 
@@ -260,8 +282,15 @@ async function loadSubmissions() {
     const isNew = d.status === 'new';
     const isLink = d.type === 'link';
 
+    const statusBadge = isNew ? 'badge-new' : (d.status === 'approved' ? 'badge-approved' : d.status === 'published' ? 'badge-published' : 'badge-reviewed');
+    const statusLabel = isNew ? 'New' : (d.status === 'approved' ? 'Approved' : d.status === 'published' ? 'Published' : 'Reviewed');
+    const actionBtns = isNew
+      ? `<div class="sub-card-actions"><button class="approve-btn" onclick="markApproved('${doc.id}',this)">✓ Approve for Site</button><button class="delete-btn" onclick="deleteSubmission('submissions','${doc.id}',this.closest('.sub-card'))">Delete</button></div>`
+      : d.status === 'approved'
+        ? `<div class="sub-card-actions"><span class="already-reviewed">Will be added on next update</span><button class="delete-btn" onclick="deleteSubmission('submissions','${doc.id}',this.closest('.sub-card'))">Delete</button></div>`
+        : `<div class="sub-card-actions"><button class="delete-btn" onclick="deleteSubmission('submissions','${doc.id}',this.closest('.sub-card'))">Delete</button></div>`;
+
     if (isLink) {
-      // Link submission — compact layout
       return `
       <div class="sub-card${isNew ? ' is-new' : ''}">
         <div class="sub-card-header">
@@ -269,7 +298,7 @@ async function loadSubmissions() {
             <div class="sub-card-title">${d.eventName ? esc(d.eventName) : '<em style="opacity:0.5">No name provided</em>'} <span style="font-size:0.75rem;background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:20px;font-weight:600;margin-left:6px;">🔗 Link</span></div>
             <div class="sub-card-meta">Submitted ${fmtDate(d.submittedAt)}</div>
           </div>
-          <span class="badge ${isNew ? 'badge-new' : 'badge-reviewed'}">${isNew ? 'New' : 'Reviewed'}</span>
+          <span class="badge ${statusBadge}">${statusLabel}</span>
         </div>
         <div class="sub-fields">
           ${linkField('Event URL', d.eventUrl)}
@@ -277,7 +306,7 @@ async function loadSubmissions() {
         </div>
         <div class="sub-card-footer">
           <div class="sub-contact">${esc(d.contactName)} · <a href="mailto:${esc(d.contactEmail)}">${esc(d.contactEmail)}</a></div>
-          ${isNew ? `<button class="mark-reviewed-btn" onclick="markReviewed('submissions','${doc.id}',this)">Mark as Reviewed</button>` : '<span class="already-reviewed">✓ Reviewed</span>'}
+          ${actionBtns}
         </div>
       </div>`;
     }
@@ -291,7 +320,7 @@ async function loadSubmissions() {
           <div class="sub-card-title">${esc(d.eventName)}</div>
           <div class="sub-card-meta">Submitted ${fmtDate(d.submittedAt)}</div>
         </div>
-        <span class="badge ${isNew ? 'badge-new' : 'badge-reviewed'}">${isNew ? 'New' : 'Reviewed'}</span>
+        <span class="badge ${statusBadge}">${statusLabel}</span>
       </div>
       <div class="sub-fields">
         ${field('Category', d.category)}
@@ -308,7 +337,7 @@ async function loadSubmissions() {
       </div>
       <div class="sub-card-footer">
         <div class="sub-contact">${esc(d.contactName)} · <a href="mailto:${esc(d.contactEmail)}">${esc(d.contactEmail)}</a></div>
-        ${isNew ? `<button class="mark-reviewed-btn" onclick="markReviewed('submissions','${doc.id}',this)">Mark as Reviewed</button>` : '<span class="already-reviewed">✓ Reviewed</span>'}
+        ${actionBtns}
       </div>
     </div>`;
   }).join('');
