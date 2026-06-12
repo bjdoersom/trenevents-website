@@ -273,8 +273,7 @@
     .logo { font-size: 1.35rem; flex: 1; cursor: pointer; }
     .search-bar { order: 4; flex: 0 0 100%; width: 100%; max-width: none; }
     .nav-right { display: none; }
-    #authNav { order: 2; }
-    .hamburger { display: flex; order: 3; }
+    .hamburger { display: flex; }
     .filters-wrap { top: 108px; }
     .filters { justify-content: flex-start; padding-left: 4px; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 2px; }
@@ -314,8 +313,8 @@
       <a class="nav-link" href="submit-event.html">Submit an Event</a>
       <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
       <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
+      <div id="authNav"></div>
     </div>
-    <div id="authNav"></div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleHamburger()">
       <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
     </button>
