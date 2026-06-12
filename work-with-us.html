@@ -122,6 +122,28 @@
     .inq-success-icon { font-size: 2.8rem; margin-bottom: 14px; }
     .inq-success h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 8px; }
     .inq-success p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+
+  /* ── HAMBURGER NAV ── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 7px 5px; border-radius: 8px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; flex-shrink: 0; }
+  .hamburger:hover { background: #f2ede8; }
+  .ham-bar { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .hamburger.is-open .ham-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.is-open .ham-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.is-open .ham-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; border-bottom: 1.5px solid var(--border); z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
+  .mobile-menu.open { display: flex; }
+  .mob-link { display: flex; align-items: center; gap: 12px; padding: 15px 24px; font-size: 0.95rem; font-weight: 500; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--border); transition: background 0.15s; cursor: pointer; }
+  .mob-link:last-child { border-bottom: none; }
+  .mob-link:hover { background: var(--warm-white); }
+  .mob-link.active { color: var(--coral); font-weight: 600; }
+
+  /* ── MOBILE NAV OVERRIDE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-inner { height: 62px; }
+    .nav-right { display: none; }
+    .hamburger { display: flex; }
+  }
   </style>
 </head>
 <body>
@@ -135,6 +157,15 @@
       <a class="nav-link active" href="work-with-us.html">For Event Hosts</a>
       <a class="nav-link" href="index.html#saved">♡ Saved</a>
     </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleHamburger()">
+      <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mob-link" href="index.html"><span>🗓</span>Events</a>
+    <a class="mob-link" href="submit-event.html"><span>✉️</span>Submit an Event</a>
+    <a class="mob-link active" href="work-with-us.html"><span>🎟</span>For Event Hosts</a>
+    <a class="mob-link" href="index.html#saved"><span>♡</span>Saved Events</a>
   </div>
 </nav>
 
@@ -428,5 +459,21 @@ async function submitInquiry() {
   }
 }
 </script>
+
+<script>
+function toggleHamburger() {
+  document.getElementById('hamburgerBtn').classList.toggle('is-open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeHamburger() {
+  document.getElementById('hamburgerBtn').classList.remove('is-open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  const nav = document.querySelector('nav');
+  if (nav && !nav.contains(e.target)) closeHamburger();
+});
+</script>
+
 </body>
 </html>

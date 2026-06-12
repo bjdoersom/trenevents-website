@@ -251,15 +251,33 @@
   .btn-share-trigger:hover { border-color: var(--navy); }
 
   /* Mobile */
-  @media (max-width: 620px) {
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 7px 5px; border-radius: 8px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; flex-shrink: 0; }
+  .hamburger:hover { background: #f2ede8; }
+  .ham-bar { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .hamburger.is-open .ham-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.is-open .ham-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.is-open .ham-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; border-bottom: 1.5px solid var(--border); z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
+  .mobile-menu.open { display: flex; }
+  .mob-link { display: flex; align-items: center; padding: 15px 24px; font-size: 0.95rem; font-weight: 500; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--border); transition: background 0.15s; cursor: pointer; user-select: none; }
+  .mob-link:last-child { border-bottom: none; }
+  .mob-link:hover { background: var(--warm-white); }
+  .mob-link.active { color: var(--coral); font-weight: 600; }
+  .mob-link-icon { margin-right: 12px; font-size: 1.1rem; }
+
+  /* ── MOBILE OVERRIDES ── */
+  @media (max-width: 768px) {
     nav { padding: 0 16px; }
-    .nav-inner { display: flex; flex-direction: column; height: auto; padding: 10px 0 8px; gap: 8px; }
-    .logo { font-size: 1.3rem; }
-    .search-bar { width: 100%; max-width: 100%; order: 3; }
-    .nav-right { order: 2; justify-content: flex-end; }
-    .nav-right > :nth-child(1), .nav-right > :nth-child(3) { display: none; }
-    .filters-wrap { top: 114px; }
-    .hero { padding: 40px 5% 50px; }
+    .nav-inner { display: flex; flex-wrap: wrap; align-items: center; height: auto; padding: 10px 0; gap: 10px; }
+    .logo { font-size: 1.35rem; flex: 1; cursor: pointer; }
+    .search-bar { order: 4; flex: 0 0 100%; width: 100%; max-width: none; }
+    .nav-right { display: none; }
+    #authNav { order: 2; }
+    .hamburger { display: flex; order: 3; }
+    .filters-wrap { top: 108px; }
+    .filters { justify-content: flex-start; padding-left: 4px; }
+    .hero { padding: 36px 5% 44px; }
     .hero p { font-size: 0.9rem; }
     .main { padding: 20px 4% 60px; }
     .events-grid { gap: 16px; }
@@ -273,9 +291,8 @@
     .cal-menu { bottom: auto; top: calc(100% + 8px); }
     .hero-eyebrow { font-size: 0.65rem; }
   }
-  @media (min-width: 621px) and (max-width: 900px) {
-    .search-bar { width: 260px; }
-    .nav-right > :nth-child(3) { display: none; }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .search-bar { width: 240px; }
   }
 </style>
 </head>
@@ -294,8 +311,17 @@
       <a class="nav-link" href="submit-event.html">Submit an Event</a>
       <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
       <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
-      <div id="authNav"></div>
     </div>
+    <div id="authNav"></div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleHamburger()">
+      <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mob-link active" onclick="showAll();closeHamburger()"><span class="mob-link-icon">🗓</span>Events</span>
+    <a class="mob-link" href="submit-event.html"><span class="mob-link-icon">✉️</span>Submit an Event</a>
+    <a class="mob-link" href="work-with-us.html"><span class="mob-link-icon">🎟</span>For Event Hosts</a>
+    <span class="mob-link" onclick="openSavedPanel();closeHamburger()"><span class="mob-link-icon">♡</span>Saved Events <span class="saved-count" id="savedCountMob" style="margin-left:6px;display:none;"></span></span>
   </div>
 </nav>
 
@@ -2920,6 +2946,19 @@ function showToast(msg){ const t=document.getElementById('toast'); t.textContent
 // Init
 document.addEventListener('DOMContentLoaded', () => { filterAndRender(); updateSavedCount(); });
 
+
+function toggleHamburger() {
+  document.getElementById('hamburgerBtn').classList.toggle('is-open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeHamburger() {
+  document.getElementById('hamburgerBtn').classList.remove('is-open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  const nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) closeHamburger();
+});
 </script>
 </body>
 </html>
