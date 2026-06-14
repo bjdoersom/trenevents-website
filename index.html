@@ -2525,9 +2525,7 @@ auth.onAuthStateChanged(async user =>,
   }
 });
 
-async function loadSavedFromFirestore(),
-
-  {
+async function loadSavedFromFirestore() {
   try {
     const doc = await db.collection('users').doc(currentUser.uid).get();
     saved = new Set(doc.data()?.saved || []);
@@ -2543,9 +2541,7 @@ async function loadSavedFromFirestore(),
   renderSavedPanel();
 }
 
-async function persistSaved(),
-
-  {
+async function persistSaved() {
   if (!currentUser) return;
   try {
     await db.collection('users').doc(currentUser.uid).set({
@@ -2557,9 +2553,7 @@ async function persistSaved(),
 }
 
 // Auth UI
-function updateAuthUI(),
-
-  {
+function updateAuthUI() {
   const navEl = document.getElementById('authNav');
   if (!navEl) return;
   if (currentUser) {
@@ -2573,29 +2567,19 @@ function updateAuthUI(),
     navEl.innerHTML = `<button class="auth-btn" onclick="showSignInModal()">Sign In</button>`;
   }
 }
-function toggleAuthDropdown(),
-
-  { document.getElementById('authDropdown')?.classList.toggle('open'); }
+function toggleAuthDropdown() { document.getElementById('authDropdown')?.classList.toggle('open'); }
 document.addEventListener('click', e => { if (!e.target.closest('.auth-dropdown')) document.getElementById('authDropdown')?.classList.remove('open'); });
 
 // Sign-in modal
-function showSignInModal(),
-
-  { document.getElementById('signinOverlay').classList.add('open'); document.getElementById('signinError').textContent = ''; }
-function closeSignInModal(e),
-
-  { if (!e || e.target === document.getElementById('signinOverlay')) { document.getElementById('signinOverlay').classList.remove('open'); } }
-function signInWithGoogle(),
-
-  {
+function showSignInModal() { document.getElementById('signinOverlay').classList.add('open'); document.getElementById('signinError').textContent = ''; }
+function closeSignInModal(e) { if (!e || e.target === document.getElementById('signinOverlay')) { document.getElementById('signinOverlay').classList.remove('open'); } }
+function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
     .then(() => { closeSignInModal(); showToast('Signed in!'); })
     .catch(err => { document.getElementById('signinError').textContent = 'Sign-in failed. Please try again.'; });
 }
-function doSignOut(),
-
-  {
+function doSignOut() {
   auth.signOut().then(() => { showToast('Signed out'); });
 }
 
@@ -2612,9 +2596,7 @@ const calIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" s
 const pinIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
 const clockIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`;
 
-function buildCardHTML(e),
-
-  {
+function buildCardHTML(e) {
   const heartId = `heart-${e.id}`;
   const isSaved = saved.has(e.id);
   const heartChar = isSaved ? '♥' : '♡';
@@ -2684,9 +2666,7 @@ function setFilter(cat, el) {
   filterAndRender();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function showAll(),
-
-  {
+function showAll() {
   document.getElementById('searchInput').value = '';
   activeFilter = 'all';
   document.querySelectorAll('.filter-tab').forEach((t,i) => t.classList.toggle('active', i===0));
@@ -2694,9 +2674,7 @@ function showAll(),
 }
 
 // Modal
-function openModal(id),
-
-  {
+function openModal(id) {
   const e = eventMap[id];
   currentModalId = id;
   const hero = document.getElementById('modalHero');
