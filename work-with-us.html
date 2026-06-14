@@ -144,6 +144,16 @@
     .nav-right { display: none; }
     .hamburger { display: flex; }
   }
+  .auth-btn { font-size: 0.875rem; font-weight: 500; color: var(--navy); background: none; border: 1.5px solid var(--border); padding: 7px 14px; border-radius: 24px; cursor: pointer; transition: background 0.15s; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; }
+  .auth-btn:hover { background: #f2ede8; }
+  .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; cursor: pointer; border: 2px solid var(--coral); display: block; }
+  .user-avatar-initial { width: 32px; height: 32px; border-radius: 50%; background: var(--coral); color: white; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid var(--coral); }
+  .auth-dropdown { position: relative; display: inline-block; }
+  .auth-dropdown-menu { position: absolute; right: 0; top: 42px; background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.10); padding: 8px; min-width: 160px; display: none; z-index: 200; }
+  .auth-dropdown-menu.open { display: block; }
+  .auth-dropdown-name { font-size: 0.78rem; color: var(--muted); padding: 6px 10px 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .auth-dropdown-item { display: block; width: 100%; text-align: left; font-size: 0.875rem; font-weight: 500; color: var(--navy); background: none; border: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s; font-family: 'DM Sans', sans-serif; }
+  .auth-dropdown-item:hover { background: #f2ede8; }
   </style>
 </head>
 <body>
@@ -156,6 +166,7 @@
       <a class="nav-link" href="submit-event.html">Submit an Event</a>
       <a class="nav-link active" href="work-with-us.html">For Event Hosts</a>
       <a class="nav-link" href="index.html#saved">♡ Saved</a>
+      <div id="authNav"></div>
     </div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleHamburger()">
       <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
@@ -374,6 +385,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script>
 firebase.initializeApp({
   apiKey: "AIzaSyDBE_OaP7shrY3_4uMU0G0Zo7p5M6ilnUY",
@@ -384,6 +396,26 @@ firebase.initializeApp({
   appId: "1:828886152836:web:2e1eefbad735fc9e6f74d1"
 });
 const db = firebase.firestore();
+const auth = firebase.auth();
+let currentUser = null;
+auth.onAuthStateChanged(user => { currentUser = user; updateAuthUI(); });
+function updateAuthUI() {
+  const navEl = document.getElementById('authNav');
+  if (!navEl) return;
+  if (currentUser) {
+    const name = currentUser.displayName || currentUser.email || 'You';
+    const initial = name.charAt(0).toUpperCase();
+    const avatarHTML = currentUser.photoURL
+      ? `<img class="user-avatar" src="${currentUser.photoURL}" alt="${name}" onclick="toggleAuthDropdown()">`
+      : `<div class="user-avatar-initial" onclick="toggleAuthDropdown()">${initial}</div>`;
+    navEl.innerHTML = `<div class="auth-dropdown">${avatarHTML}<div class="auth-dropdown-menu" id="authDropdown"><div class="auth-dropdown-name">${name}</div><button class="auth-dropdown-item" onclick="doSignOut()">Sign out</button></div></div>`;
+  } else {
+    navEl.innerHTML = `<a class="auth-btn" href="index.html">Sign In</a>`;
+  }
+}
+function toggleAuthDropdown() { document.getElementById('authDropdown')?.classList.toggle('open'); }
+document.addEventListener('click', e => { if (!e.target.closest('.auth-dropdown')) document.getElementById('authDropdown')?.classList.remove('open'); });
+function doSignOut() { auth.signOut(); }
 
 let currentInquiryType = '';
 

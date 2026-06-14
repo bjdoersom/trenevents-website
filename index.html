@@ -2789,12 +2789,7 @@ function closeModal() {
 function closeModalOnBackdrop(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
 document.addEventListener('keydown', e => { if(e.key==='Escape'){closeModal();closeSavedPanel();} });
 
-// Hash routing — open event or saved panel from URL
-(function() {
-  const hash = window.location.hash;
-  if (hash === '#saved') { openSavedPanel(); history.replaceState(null,'',window.location.pathname); }
-  else { const m = hash.match(/^#event-(\d+)$/); if(m && eventMap[+m[1]]) openModal(+m[1]); }
-})();
+// Hash routing handled in DOMContentLoaded below
 
 // Calendar
 function toggleCalMenu(e) {
@@ -2951,7 +2946,14 @@ let toastTimer;
 function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2200); }
 
 // Init
-document.addEventListener('DOMContentLoaded', () => { filterAndRender(); updateSavedCount(); });
+document.addEventListener('DOMContentLoaded', () => {
+  filterAndRender();
+  updateSavedCount();
+  // Hash routing — open saved panel or event from URL
+  const hash = window.location.hash;
+  if (hash === '#saved') { openSavedPanel(); history.replaceState(null,'',window.location.pathname); }
+  else { const m = hash.match(/^#event-(\d+)$/); if(m && eventMap[+m[1]]) openModal(+m[1]); }
+});
 
 
 function toggleHamburger() {
