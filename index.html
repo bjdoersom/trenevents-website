@@ -520,32 +520,6 @@
 const EVENTS = [
 
   {
-    id: 1,
-    sortDate:    "2026-06-12",
-    category:    "community",
-    categories:  ["community","family","food"],
-    featured:    false,
-    badge:       "",
-    emoji:       "⚽",
-    image:       "images/events/world-cup-watch-party.jpg",
-    bg:          "linear-gradient(135deg,#006d77,#48cae4)",
-    title:       "Official World Cup Watch Party — Lancaster City",
-    price:       "Free",
-    priceClass:  "free",
-    date:        "Friday, June 12, 2026",
-    time:        "Evening (times TBC)",
-    duration:    "Evening event",
-    location:    "Downtown Lancaster City",
-    address:     "Lancaster City, PA 17603",
-    spotsLabel:  "Free · All welcome",
-    spotsUrgent: false,
-    description: "Cheer on the World Cup with the Lancaster community at this free, festive outdoor watch party in Lancaster City. The event combines big-screen soccer action with vibrant cultural performances, international food, and family-friendly activities — a celebration of the global game and Lancaster's diverse community. Whether you're a die-hard soccer fan or just looking for a fun community evening, this free event brings the world to downtown Lancaster.",
-    tags:        ["Free","Family Friendly","Outdoor","Cultural Performances","International Food","All Ages","Downtown Lancaster"],
-    ctaLabel:    "More Info",
-    ctaUrl:      "https://www.discoverlancaster.com/events/official-world-cup-watch-party/"
-  },
-
-  {
     id: 2,
     sortDate:    "2026-06-13",
     category:    "food",
@@ -1990,32 +1964,6 @@ const EVENTS = [
     tags:        ["Harrisburg","Craft Beer","Ticketed","21+","Live Music","Fort Hunter","Outdoor","Scenic","Annual","Gourmet Food"],
     ctaLabel:    "Get Tickets",
     ctaUrl:      "https://events.ticketleap.com/tickets/dauphin-county-parks-recreation/2026-brewfest"
-  }
-
-  ,{
-    id: 60,
-    sortDate:    "2026-06-12",
-    category:    "school",
-    categories:  ["school","music"],
-    featured:    false,
-    badge:       "",
-    emoji:       "🎭",
-    image:       "",
-    bg:          "linear-gradient(135deg,#1a1a4e,#8B0000)",
-    title:       "West Side Story — American Music Theatre",
-    price:       "From $44",
-    priceClass:  "paid",
-    date:        "June 12 – July 12, 2026",
-    time:        "Various times",
-    duration:    "2.5 hours",
-    location:    "American Music Theatre",
-    address:     "2425 Lincoln Hwy E, Lancaster, PA 17602",
-    spotsLabel:  "Multiple showtimes",
-    spotsUrgent: false,
-    description: "The timeless Romeo and Juliet story comes alive set against 1950s New York City in this iconic Bernstein and Sondheim musical. West Side Story features beloved songs including 'Tonight,' 'Maria,' and 'America' performed live at Lancaster's American Music Theatre. Running June 12 through July 12 — a must-see summer production.",
-    tags:        ["Musical","Theatre","Lancaster","Broadway","Live Performance","All Ages"],
-    ctaLabel:    "Get Tickets",
-    ctaUrl:      "https://amtshows.com/"
   },{
     id: 62,
     sortDate:    "2026-07-24",
@@ -2562,7 +2510,9 @@ let activeFilter = 'all';
 let currentModalId = null;
 
 // Watch for sign-in / sign-out
-auth.onAuthStateChanged(async user => {
+auth.onAuthStateChanged(async user =>,
+
+  {
   currentUser = user;
   updateAuthUI();
   if (user) {
@@ -2575,7 +2525,9 @@ auth.onAuthStateChanged(async user => {
   }
 });
 
-async function loadSavedFromFirestore() {
+async function loadSavedFromFirestore(),
+
+  {
   try {
     const doc = await db.collection('users').doc(currentUser.uid).get();
     saved = new Set(doc.data()?.saved || []);
@@ -2591,7 +2543,9 @@ async function loadSavedFromFirestore() {
   renderSavedPanel();
 }
 
-async function persistSaved() {
+async function persistSaved(),
+
+  {
   if (!currentUser) return;
   try {
     await db.collection('users').doc(currentUser.uid).set({
@@ -2603,7 +2557,9 @@ async function persistSaved() {
 }
 
 // Auth UI
-function updateAuthUI() {
+function updateAuthUI(),
+
+  {
   const navEl = document.getElementById('authNav');
   if (!navEl) return;
   if (currentUser) {
@@ -2617,19 +2573,29 @@ function updateAuthUI() {
     navEl.innerHTML = `<button class="auth-btn" onclick="showSignInModal()">Sign In</button>`;
   }
 }
-function toggleAuthDropdown() { document.getElementById('authDropdown')?.classList.toggle('open'); }
+function toggleAuthDropdown(),
+
+  { document.getElementById('authDropdown')?.classList.toggle('open'); }
 document.addEventListener('click', e => { if (!e.target.closest('.auth-dropdown')) document.getElementById('authDropdown')?.classList.remove('open'); });
 
 // Sign-in modal
-function showSignInModal() { document.getElementById('signinOverlay').classList.add('open'); document.getElementById('signinError').textContent = ''; }
-function closeSignInModal(e) { if (!e || e.target === document.getElementById('signinOverlay')) { document.getElementById('signinOverlay').classList.remove('open'); } }
-function signInWithGoogle() {
+function showSignInModal(),
+
+  { document.getElementById('signinOverlay').classList.add('open'); document.getElementById('signinError').textContent = ''; }
+function closeSignInModal(e),
+
+  { if (!e || e.target === document.getElementById('signinOverlay')) { document.getElementById('signinOverlay').classList.remove('open'); } }
+function signInWithGoogle(),
+
+  {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
     .then(() => { closeSignInModal(); showToast('Signed in!'); })
     .catch(err => { document.getElementById('signinError').textContent = 'Sign-in failed. Please try again.'; });
 }
-function doSignOut() {
+function doSignOut(),
+
+  {
   auth.signOut().then(() => { showToast('Signed out'); });
 }
 
@@ -2638,13 +2604,17 @@ const sortedEvents = [...EVENTS].sort((a,b) => a.sortDate.localeCompare(b.sortDa
 
 // Build lookup map
 const eventMap = {};
-EVENTS.forEach(e => { eventMap[e.id] = e; });
+EVENTS.forEach(e =>,
+
+  { eventMap[e.id] = e; });
 
 const calIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
 const pinIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
 const clockIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`;
 
-function buildCardHTML(e) {
+function buildCardHTML(e),
+
+  {
   const heartId = `heart-${e.id}`;
   const isSaved = saved.has(e.id);
   const heartChar = isSaved ? '♥' : '♡';
@@ -2691,7 +2661,9 @@ function buildCardHTML(e) {
     </div>`;
 }
 
-function filterAndRender() {
+function filterAndRender(),
+
+  {
   const q = document.getElementById('searchInput').value.toLowerCase();
   const grid = document.getElementById('eventsGrid');
   grid.classList.toggle('featured-view', activeFilter === 'featured');
@@ -2714,7 +2686,9 @@ function setFilter(cat, el) {
   filterAndRender();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function showAll() {
+function showAll(),
+
+  {
   document.getElementById('searchInput').value = '';
   activeFilter = 'all';
   document.querySelectorAll('.filter-tab').forEach((t,i) => t.classList.toggle('active', i===0));
@@ -2722,7 +2696,9 @@ function showAll() {
 }
 
 // Modal
-function openModal(id) {
+function openModal(id),
+
+  {
   const e = eventMap[id];
   currentModalId = id;
   const hero = document.getElementById('modalHero');
