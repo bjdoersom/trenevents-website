@@ -313,7 +313,7 @@
       <a class="nav-link" href="submit-event.html">Submit an Event</a>
       <a class="nav-link" href="work-with-us.html">For Event Hosts</a>
       <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
-      <div id="authNav"></div>
+      <div id="authNav"><button class="auth-btn" onclick="showSignInModal()">Sign In</button></div>
     </div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleHamburger()">
       <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
@@ -2575,7 +2575,7 @@ auth.onAuthStateChanged(async user => {
   } else {
     saved = new Set();
     updateSavedCount();
-    filterAndRender();
+    refreshHearts();
     renderSavedPanel();
   }
 });
@@ -2592,7 +2592,7 @@ async function loadSavedFromFirestore() {
     }, { merge: true });
   } catch(err) { saved = new Set(); }
   updateSavedCount();
-  filterAndRender();
+  refreshHearts();
   renderSavedPanel();
 }
 
@@ -2907,6 +2907,12 @@ function toggleSaveFromModal() {
   persistSaved(); applyHeartUI(id, nowSaved); updateSavedCount();
   const msb = document.getElementById('modalSaveBtn'); msb.textContent = nowSaved ? '♥' : '♡'; msb.style.color = nowSaved ? 'var(--coral)' : '';
   showToast(nowSaved ? 'Saved!' : 'Removed from saved'); renderSavedPanel();
+}
+function refreshHearts() {
+  document.querySelectorAll('.event-card[data-id]').forEach(card => {
+    const id = parseInt(card.dataset.id);
+    if (!isNaN(id)) applyHeartUI(id, saved.has(id));
+  });
 }
 function applyHeartUI(id, isSaved) {
   const btn = document.getElementById(`heart-${id}`);
