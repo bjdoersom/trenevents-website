@@ -2740,8 +2740,8 @@ function filterAndRender() {
   if (!_initialRender) grid.classList.add('no-anim');
   grid.classList.toggle('featured-view', activeFilter === 'featured');
   const filtered = sortedEvents.filter(e => {
-    const today = new Date(); const tenDaysAgo = new Date(today - 10*24*60*60*1000).toISOString().slice(0,10);
-    const matchCat = activeFilter === 'all' || (activeFilter === 'new' ? (e.addedDate && e.addedDate >= tenDaysAgo) : activeFilter === 'featured' ? e.featured === true : activeFilter === 'free' ? e.priceClass === 'free' : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
+    const today = new Date(); const fiveDaysAgo = new Date(today - 5*24*60*60*1000).toISOString().slice(0,10);
+    const matchCat = activeFilter === 'all' || (activeFilter === 'new' ? (e.addedDate && e.addedDate >= fiveDaysAgo) : activeFilter === 'featured' ? e.featured === true : activeFilter === 'free' ? e.priceClass === 'free' : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
     const matchQ = !q || (e.title+e.description+e.location+e.date+e.tags.join(' ')).toLowerCase().includes(q);
     return matchCat && matchQ;
   });
