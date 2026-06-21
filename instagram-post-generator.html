@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TrenEvents — Instagram Post Generator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #111827; color: #fff; min-height: 100vh; }
+
+  header {
+    background: #1f2937;
+    border-bottom: 1px solid #374151;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  header span { font-size: 1.1rem; font-weight: 700; }
+  header span em { color: #E8524E; font-style: normal; }
+
+  .layout {
+    display: flex;
+    gap: 0;
+    min-height: calc(100vh - 57px);
+  }
+
+  /* --- CONTROLS PANEL --- */
+  .controls {
+    width: 340px;
+    flex-shrink: 0;
+    background: #1f2937;
+    border-right: 1px solid #374151;
+    padding: 24px 20px;
+    overflow-y: auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  label { display: block; font-size: 0.8rem; color: #9ca3af; margin-bottom: 4px; }
+
+  input[type="text"], textarea {
+    width: 100%;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.88rem;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  input[type="text"]:focus, textarea:focus { border-color: #90CAF9; }
+  textarea { resize: vertical; min-height: 60px; }
+
+  .row { display: flex; gap: 8px; }
+  .row input { flex: 1; }
+
+  .file-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #374151;
+    border: 1px dashed #4b5563;
+    border-radius: 6px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 12px;
+    transition: background 0.15s;
+  }
+  .file-btn:hover { background: #4b5563; }
+  input[type="file"] { display: none; }
+
+  .dl-btn {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    background: #E8524E;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .dl-btn:hover { background: #c0413d; }
+  .dl-btn:disabled { background: #4b5563; cursor: default; }
+
+  /* --- PREVIEW PANEL --- */
+  .preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 32px 24px;
+    background: #0f172a;
+    overflow-y: auto;
+  }
+
+  .preview-label {
+    font-size: 0.75rem;
+    color: #4b5563;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  canvas {
+    max-width: 540px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+  }
+
+  .hint {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: #4b5563;
+    text-align: center;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span><em>Tren</em>Events</span>
+  <span style="color:#4b5563; font-weight:400;">·</span>
+  <span style="font-size:0.9rem; font-weight:400; color:#9ca3af;">Instagram Post Generator</span>
+</header>
+
+<div class="layout">
+
+  <!-- CONTROLS -->
+  <div class="controls">
+
+    <div class="section-label">Photo</div>
+    <label for="filePicker" class="file-btn" id="fileLabel">Click to choose photo</label>
+    <input type="file" id="filePicker" accept="image/*" />
+
+    <div class="section-label">Event Details</div>
+
+    <label>Date & Time</label>
+    <input type="text" id="f_date" value="THURSDAY, JUNE 25  ·  6–9 PM" />
+
+    <label>Event Title</label>
+    <input type="text" id="f_title" value="Jazz on the Patio" />
+
+    <label>Subtitle</label>
+    <textarea id="f_subtitle" maxlength="100">Swing Street Quartet  ·  The Barn at Paradise Station</textarea>
+    <div id="sub_counter" style="font-size:0.75rem; text-align:right; margin-top:-8px; margin-bottom:12px; color:#6b7280;">54 / 100</div>
+
+    <div class="section-label">Tags (leave blank to hide)</div>
+    <label>Tag 1</label>
+    <input type="text" id="f_tag1" value="🎷 Live Jazz" />
+    <label>Tag 2</label>
+    <input type="text" id="f_tag2" value="🍽 Food & Drinks" />
+
+    <div class="section-label">Branding</div>
+    <label>Website</label>
+    <input type="text" id="f_site" value="TrenEvents.com" />
+
+    <button class="dl-btn" id="dlBtn" onclick="downloadImg()" disabled>Download Image</button>
+
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview">
+    <div class="preview-label">1080 × 1080 px preview</div>
+    <canvas id="c" width="1080" height="1080"></canvas>
+    <p class="hint">Changes update live as you type.<br>Choose a photo to get started.</p>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 1080, H = 1080;
+let currentImg = null;
+
+// File picker
+document.getElementById('filePicker').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('fileLabel').textContent = '✓ ' + file.name;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => { currentImg = img; render(); };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+// Live update on any field change
+document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+  el.addEventListener('input', () => { if (currentImg) render(); });
+});
+
+// Subtitle character counter
+const subEl = document.getElementById('f_subtitle');
+const subCounter = document.getElementById('sub_counter');
+function updateCounter() {
+  const len = subEl.value.length;
+  const limit = 100;
+  subCounter.textContent = len + ' / ' + limit;
+  if (len > 80) {
+    subCounter.style.color = '#ef4444';
+  } else if (len > 50) {
+    subCounter.style.color = '#f59e0b'; // amber — wrapping to 2nd line
+  } else {
+    subCounter.style.color = '#6b7280'; // gray — single line
+  }
+}
+subEl.addEventListener('input', updateCounter);
+updateCounter();
+
+function val(id) { return document.getElementById(id).value.trim(); }
+
+function render() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Square crop + draw photo
+  const img = currentImg;
+  const s = Math.min(img.width, img.height);
+  const sx = (img.width - s) / 2;
+  const sy = (img.height - s) / 2;
+  ctx.drawImage(img, sx, sy, s, s, 0, 0, W, H);
+
+  // Gradient overlay
+  const grad = ctx.createLinearGradient(0, 380, 0, H);
+  grad.addColorStop(0, 'rgba(10,28,58,0)');
+  grad.addColorStop(0.4, 'rgba(10,28,58,0.65)');
+  grad.addColorStop(1, 'rgba(10,28,58,0.93)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  const pad = 64;
+  let y = 770;
+
+  // Date label
+  const dateText = val('f_date');
+  if (dateText) {
+    ctx.font = 'bold 30px Arial, sans-serif';
+    ctx.fillStyle = '#90CAF9';
+    ctx.fillText(dateText.toUpperCase(), pad, y);
+    y += 18;
+  }
+
+  // Title
+  const titleText = val('f_title');
+  if (titleText) {
+    y += 62;
+    ctx.font = 'bold 86px Georgia, serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(titleText, pad, y);
+    y += 18;
+  }
+
+  // Subtitle
+  const subText = val('f_subtitle');
+  if (subText) {
+    y += 38;
+    ctx.font = '36px Arial, sans-serif';
+    ctx.fillStyle = 'rgba(200,200,200,0.9)';
+    const subLines = getLines(ctx, subText, W - pad * 2);
+    subLines.forEach((line, i) => ctx.fillText(line, pad, y + i * 42));
+    y += subLines.length * 42 + 4;
+  }
+
+  // Tags
+  const tags = [val('f_tag1'), val('f_tag2')].filter(Boolean);
+  const ph = 40;
+  if (tags.length) {
+    y -= 6;
+    let tx = pad;
+    ctx.font = '27px Arial, sans-serif';
+    tags.forEach(tag => {
+      const tw = ctx.measureText(tag).width;
+      const pw = tw + 34;
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      roundRect(ctx, tx, y, pw, ph, 20);
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(tag, tx + 17, y + 27);
+      tx += pw + 14;
+    });
+    y += ph + 16;
+  }
+
+  // Website
+  const siteText = val('f_site');
+  if (siteText) {
+    y += 18;
+    ctx.font = '24px Arial, sans-serif';
+    ctx.fillStyle = 'rgba(200,200,200,0.55)';
+    ctx.fillText(siteText, pad, y);
+  }
+
+  document.getElementById('dlBtn').disabled = false;
+}
+
+function getLines(ctx, text, maxWidth) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (let i = 0; i < words.length; i++) {
+    const test = line + words[i] + ' ';
+    if (ctx.measureText(test).width > maxWidth && i > 0) {
+      lines.push(line.trim());
+      line = words[i] + ' ';
+    } else {
+      line = test;
+    }
+  }
+  if (line.trim()) lines.push(line.trim());
+  return lines;
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  for (let i = 0; i < words.length; i++) {
+    const test = line + words[i] + ' ';
+    if (ctx.measureText(test).width > maxWidth && i > 0) {
+      ctx.fillText(line.trim(), x, y);
+      line = words[i] + ' ';
+      y += lineHeight;
+    } else {
+      line = test;
+    }
+  }
+  ctx.fillText(line.trim(), x, y);
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function downloadImg() {
+  const a = document.createElement('a');
+  const title = val('f_title').replace(/\s+/g, '-').toLowerCase() || 'trenevents-post';
+  a.download = title + '-instagram.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>

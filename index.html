@@ -199,6 +199,10 @@
   .saved-item-date { font-size: 0.78rem; color: var(--muted); }
   .saved-item-remove { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted); padding: 6px; transition: color 0.15s; flex-shrink: 0; }
   .saved-item-remove:hover { color: var(--coral); }
+  .saved-item-bell { background: none; border: none; font-size: 1rem; cursor: pointer; opacity: 0.3; padding: 6px; transition: opacity 0.15s, transform 0.15s; flex-shrink: 0; line-height: 1; }
+  .saved-item-bell:hover { opacity: 0.8; transform: scale(1.15); }
+  .saved-item-bell.active { opacity: 1; }
+  .reminder-note { font-size: 0.72rem; color: var(--muted); text-align: center; padding: 12px 0 4px; }
 
   .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--navy); color: white; padding: 12px 22px; border-radius: 30px; font-size: 0.88rem; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 600; white-space: nowrap; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -2769,6 +2773,7 @@ const db = firebase.firestore();
 
 let currentUser = null;
 let saved = new Set();
+let reminders = new Set(); // eventIds with email reminders set
 let activeFilter = 'all';
 let currentModalId = null;
 
@@ -2778,8 +2783,10 @@ auth.onAuthStateChanged(async user => {
   updateAuthUI();
   if (user) {
     await loadSavedFromFirestore();
+    await loadRemindersFromFirestore();
   } else {
     saved = new Set();
+    reminders = new Set();
     updateSavedCount();
     refreshHearts();
     renderSavedPanel();
@@ -2811,6 +2818,47 @@ async function persistSaved() {
       email: currentUser.email || ''
     }, { merge: true });
   } catch(err) { console.error('Save error:', err); }
+}
+
+// ── Email Reminders ──────────────────────────────────────────
+async function loadRemindersFromFirestore() {
+  try {
+    const snap = await db.collection('reminders')
+      .where('userId', '==', currentUser.uid)
+      .where('sent', '==', false)
+      .get();
+    reminders = new Set(snap.docs.map(d => d.data().eventId));
+  } catch(err) { reminders = new Set(); }
+}
+
+async function toggleReminder(id) {
+  if (!currentUser) { showToast('Sign in to set reminders'); return; }
+  const e = eventMap[id];
+  if (!e) return;
+  const docId = `${currentUser.uid}_${id}`;
+  const ref = db.collection('reminders').doc(docId);
+  if (reminders.has(id)) {
+    await ref.delete();
+    reminders.delete(id);
+    showToast('Reminder cancelled');
+  } else {
+    await ref.set({
+      userId: currentUser.uid,
+      userEmail: currentUser.email || '',
+      eventId: id,
+      eventTitle: e.title,
+      eventDate: e.date,
+      sortDate: e.sortDate,
+      eventTime: e.time || '',
+      eventLocation: e.location || '',
+      ctaUrl: e.ctaUrl || '',
+      sent: false,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    reminders.add(id);
+    showToast('Reminder set! You\'ll get an email the day before.');
+  }
+  renderSavedPanel();
 }
 
 // Auth UI
@@ -3151,8 +3199,9 @@ function renderSavedPanel() {
     <div class="saved-item" onclick="closeSavedPanel();setTimeout(()=>openModal(${e.id}),150)">
       <div class="saved-item-emoji" style="background:${e.bg}">${e.image ? `<img src="${e.image}" alt="">` : e.emoji}</div>
       <div class="saved-item-info"><div class="saved-item-title">${e.title}</div><div class="saved-item-date">${e.date}</div></div>
+      <button class="saved-item-bell ${reminders.has(e.id) ? 'active' : ''}" onclick="event.stopPropagation();toggleReminder(${e.id})" title="${reminders.has(e.id) ? 'Cancel reminder' : 'Email me the day before'}">🔔</button>
       <button class="saved-item-remove" onclick="event.stopPropagation();removeSaved(${e.id})" title="Remove">✕</button>
-    </div>`).join('');
+    </div>`).join('') + `<p class="reminder-note">🔔 = email reminder the day before</p>`;
 }
 function removeSaved(id) {
   saved.delete(id); persistSaved(); applyHeartUI(id, false); updateSavedCount(); renderSavedPanel();

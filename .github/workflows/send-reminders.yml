@@ -1,0 +1,29 @@
+name: Send Event Reminders
+
+on:
+  schedule:
+    # Runs every day at 9 AM Eastern (1 PM UTC)
+    - cron: '0 13 * * *'
+  workflow_dispatch: # allows you to trigger it manually from GitHub if needed
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install firebase-admin node-fetch
+        working-directory: scripts
+
+      - name: Send reminders
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: node scripts/send-reminders.js

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jazz on the Patio — Instagram Post</title>
+<style>
+  body { font-family: sans-serif; background: #1a1a2e; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; margin: 0; }
+  h2 { margin: 0 0 8px; font-size: 1.1rem; color: #90CAF9; }
+  p { margin: 0 0 24px; font-size: 0.85rem; color: #aaa; }
+  canvas { border-radius: 12px; max-width: 100%; }
+  button {
+    margin-top: 20px;
+    background: #E8524E;
+    color: #fff;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  button:hover { background: #c0413d; }
+</style>
+</head>
+<body>
+
+<h2>Jazz on the Patio — Instagram Post</h2>
+<p>Select the photo from your Downloads folder, then hit Download.</p>
+
+<input type="file" id="picker" accept="image/*" style="margin-bottom:20px; color:#aaa; font-size:0.9rem;" />
+<br>
+<canvas id="c" width="1080" height="1080" style="display:none;"></canvas>
+<button id="dlbtn" onclick="download()" style="display:none;">Download Image</button>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 1080, H = 1080;
+
+document.getElementById('picker').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const img = new Image();
+    img.onload = () => { drawPost(img); };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+function drawPost(img) {
+  canvas.style.display = 'block';
+  document.getElementById('dlbtn').style.display = 'inline-block';
+  // Square crop center
+  const s = Math.min(img.width, img.height);
+  const sx = (img.width - s) / 2;
+  const sy = (img.height - s) / 2;
+  ctx.drawImage(img, sx, sy, s, s, 0, 0, W, H);
+
+  // Gradient overlay bottom-up
+  const grad = ctx.createLinearGradient(0, 380, 0, H);
+  grad.addColorStop(0, 'rgba(10,28,58,0)');
+  grad.addColorStop(0.4, 'rgba(10,28,58,0.65)');
+  grad.addColorStop(1, 'rgba(10,28,58,0.93)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  const pad = 64;
+
+  // Date/time label
+  ctx.font = 'bold 30px Arial, sans-serif';
+  ctx.fillStyle = '#90CAF9';
+  ctx.letterSpacing = '2px';
+  ctx.fillText('THURSDAY, JUNE 25  ·  6–9 PM', pad, 770);
+
+  // Title
+  ctx.font = 'bold 86px Georgia, serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText('Jazz on the Patio', pad, 870);
+
+  // Subtitle
+  ctx.font = '36px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(200,200,200,0.9)';
+  ctx.fillText('Swing Street Quartet  ·  The Barn at Paradise Station', pad, 928);
+
+  // Tag pills
+  const tags = ['🎷 Live Jazz', '🍽 Food & Drinks'];
+  let tx = pad;
+  const ty = 972;
+  ctx.font = '27px Arial, sans-serif';
+  tags.forEach(tag => {
+    const tw = ctx.measureText(tag).width;
+    const pw = tw + 34;
+    const ph = 40;
+    // Pill background
+    ctx.fillStyle = 'rgba(255,255,255,0.18)';
+    roundRect(ctx, tx, ty, pw, ph, 20);
+    ctx.fill();
+    // Pill text
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(tag, tx + 17, ty + 27);
+    tx += pw + 14;
+  });
+
+  // TrenEvents watermark
+  ctx.font = '24px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(200,200,200,0.55)';
+  ctx.fillText('TrenEvents.com', pad, 1042);
+};
+
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function download() {
+  const a = document.createElement('a');
+  a.download = 'jazz-on-the-patio-instagram.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>
