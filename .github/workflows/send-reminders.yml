@@ -4,7 +4,12 @@ on:
   schedule:
     # Runs every day at 9 AM Eastern (1 PM UTC)
     - cron: '0 13 * * *'
-  workflow_dispatch: # allows you to trigger it manually from GitHub if needed
+  workflow_dispatch:
+    inputs:
+      test_email:
+        description: 'Test mode — enter your email to send a sample reminder just to you (leave blank for normal run)'
+        required: false
+        default: ''
 
 jobs:
   send-reminders:
@@ -26,4 +31,5 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TEST_EMAIL: ${{ github.event.inputs.test_email }}
         run: node scripts/send-reminders.js

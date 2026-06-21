@@ -80,6 +80,24 @@ async function sendEmail(to, eventTitle, eventDate, eventTime, eventLocation, ct
 
 // ── Main ──────────────────────────────────────────────────────
 async function main() {
+  const testEmail = process.env.TEST_EMAIL?.trim();
+
+  // ── Test mode: send a sample email to the provided address ──
+  if (testEmail) {
+    console.log(`TEST MODE — sending sample reminder to ${testEmail}`);
+    await sendEmail(
+      testEmail,
+      'Long\'s Park Summer Music Series',
+      'Sundays through August 23, 2026',
+      '7:30 PM',
+      'Long\'s Park Amphitheater, Lancaster, PA',
+      'https://www.longspark.org/summer-music-series'
+    );
+    console.log('Test email sent! Check your inbox.');
+    return;
+  }
+
+  // ── Normal daily run ─────────────────────────────────────────
   const tomorrow = getTomorrowDateString();
   console.log(`Checking for reminders with sortDate: ${tomorrow}`);
 
