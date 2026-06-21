@@ -64,7 +64,7 @@ async function sendEmail(to, eventTitle, eventDate, eventTime, eventLocation, ct
           <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;">
           <p style="font-size: 0.78rem; color: #999; margin: 0;">
             You're getting this because you saved this event on <a href="https://trenevents.com" style="color: #e07a5f;">TrenEvents</a> and turned on the reminder bell 🔔.<br>
-            To stop reminders, visit your saved events and tap the bell again.
+            To stop reminders: open your <a href="https://trenevents.com/#saved" style="color: #e07a5f;">Saved Events</a>, tap 🔔 on any event to cancel that reminder, or use the <strong>"🔕 All reminders off"</strong> button at the top to unsubscribe from all.
           </p>
         </div>
       `

@@ -199,9 +199,8 @@
   .saved-item-date { font-size: 0.78rem; color: var(--muted); }
   .saved-item-remove { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted); padding: 6px; transition: color 0.15s; flex-shrink: 0; }
   .saved-item-remove:hover { color: var(--coral); }
-  .saved-item-bell { background: none; border: none; font-size: 1rem; cursor: pointer; opacity: 0.3; padding: 6px; transition: opacity 0.15s, transform 0.15s; flex-shrink: 0; line-height: 1; }
-  .saved-item-bell:hover { opacity: 0.8; transform: scale(1.15); }
-  .saved-item-bell.active { opacity: 1; }
+  .saved-item-bell { background: none; border: none; font-size: 1rem; cursor: pointer; padding: 6px; transition: transform 0.15s; flex-shrink: 0; line-height: 1; }
+  .saved-item-bell:hover { transform: scale(1.2); }
   .reminder-note { font-size: 0.72rem; color: var(--muted); text-align: center; padding: 12px 0 4px; }
 
   .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--navy); color: white; padding: 12px 22px; border-radius: 30px; font-size: 0.88rem; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 600; white-space: nowrap; }
@@ -422,7 +421,10 @@
 <div class="saved-panel" id="savedPanel">
   <div class="saved-panel-header">
     <span class="saved-panel-title">Saved Events</span>
-    <button class="panel-close" onclick="closeSavedPanel()">✕</button>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="cancelAllRemindersBtn" onclick="cancelAllReminders()" title="Turn off all reminders" style="display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.75rem;color:var(--muted);cursor:pointer;">🔕 All reminders off</button>
+      <button class="panel-close" onclick="closeSavedPanel()">✕</button>
+    </div>
   </div>
   <div class="saved-panel-body" id="savedPanelBody"></div>
 </div>
@@ -2861,6 +2863,20 @@ async function toggleReminder(id) {
   renderSavedPanel();
 }
 
+async function cancelAllReminders() {
+  if (!currentUser || reminders.size === 0) return;
+  try {
+    const batch = db.batch();
+    reminders.forEach(id => {
+      batch.delete(db.collection('reminders').doc(`${currentUser.uid}_${id}`));
+    });
+    await batch.commit();
+    reminders = new Set();
+    showToast('All reminders turned off');
+    renderSavedPanel();
+  } catch(err) { showToast('Something went wrong — try again'); }
+}
+
 // Auth UI
 function updateAuthUI() {
   const navEl = document.getElementById('authNav');
@@ -3194,14 +3210,16 @@ function renderSavedPanel() {
     return;
   }
   if (saved.size === 0) { body.innerHTML = `<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>No saved events yet.<br>Tap the heart on any event to save it here.</p></div>`; return; }
+  const cancelBtn = document.getElementById('cancelAllRemindersBtn');
+  if (cancelBtn) cancelBtn.style.display = reminders.size > 0 ? 'block' : 'none';
   const sorted = [...saved].map(id => eventMap[id]).filter(Boolean).sort((a, b) => a.sortDate.localeCompare(b.sortDate));
   body.innerHTML = sorted.map(e => `
     <div class="saved-item" onclick="closeSavedPanel();setTimeout(()=>openModal(${e.id}),150)">
       <div class="saved-item-emoji" style="background:${e.bg}">${e.image ? `<img src="${e.image}" alt="">` : e.emoji}</div>
       <div class="saved-item-info"><div class="saved-item-title">${e.title}</div><div class="saved-item-date">${e.date}</div></div>
-      <button class="saved-item-bell ${reminders.has(e.id) ? 'active' : ''}" onclick="event.stopPropagation();toggleReminder(${e.id})" title="${reminders.has(e.id) ? 'Cancel reminder' : 'Email me the day before'}">🔔</button>
+      <button class="saved-item-bell" onclick="event.stopPropagation();toggleReminder(${e.id})" title="${reminders.has(e.id) ? 'Reminder on — click to turn off' : 'Reminder off — click to get an email the day before'}">${reminders.has(e.id) ? '🔔' : '🔕'}</button>
       <button class="saved-item-remove" onclick="event.stopPropagation();removeSaved(${e.id})" title="Remove">✕</button>
-    </div>`).join('') + `<p class="reminder-note">🔔 = email reminder the day before</p>`;
+    </div>`).join('') + `<p class="reminder-note">🔔 reminder on &nbsp;·&nbsp; 🔕 reminder off</p>`;
 }
 function removeSaved(id) {
   saved.delete(id); persistSaved(); applyHeartUI(id, false); updateSavedCount(); renderSavedPanel();
