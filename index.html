@@ -422,7 +422,7 @@
   <div class="saved-panel-header">
     <span class="saved-panel-title">Saved Events</span>
     <div style="display:flex;align-items:center;gap:10px;">
-      <button id="cancelAllRemindersBtn" onclick="cancelAllReminders()" title="Turn off all reminders" style="display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.75rem;color:var(--muted);cursor:pointer;">🔕 All reminders off</button>
+      <button id="toggleAllRemindersBtn" onclick="toggleAllReminders()" title="Toggle all reminders" style="display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.75rem;color:var(--muted);cursor:pointer;"></button>
       <button class="panel-close" onclick="closeSavedPanel()">✕</button>
     </div>
   </div>
@@ -2718,7 +2718,14 @@ auth.onAuthStateChanged(async user => {
 async function loadSavedFromFirestore() {
   try {
     const doc = await db.collection('users').doc(currentUser.uid).get();
-    saved = new Set(doc.data()?.saved || []);
+    const rawSaved = doc.data()?.saved || [];
+    // Remove IDs for events that no longer exist in the EVENTS array
+    const validIds = rawSaved.filter(id => eventMap[id] != null);
+    saved = new Set(validIds);
+    if (validIds.length !== rawSaved.length) {
+      // Clean up stale IDs from Firestore
+      await db.collection('users').doc(currentUser.uid).set({ saved: validIds }, { merge: true });
+    }
     const providerName = currentUser.providerData?.[0]?.displayName || currentUser.displayName || '';
     const providerEmail = currentUser.providerData?.[0]?.email || currentUser.email || '';
     await db.collection('users').doc(currentUser.uid).set({
@@ -2751,6 +2758,7 @@ async function loadRemindersFromFirestore() {
       .get();
     reminders = new Set(snap.docs.map(d => d.data().eventId));
   } catch(err) { reminders = new Set(); }
+  renderSavedPanel();
 }
 
 async function toggleReminder(id) {
@@ -2759,42 +2767,87 @@ async function toggleReminder(id) {
   if (!e) return;
   const docId = `${currentUser.uid}_${id}`;
   const ref = db.collection('reminders').doc(docId);
-  if (reminders.has(id)) {
-    await ref.delete();
-    reminders.delete(id);
-    showToast('Reminder cancelled');
-  } else {
-    await ref.set({
-      userId: currentUser.uid,
-      userEmail: currentUser.email || '',
-      eventId: id,
-      eventTitle: e.title,
-      eventDate: e.date,
-      sortDate: e.sortDate,
-      eventTime: e.time || '',
-      eventLocation: e.location || '',
-      ctaUrl: e.ctaUrl || '',
-      sent: false,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    reminders.add(id);
-    showToast('Reminder set! You\'ll get an email the day before.');
-  }
+  const wasOn = reminders.has(id);
+  // Optimistic update — change the bell immediately
+  if (wasOn) { reminders.delete(id); } else { reminders.add(id); }
   renderSavedPanel();
+  try {
+    if (wasOn) {
+      await ref.delete();
+      showToast('Reminder cancelled');
+    } else {
+      await ref.set({
+        userId: currentUser.uid,
+        userEmail: currentUser.email || '',
+        eventId: id,
+        eventTitle: e.title,
+        eventDate: e.date,
+        sortDate: e.sortDate,
+        eventTime: e.time || '',
+        eventLocation: e.location || '',
+        ctaUrl: e.ctaUrl || '',
+        sent: false,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      showToast('Reminder set! You\'ll get an email the day before.');
+    }
+  } catch(err) {
+    // Revert on failure
+    if (wasOn) { reminders.add(id); } else { reminders.delete(id); }
+    renderSavedPanel();
+    showToast('Something went wrong — try again');
+  }
 }
 
-async function cancelAllReminders() {
-  if (!currentUser || reminders.size === 0) return;
+async function toggleAllReminders() {
+  if (!currentUser) return;
+  const savedEvents = [...saved].map(id => eventMap[id]).filter(Boolean);
+  const allOn = savedEvents.every(e => reminders.has(e.id));
+  // Optimistic update
+  if (allOn) {
+    savedEvents.forEach(e => reminders.delete(e.id));
+  } else {
+    savedEvents.forEach(e => reminders.add(e.id));
+  }
+  renderSavedPanel();
   try {
     const batch = db.batch();
-    reminders.forEach(id => {
-      batch.delete(db.collection('reminders').doc(`${currentUser.uid}_${id}`));
-    });
-    await batch.commit();
-    reminders = new Set();
-    showToast('All reminders turned off');
+    if (allOn) {
+      savedEvents.forEach(e => {
+        batch.delete(db.collection('reminders').doc(`${currentUser.uid}_${e.id}`));
+      });
+      await batch.commit();
+      showToast('All reminders turned off');
+    } else {
+      savedEvents.forEach(e => {
+        const ref = db.collection('reminders').doc(`${currentUser.uid}_${e.id}`);
+        batch.set(ref, {
+          userId: currentUser.uid,
+          userEmail: currentUser.email || '',
+          eventId: e.id,
+          eventTitle: e.title,
+          eventDate: e.date,
+          sortDate: e.sortDate,
+          eventTime: e.time || '',
+          eventLocation: e.location || '',
+          ctaUrl: e.ctaUrl || '',
+          sent: false,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      });
+      await batch.commit();
+      showToast('All reminders turned on');
+    }
+  } catch(err) {
+    // Revert on failure
+    if (allOn) {
+      savedEvents.forEach(e => reminders.add(e.id));
+    } else {
+      savedEvents.forEach(e => reminders.delete(e.id));
+    }
     renderSavedPanel();
-  } catch(err) { showToast('Something went wrong — try again'); }
+    showToast('Something went wrong — try again');
+  }
 }
 
 // Auth UI
@@ -3130,8 +3183,14 @@ function renderSavedPanel() {
     return;
   }
   if (saved.size === 0) { body.innerHTML = `<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>No saved events yet.<br>Tap the heart on any event to save it here.</p></div>`; return; }
-  const cancelBtn = document.getElementById('cancelAllRemindersBtn');
-  if (cancelBtn) cancelBtn.style.display = reminders.size > 0 ? 'block' : 'none';
+  const toggleBtn = document.getElementById('toggleAllRemindersBtn');
+  if (toggleBtn) {
+    const savedEvents = [...saved].map(id => eventMap[id]).filter(Boolean);
+    const allOn = savedEvents.length > 0 && savedEvents.every(e => reminders.has(e.id));
+    toggleBtn.style.display = savedEvents.length > 0 ? 'block' : 'none';
+    toggleBtn.textContent = allOn ? '🔕 All reminders off' : '🔔 All reminders on';
+    toggleBtn.title = allOn ? 'Turn off all reminders' : 'Turn on all reminders';
+  }
   const sorted = [...saved].map(id => eventMap[id]).filter(Boolean).sort((a, b) => a.sortDate.localeCompare(b.sortDate));
   body.innerHTML = sorted.map(e => `
     <div class="saved-item" onclick="closeSavedPanel();setTimeout(()=>openModal(${e.id}),150)">
