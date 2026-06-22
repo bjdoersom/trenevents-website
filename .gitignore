@@ -1,0 +1,13 @@
+# Firebase service account credentials — NEVER commit these
+FIREBASE_SERVICE_ACCOUNT.json
+*service-account*.json
+*serviceaccount*.json
+
+# Other secrets
+.env
+.env.local
+*.key
+
+# Node
+node_modules/
+scripts/node_modules/
