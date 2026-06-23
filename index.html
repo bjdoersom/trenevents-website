@@ -3167,7 +3167,9 @@ function refreshHearts() {
 function applyHeartUI(id, isSaved) {
   const btn = document.getElementById(`heart-${id}`);
   if (!btn) return;
-  btn.textContent = isSaved ? '♥' : '♡'; btn.style.color = isSaved ? 'var(--coral)' : '';
+  btn.textContent = isSaved ? '♥' : '♡';
+  btn.style.color = isSaved ? 'var(--coral)' : '';
+  btn.style.fontSize = isSaved ? '1.4rem' : '1.1rem';
 }
 function updateSavedCount() {
   const el = document.getElementById('savedCount'); el.textContent = saved.size; el.classList.toggle('visible', saved.size > 0);
