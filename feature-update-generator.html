@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TrenEvents — Feature Update Post Generator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #111827; color: #fff; min-height: 100vh; }
+
+  header {
+    background: #1f2937;
+    border-bottom: 1px solid #374151;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  header span { font-size: 1.1rem; font-weight: 700; }
+  header span em { color: #E8524E; font-style: normal; }
+
+  .layout { display: flex; min-height: calc(100vh - 57px); }
+
+  .controls {
+    width: 340px;
+    flex-shrink: 0;
+    background: #1f2937;
+    border-right: 1px solid #374151;
+    padding: 24px 20px;
+    overflow-y: auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  label { display: block; font-size: 0.8rem; color: #9ca3af; margin-bottom: 4px; }
+
+  input[type="text"], textarea {
+    width: 100%;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.88rem;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  input[type="text"]:focus, textarea:focus { border-color: #E8524E; }
+  textarea { resize: vertical; min-height: 56px; }
+
+  .file-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #374151;
+    border: 1px dashed #4b5563;
+    border-radius: 6px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 12px;
+    transition: background 0.15s;
+  }
+  .file-btn:hover { background: #4b5563; }
+  input[type="file"] { display: none; }
+
+  .char-count { font-size: 0.72rem; text-align: right; margin-top: -8px; margin-bottom: 12px; color: #6b7280; }
+
+  .dl-btn {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    background: #E8524E;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .dl-btn:hover { background: #c0413d; }
+  .dl-btn:disabled { background: #4b5563; cursor: default; }
+
+  .preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px;
+    background: #0f172a;
+    overflow-y: auto;
+  }
+  .preview-label { font-size: 0.75rem; color: #4b5563; margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase; }
+  canvas { max-width: 540px; width: 100%; border-radius: 10px; border: 1px solid #1f2937; }
+  .hint { margin-top: 20px; font-size: 0.78rem; color: #4b5563; text-align: center; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header>
+  <span><em>Tren</em>Events</span>
+  <span style="color:#4b5563; font-weight:400;">·</span>
+  <span style="font-size:0.9rem; font-weight:400; color:#9ca3af;">Feature Update Post Generator</span>
+</header>
+
+<div class="layout">
+
+  <div class="controls">
+
+    <div class="section-label">Screenshot</div>
+    <label for="filePicker" class="file-btn" id="fileLabel">Click to choose screenshot</label>
+    <input type="file" id="filePicker" accept="image/*" />
+
+    <div class="section-label">Header</div>
+    <label>Badge Text</label>
+    <input type="text" id="f_badge" value="NEW FEATURE" />
+
+    <div class="section-label">Feature Details</div>
+    <label>Feature Title</label>
+    <input type="text" id="f_title" value="Reminders for Saved Events" maxlength="50" />
+    <div class="char-count" id="title_count">26 / 50</div>
+
+    <label>Description</label>
+    <textarea id="f_desc" maxlength="90">Tap the bell on any saved event and we'll remind you before it starts.</textarea>
+    <div class="char-count" id="desc_count">67 / 90</div>
+
+    <div class="section-label">Branding</div>
+    <label>Website</label>
+    <input type="text" id="f_site" value="TrenEvents.com" />
+
+    <button class="dl-btn" id="dlBtn" onclick="downloadImg()" disabled>Download Image</button>
+
+  </div>
+
+  <div class="preview">
+    <div class="preview-label">1080 × 1080 px preview</div>
+    <canvas id="c" width="1080" height="1080"></canvas>
+    <p class="hint">Choose a screenshot to get started.<br>Fields update the preview live.</p>
+  </div>
+
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 1080, H = 1080;
+let screenshot = null;
+
+document.getElementById('filePicker').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('fileLabel').textContent = '✓ ' + file.name;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => { screenshot = img; render(); };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+  el.addEventListener('input', () => { if (screenshot) render(); });
+});
+
+function setupCounter(inputId, counterId, limit) {
+  const input = document.getElementById(inputId);
+  const counter = document.getElementById(counterId);
+  function update() {
+    const len = input.value.length;
+    counter.textContent = len + ' / ' + limit;
+    counter.style.color = len > limit * 0.85 ? '#ef4444' : len > limit * 0.65 ? '#f59e0b' : '#6b7280';
+  }
+  input.addEventListener('input', update);
+  update();
+}
+setupCounter('f_title', 'title_count', 50);
+setupCounter('f_desc', 'desc_count', 90);
+
+function val(id) { return document.getElementById(id).value.trim(); }
+
+function render() {
+  ctx.clearRect(0, 0, W, H);
+
+  const CORAL   = '#E8524E';
+  const NAVY    = '#1E2340';
+  const CREAM   = '#F2EEE8';
+
+  // Background
+  ctx.fillStyle = CREAM;
+  ctx.fillRect(0, 0, W, H);
+
+  // ── HEADER BAR ──
+  const HEADER_H = 136;
+  ctx.fillStyle = CORAL;
+  ctx.fillRect(0, 0, W, HEADER_H);
+
+  // "Tren" logo text
+  ctx.font = 'bold 64px Georgia, serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText('Tren', 64, 94);
+  const trenW = ctx.measureText('Tren').width;
+
+  // "Events" in lighter tone
+  ctx.fillStyle = 'rgba(255,210,208,0.9)';
+  ctx.fillText('Events', 64 + trenW, 94);
+
+  // Badge pill
+  const badgeText = val('f_badge') || 'NEW FEATURE';
+  ctx.font = 'bold 24px Arial, sans-serif';
+  const badgeW = ctx.measureText(badgeText).width + 40;
+  const badgeX = W - 64 - badgeW;
+  const badgeY = 52;
+  ctx.fillStyle = '#ffffff';
+  roundRect(ctx, badgeX, badgeY, badgeW, 40, 20);
+  ctx.fill();
+  ctx.fillStyle = '#993C1D';
+  ctx.fillText(badgeText, badgeX + 20, badgeY + 27);
+
+  // ── SCREENSHOT CARD ──
+  const cardPad = 56;
+  const cardX = cardPad;
+  const cardY = HEADER_H + 48;
+  const cardW = W - cardPad * 2;
+
+  // Bottom text block height estimate
+  const BOTTOM_H = 200;
+  const cardH = H - cardY - BOTTOM_H - 40;
+
+  // Card background
+  ctx.fillStyle = '#ffffff';
+  roundRect(ctx, cardX, cardY, cardW, cardH, 20);
+  ctx.fill();
+
+  // Screenshot inside card
+  if (screenshot) {
+    const inset = 24;
+    const imgX = cardX + inset;
+    const imgY = cardY + inset;
+    const imgW = cardW - inset * 2;
+    const imgH = cardH - inset * 2;
+
+    ctx.save();
+    roundRect(ctx, imgX, imgY, imgW, imgH, 12);
+    ctx.clip();
+
+    // Fit screenshot proportionally, centered
+    const scale = Math.min(imgW / screenshot.width, imgH / screenshot.height);
+    const sw = screenshot.width * scale;
+    const sh = screenshot.height * scale;
+    const sx = imgX + (imgW - sw) / 2;
+    const sy = imgY + (imgH - sh) / 2;
+
+    ctx.fillStyle = '#f8f8f8';
+    ctx.fillRect(imgX, imgY, imgW, imgH);
+    ctx.drawImage(screenshot, sx, sy, sw, sh);
+    ctx.restore();
+  }
+
+  // ── BOTTOM TEXT ──
+  const textY = cardY + cardH + 44;
+
+  // Feature title
+  ctx.font = 'bold 52px Georgia, serif';
+  ctx.fillStyle = NAVY;
+  const titleLines = getLines(ctx, val('f_title') || 'Feature Name', W - cardPad * 2);
+  titleLines.forEach((line, i) => ctx.fillText(line, cardPad, textY + i * 60));
+  const titleBottom = textY + titleLines.length * 60;
+
+  // Description
+  ctx.font = '32px Arial, sans-serif';
+  ctx.fillStyle = '#666666';
+  const descLines = getLines(ctx, val('f_desc') || '', W - cardPad * 2);
+  descLines.forEach((line, i) => ctx.fillText(line, cardPad, titleBottom + 10 + i * 38));
+  const descBottom = titleBottom + 10 + descLines.length * 38;
+
+  // Website
+  ctx.font = '26px Arial, sans-serif';
+  ctx.fillStyle = CORAL;
+  ctx.fillText(val('f_site') || 'TrenEvents.com', cardPad, Math.max(descBottom + 20, H - 52));
+
+  document.getElementById('dlBtn').disabled = false;
+}
+
+function getLines(ctx, text, maxWidth) {
+  if (!text) return [];
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (let i = 0; i < words.length; i++) {
+    const test = line + words[i] + ' ';
+    if (ctx.measureText(test).width > maxWidth && i > 0) {
+      lines.push(line.trim());
+      line = words[i] + ' ';
+    } else {
+      line = test;
+    }
+  }
+  if (line.trim()) lines.push(line.trim());
+  return lines;
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function downloadImg() {
+  const a = document.createElement('a');
+  const title = val('f_title').replace(/\s+/g, '-').toLowerCase() || 'feature-update';
+  a.download = 'trenevents-' + title + '.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+</body>
+</html>

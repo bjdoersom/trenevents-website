@@ -3188,7 +3188,7 @@ function renderSavedPanel() {
     const savedEvents = [...saved].map(id => eventMap[id]).filter(Boolean);
     const allOn = savedEvents.length > 0 && savedEvents.every(e => reminders.has(e.id));
     toggleBtn.style.display = savedEvents.length > 0 ? 'block' : 'none';
-    toggleBtn.textContent = allOn ? '🔕 All reminders off' : '🔔 All reminders on';
+    toggleBtn.textContent = allOn ? '🔔 All reminders on' : '🔕 All reminders off';
     toggleBtn.title = allOn ? 'Turn off all reminders' : 'Turn on all reminders';
   }
   const sorted = [...saved].map(id => eventMap[id]).filter(Boolean).sort((a, b) => a.sortDate.localeCompare(b.sortDate));
