@@ -203,6 +203,17 @@
   .saved-item-bell:hover { transform: scale(1.2); }
   .reminder-note { font-size: 0.72rem; color: var(--muted); text-align: center; padding: 12px 0 4px; }
 
+  /* Draft section — admin only */
+  .draft-section { display: none; border-top: 3px solid #f59e0b; background: #fffbeb; padding: 32px 5% 48px; }
+  .draft-section.visible { display: block; }
+  .draft-header { max-width: 1280px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .draft-header-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: #92400e; }
+  .draft-header-sub { font-size: 0.82rem; color: #b45309; }
+  .draft-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .draft-card-wrap { position: relative; }
+  .draft-needs-image { position: absolute; top: 12px; left: 12px; z-index: 3; background: #f59e0b; color: white; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .draft-card-wrap .event-card { opacity: 0.82; border: 2px dashed #f59e0b; pointer-events: none; }
+
   .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--navy); color: white; padding: 12px 22px; border-radius: 30px; font-size: 0.88rem; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 600; white-space: nowrap; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
@@ -444,6 +455,18 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- Draft section — only visible to admin -->
+<div id="draftSection" class="draft-section">
+  <div class="draft-header">
+    <div>
+      <div class="draft-header-title">📋 Draft Events — Needs Image</div>
+      <div class="draft-header-sub" id="draftSubtitle">These events are hidden from visitors until you add an image.</div>
+    </div>
+    <div class="draft-header-sub" id="draftCount" style="font-weight:600;"></div>
+  </div>
+  <div class="draft-grid" id="draftGrid"></div>
+</div>
 
 <footer>
   <div class="footer-inner">
@@ -3426,12 +3449,14 @@ auth.onAuthStateChanged(async user => {
   if (user) {
     await loadSavedFromFirestore();
     await loadRemindersFromFirestore();
+    renderDraftSection();
   } else {
     saved = new Set();
     reminders = new Set();
     updateSavedCount();
     refreshHearts();
     renderSavedPanel();
+    renderDraftSection();
   }
 });
 
@@ -3601,6 +3626,11 @@ function doSignOut() {
   auth.signOut().then(() => { showToast('Signed out'); });
 }
 
+// Admin check
+function isAdmin() {
+  return !!(currentUser && currentUser.email === 'bjdoersom@gmail.com');
+}
+
 // Sort events by sortDate ascending
 const sortedEvents = [...EVENTS].sort((a,b) => a.sortDate.localeCompare(b.sortDate));
 
@@ -3666,6 +3696,7 @@ function filterAndRender() {
   if (!_initialRender) grid.classList.add('no-anim');
   grid.classList.toggle('featured-view', activeFilter === 'featured');
   const filtered = sortedEvents.filter(e => {
+    if (e.draft) return false; // always hide drafts from main grid
     const today = new Date(); const fiveDaysAgo = new Date(today - 5*24*60*60*1000).toISOString().slice(0,10);
     const matchCat = activeFilter === 'all' || (activeFilter === 'new' ? (e.addedDate && e.addedDate >= fiveDaysAgo) : activeFilter === 'featured' ? e.featured === true : activeFilter === 'free' ? e.priceClass === 'free' : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
     const matchQ = !q || (e.title+e.description+e.location+e.date+e.tags.join(' ')).toLowerCase().includes(q);
@@ -3680,6 +3711,23 @@ function filterAndRender() {
   } else {
     grid.classList.remove('no-anim');
   }
+}
+
+function renderDraftSection() {
+  const section = document.getElementById('draftSection');
+  const grid = document.getElementById('draftGrid');
+  const countEl = document.getElementById('draftCount');
+  if (!section || !grid) return;
+  if (!isAdmin()) { section.classList.remove('visible'); return; }
+  const drafts = sortedEvents.filter(e => e.draft);
+  if (drafts.length === 0) { section.classList.remove('visible'); return; }
+  section.classList.add('visible');
+  countEl.textContent = `${drafts.length} event${drafts.length !== 1 ? 's' : ''} waiting`;
+  grid.innerHTML = drafts.map(e => `
+    <div class="draft-card-wrap">
+      <div class="draft-needs-image">📷 Needs Image</div>
+      ${buildCardHTML(e)}
+    </div>`).join('');
 }
 
 function setFilter(cat, el) {
