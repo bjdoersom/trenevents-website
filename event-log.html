@@ -155,7 +155,7 @@ function applyFilters() {
 
   let filtered = allRows.filter(r => {
     const matchQ = !q || [r[2], r[3], r[6]].join(' ').toLowerCase().includes(q);
-    const matchStatus = !status || (r[7] || '').toLowerCase() === status;
+    const matchStatus = !status || (r[8] || '').toLowerCase() === status;
     const matchCat = !cat || (r[5] || '').toLowerCase() === cat;
     return matchQ && matchStatus && matchCat;
   });
@@ -177,7 +177,7 @@ function renderTable(rows) {
     return;
   }
   document.getElementById('tableBody').innerHTML = rows.map(r => {
-    const status = (r[7] || '').toLowerCase();
+    const status = (r[8] || '').toLowerCase();
     const statusBadge = status === 'live'
       ? `<span class="status-live">Live</span>`
       : status === 'draft'
