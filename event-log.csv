@@ -1,11 +1,11 @@
 Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Image File,Status
-"",12,"July 4th Celebration & Drone Show — Springettsbury Park","Springettsbury Township Park Amphitheater","Friday, July 3, 2026",festival,"York","July%204th%20drone%20show.jpg",live
-"",13,"First Friday — Downtown York","Downtown York","Friday, July 3, 2026",community,"","",live
+"",12,"July 4th Celebration & Drone Show — Springettsbury Park","Springettsbury Township Park Amphitheater","Friday, July 3, 2026",festival,"York","July%204th%20drone%20show.jpg",expired
+"",13,"First Friday — Downtown York","Downtown York","Friday, July 3, 2026",community,"","",expired
 "",14,"York State Fair 2026","York Expo Center","July 24–August 2, 2026",festival,"York","",live
 "",17,"July Music Series at Reservoir Park","Reservoir Park Bandshell","Sundays in July (5, 6, 13, 19, 26)",music,"Harrisburg","",live
 "",18,"Joe Russo's Almost Dead at Riverfront Park","Riverfront Park","Sunday, July 19, 2026",music,"Harrisburg","",live
 "",19,"Lake Street Dive with The Dip","Riverfront Park","Friday, July 31, 2026",music,"Harrisburg","",live
-"",21,"Sweet Summer Festival at Cherry Crest","Cherry Crest Adventure Farm","Saturday, July 4, 2026",family,"Ronks","sweet-summer.jpg",live
+"",21,"Sweet Summer Festival at Cherry Crest","Cherry Crest Adventure Farm","Saturday, July 4, 2026",family,"Ronks","sweet-summer.jpg",expired
 "",22,"Washington Boro Tomato Festival","Washington Boro Community Park","July 11 & July 18, 2026",food,"Lancaster County","",live
 "",23,"Lancaster International Piano Festival","Franklin & Marshall College","July 17 & July 27, 2026",music,"Lancaster","",live
 "",24,"Highland Cow Festival at Cherry Crest","Cherry Crest Adventure Farm","Saturday, July 18, 2026",family,"Ronks","highland-cows.jpg",live
@@ -14,7 +14,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "",27,"Tailgate Festival at Kitchen Kettle Village","Kitchen Kettle Village","Sept 18–19, 2026",festival,"Intercourse","",live
 "",28,"Cider Donut Fall Festival at Cherry Crest","Cherry Crest Adventure Farm","Saturday, September 26, 2026",food,"Ronks","",live
 "",29,"Landis Valley Museum Harvest Days","Landis Valley Village & Farm Museum","October 3–4, 2026",community,"Lancaster","",live
-"",32,"York Revolution Fireworks Night","PeoplesBank Park","Friday, July 3, 2026",family,"York","",live
+"",32,"York Revolution Fireworks Night","PeoplesBank Park","Friday, July 3, 2026",family,"York","",expired
 "",33,"Mason Dixon Fair","Mason Dixon Fairgrounds","July 6–11, 2026",festival,"York County","",live
 "",34,"Smoke on the Rail BBQ Festival","New Freedom","July 24–26, 2026",food,"York County","",live
 "",35,"Fall Native Plant Sale — York County Arboretum","York County Arboretum","Saturday, September 12, 2026",outdoors,"York","",live
@@ -22,7 +22,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "",37,"Enchanted Fairy Festival","Springettsbury Township Park","Saturday, September 19, 2026",family,"York","",live
 "",38,"Yorktoberfest","Bob Hoffman Fields","Sunday, October 18, 2026",food,"","",live
 "",39,"York Halloween Parade","Downtown York","Friday, October 30, 2026",community,"","",live
-"",40,"Harrisburg Senators Fireworks Night","FNB Field","Friday, July 3, 2026",family,"Harrisburg","",live
+"",40,"Harrisburg Senators Fireworks Night","FNB Field","Friday, July 3, 2026",family,"Harrisburg","",expired
 "",41,"Slightly Stoopid at Riverfront Park","Riverfront Park","Thursday, August 13, 2026",music,"Harrisburg","",live
 "",42,"Dauphin County CulturalFest","Riverfront Park","August 2026 (date TBA)",festival,"Harrisburg","",live
 "",43,"Fort Hunter Day","Fort Hunter Mansion & Park","Sunday, September 20, 2026",community,"Harrisburg","",live
@@ -32,7 +32,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "",47,"Harrisburg Restaurant Week","Restaurants citywide","Sept 14–18 & Sept 21–25, 2026",food,"","",live
 "",48,"Pennsylvania National Horse Show","PA Farm Show Complex","Late October 2026",family,"Harrisburg","",live
 "",49,"Hersheypark in the Dark","Hersheypark","Sept 26 – Nov 1, 2026 (weekends)",family,"Hershey","",live
-"2026-06-10",52,"July 4th Food Truck Festival — Harrisburg","Riverfront Park","Saturday, July 4, 2026",food,"Harrisburg","",live
+"2026-06-10",52,"July 4th Food Truck Festival — Harrisburg","Riverfront Park","Saturday, July 4, 2026",food,"Harrisburg","",expired
 "2026-06-10",53,"Tiny Park Concert Series — Coronet Park","Coronet Park","2nd Fridays: July 10, Aug 14, Sept 11",music,"Harrisburg","",live
 "2026-06-10",54,"Son Little at Appell Center","Appell Center — Strand Theatre","Friday, July 10, 2026",music,"York","",live
 "2026-06-10",55,"Herb Alpert & The Tijuana Brass at Appell Center","Appell Center — Strand Theatre","Saturday, August 1, 2026",music,"York","",live
@@ -46,15 +46,15 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "2026-06-12",72,"Live Music Nights at Plain & Fancy Farm","Plain & Fancy Farm (Smokehouse at Plain & Fancy)","3rd Thursdays: July 16 & August 20, 2026",music,"Bird in Hand","",live
 "2026-06-12",73,"The String Cheese Incident at Riverfront Park","Riverfront Park","Wednesday, August 5, 2026",music,"Harrisburg","",live
 "2026-06-12",74,"Celebrate Lancaster","North Queen Street, Downtown Lancaster","Friday, August 14, 2026",community,"Lancaster","",live
-"2026-06-12",76,"First Friday — Downtown Lancaster City","Gallery Row & Downtown Lancaster","Friday, July 3, 2026",community,"Lancaster","",live
-"2026-06-12",77,"Gettysburg 163rd Anniversary Battle Reenactment","Daniel Lady Farm","July 3–5, 2026",heritage,"Gettysburg","",live
-"2026-06-12",78,"A Gettysburg Fourth — 250th Anniversary Celebration","Gettysburg Rec Park","Saturday, July 4, 2026",community,"Gettysburg","",live
+"2026-06-12",76,"First Friday — Downtown Lancaster City","Gallery Row & Downtown Lancaster","Friday, July 3, 2026",community,"Lancaster","",expired
+"2026-06-12",77,"Gettysburg 163rd Anniversary Battle Reenactment","Daniel Lady Farm","July 3–5, 2026",heritage,"Gettysburg","",expired
+"2026-06-12",78,"A Gettysburg Fourth — 250th Anniversary Celebration","Gettysburg Rec Park","Saturday, July 4, 2026",community,"Gettysburg","",expired
 "2026-06-12",79,"Freaky Friday The Musical — Dutch Apple Dinner Theatre","Dutch Apple Dinner Theatre","July 10–August 4, 2026",family,"Lancaster","",live
 "2026-06-12",80,"Lancaster ArtWalk","Downtown Lancaster City","Friday, July 17, 2026",community,"Lancaster","",live
 "2026-06-12",81,"San Juan Bautista Hispanic Festival","San Juan Bautista Catholic Church","July 22–25, 2026",heritage,"Lancaster","",live
 "2026-06-12",82,"Fat Bat Summer Blues Festival","Fat Bat Brewing Company","Saturday, July 25, 2026",music,"Hanover","",live
-"2026-06-13",86,"America 250 Celebration at Penn Medicine Park","Penn Medicine Park (Lancaster Stormers)","Friday, July 3, 2026",festival,"Lancaster","",live
-"2026-06-13",87,"Lititz Fourth of July Celebration","Lititz Springs Park","Saturday, July 4, 2026",family,"Lititz","",live
+"2026-06-13",86,"America 250 Celebration at Penn Medicine Park","Penn Medicine Park (Lancaster Stormers)","Friday, July 3, 2026",festival,"Lancaster","",expired
+"2026-06-13",87,"Lititz Fourth of July Celebration","Lititz Springs Park","Saturday, July 4, 2026",family,"Lititz","",expired
 "2026-06-13",88,"Gettysburg Bluegrass Festival (August)","Granite Hill Camping Resort","August 13–16, 2026",music,"Gettysburg","",live
 "2026-06-17",90,"Snack Town Street Fair","Hanover Center Square","Saturday, July 11, 2026",community,"Hanover","",live
 "2026-06-17",91,"Carlisle Chrysler Nationals","Carlisle Fairgrounds","Friday–Sunday, July 10–12, 2026",community,"Carlisle","",live
@@ -103,7 +103,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "2026-07-01",134,"49th Annual Red Lion Street Fair","Downtown Red Lion","Saturday, August 8, 2026",community,"Red Lion","",draft
 "2026-07-01",135,"Sugar Rush — Sweet & Snack Expo","York Expo Center — Old Main","Saturday, August 15, 2026",food,"York","",draft
 "2026-07-01",136,"What The Food Trucks — Labor Day Edition","Penn Park","Sunday, September 6, 2026",food,"York","",draft
-"2026-07-03",137,"Wrightsville's America 250 Birthday Celebration","Wrightsville Riverfront Park","Saturday, July 4, 2026",festival,"Wrightsville","",live
+"2026-07-03",137,"Wrightsville's America 250 Birthday Celebration","Wrightsville Riverfront Park","Saturday, July 4, 2026",festival,"Wrightsville","",expired
 "2026-07-03",138,"Food Trucks and Flicks: How to Train Your Dragon","Cousler Park","Friday, July 10, 2026",family,"York","",draft
 "2026-07-03",139,"Mechanicsburg Community Day","Soldiers & Sailors Memorial Park","Saturday, August 1, 2026",family,"Mechanicsburg","",draft
 "2026-07-03",140,"Dear Soldier Boy — Bird-in-Hand Stage","Bird-in-Hand Stage","Opens Tuesday, August 4, 2026",heritage,"Bird-in-Hand","",live

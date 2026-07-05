@@ -186,7 +186,7 @@ function renderTable(rows) {
     return `<tr>
       <td class="id-cell">${r[1] || ''}</td>
       <td>${r[0] || ''}</td>
-      <td class="title-cell">${r[2] || ''}</td>
+      <td class="title-cell">${(status === 'live' || status === 'draft') ? `<a href="https://trenevents.com/#event-${r[1]}" target="_blank" style="color:var(--coral);text-decoration:none;font-weight:500;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">${r[2] || ''}</a>` : (r[2] || '')}</td>
       <td class="venue-cell">${r[3] || ''}</td>
       <td>${r[4] || ''}</td>
       <td>${r[5] ? r[5].charAt(0).toUpperCase() + r[5].slice(1) : ''}</td>
