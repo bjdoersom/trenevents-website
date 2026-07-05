@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrenEvents — Event Log</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF5A5F;
+    --navy: #1a1a2e;
+    --warm-white: #F8F6F2;
+    --muted: #717171;
+    --border: #e8e4de;
+    --amber: #f59e0b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--navy); min-height: 100vh; }
+
+  header { background: var(--navy); color: white; padding: 20px 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .header-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--coral); }
+  .header-title { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+  .toolbar { background: white; border-bottom: 1px solid var(--border); padding: 14px 5%; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; }
+  .search-input { border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--navy); outline: none; width: 260px; max-width: 100%; }
+  .search-input:focus { border-color: var(--coral); }
+  .filter-select { border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--navy); background: white; outline: none; cursor: pointer; }
+  .filter-select:focus { border-color: var(--coral); }
+  .stat { font-size: 0.8rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
+
+  .table-wrap { padding: 24px 5% 60px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); font-size: 0.85rem; }
+  thead { background: var(--navy); color: white; }
+  th { padding: 12px 14px; text-align: left; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; cursor: pointer; user-select: none; }
+  th:hover { background: rgba(255,255,255,0.1); }
+  th.sorted-asc::after { content: ' ↑'; }
+  th.sorted-desc::after { content: ' ↓'; }
+  td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #faf8f5; }
+
+  .status-live { display: inline-block; background: #d1fae5; color: #065f46; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .status-draft { display: inline-block; background: #fef3c7; color: #92400e; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .status-expired { display: inline-block; background: #f3f4f6; color: #6b7280; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .title-cell { font-weight: 500; max-width: 260px; }
+  .venue-cell { color: var(--muted); max-width: 180px; }
+  .id-cell { color: var(--muted); font-size: 0.75rem; }
+
+  .empty { text-align: center; padding: 60px 20px; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .toolbar { gap: 8px; }
+    .search-input { width: 100%; }
+    .stat { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-logo">TrenEvents</div>
+    <div class="header-title">Event Log — internal reference</div>
+  </div>
+  <a href="/" style="font-size:0.82rem;color:rgba(255,255,255,0.5);text-decoration:none;">← Back to site</a>
+</header>
+
+<div class="toolbar">
+  <input class="search-input" type="text" id="searchInput" placeholder="Search title, venue, city…" oninput="applyFilters()">
+  <select class="filter-select" id="statusFilter" onchange="applyFilters()">
+    <option value="">All statuses</option>
+    <option value="live">Live</option>
+    <option value="draft">Draft</option>
+    <option value="expired">Expired</option>
+  </select>
+  <select class="filter-select" id="categoryFilter" onchange="applyFilters()">
+    <option value="">All categories</option>
+  </select>
+  <div class="stat" id="statLabel">Loading…</div>
+</div>
+
+<div class="table-wrap">
+  <table id="logTable">
+    <thead>
+      <tr>
+        <th onclick="sortBy(0)" data-col="0">ID</th>
+        <th onclick="sortBy(1)" data-col="1">Date Added</th>
+        <th onclick="sortBy(2)" data-col="2">Title</th>
+        <th onclick="sortBy(3)" data-col="3">Venue / Organization</th>
+        <th onclick="sortBy(4)" data-col="4">Event Date</th>
+        <th onclick="sortBy(5)" data-col="5">Category</th>
+        <th onclick="sortBy(6)" data-col="6">City</th>
+        <th onclick="sortBy(7)" data-col="7">Status</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <tr><td colspan="8" class="empty">Loading event log…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+let allRows = [];
+let sortCol = 1;
+let sortDir = -1; // -1 = desc, 1 = asc
+
+async function loadCSV() {
+  try {
+    const res = await fetch('event-log.csv?nocache=' + Date.now());
+    const text = await res.text();
+    const lines = text.trim().split('\n');
+    const headers = parseCSVLine(lines[0]);
+    allRows = lines.slice(1).map(line => parseCSVLine(line));
+
+    // Populate category filter
+    const cats = [...new Set(allRows.map(r => r[5]).filter(Boolean))].sort();
+    const catSel = document.getElementById('categoryFilter');
+    cats.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c; opt.textContent = c.charAt(0).toUpperCase() + c.slice(1);
+      catSel.appendChild(opt);
+    });
+
+    applyFilters();
+  } catch(e) {
+    document.getElementById('tableBody').innerHTML = '<tr><td colspan="8" class="empty">Could not load event-log.csv</td></tr>';
+  }
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let cur = '';
+  let inQuote = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuote && line[i+1] === '"') { cur += '"'; i++; }
+      else { inQuote = !inQuote; }
+    } else if (ch === ',' && !inQuote) {
+      result.push(cur.trim()); cur = '';
+    } else {
+      cur += ch;
+    }
+  }
+  result.push(cur.trim());
+  return result;
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const status = document.getElementById('statusFilter').value.toLowerCase();
+  const cat = document.getElementById('categoryFilter').value.toLowerCase();
+
+  let filtered = allRows.filter(r => {
+    const matchQ = !q || [r[2], r[3], r[6]].join(' ').toLowerCase().includes(q);
+    const matchStatus = !status || (r[7] || '').toLowerCase() === status;
+    const matchCat = !cat || (r[5] || '').toLowerCase() === cat;
+    return matchQ && matchStatus && matchCat;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    const av = (a[sortCol] || '').toLowerCase();
+    const bv = (b[sortCol] || '').toLowerCase();
+    return av < bv ? -sortDir : av > bv ? sortDir : 0;
+  });
+
+  renderTable(filtered);
+  document.getElementById('statLabel').textContent = `${filtered.length} of ${allRows.length} events`;
+}
+
+function renderTable(rows) {
+  if (rows.length === 0) {
+    document.getElementById('tableBody').innerHTML = '<tr><td colspan="8" class="empty">No events match your filters.</td></tr>';
+    return;
+  }
+  document.getElementById('tableBody').innerHTML = rows.map(r => {
+    const status = (r[7] || '').toLowerCase();
+    const statusBadge = status === 'live'
+      ? `<span class="status-live">Live</span>`
+      : status === 'draft'
+      ? `<span class="status-draft">Draft</span>`
+      : `<span class="status-expired">Expired</span>`;
+    return `<tr>
+      <td class="id-cell">${r[1] || ''}</td>
+      <td>${r[0] || ''}</td>
+      <td class="title-cell">${r[2] || ''}</td>
+      <td class="venue-cell">${r[3] || ''}</td>
+      <td>${r[4] || ''}</td>
+      <td>${r[5] ? r[5].charAt(0).toUpperCase() + r[5].slice(1) : ''}</td>
+      <td>${r[6] || ''}</td>
+      <td>${statusBadge}</td>
+    </tr>`;
+  }).join('');
+}
+
+function sortBy(col) {
+  if (sortCol === col) { sortDir *= -1; }
+  else { sortCol = col; sortDir = 1; }
+  document.querySelectorAll('th').forEach((th, i) => {
+    th.classList.remove('sorted-asc', 'sorted-desc');
+    if (i === col) th.classList.add(sortDir === 1 ? 'sorted-asc' : 'sorted-desc');
+  });
+  applyFilters();
+}
+
+loadCSV();
+</script>
+</body>
+</html>
