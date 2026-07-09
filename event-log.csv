@@ -2,7 +2,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "",12,"July 4th Celebration & Drone Show — Springettsbury Park","Springettsbury Township Park Amphitheater","Friday, July 3, 2026",festival,"York","July%204th%20drone%20show.jpg",expired
 "",13,"First Friday — Downtown York","Downtown York","Friday, July 3, 2026",community,"","",expired
 "",14,"York State Fair 2026","York Expo Center","July 24–August 2, 2026",festival,"York","",live
-"",17,"July Music Series at Reservoir Park","Reservoir Park Bandshell","Sundays in July (5, 6, 13, 19, 26)",music,"Harrisburg","",live
+"",17,"July Music Series at Reservoir Park","Reservoir Park Bandshell","Sundays in July (5, 6, 13, 19, 26)",music,"Harrisburg","",split
 "",18,"Joe Russo's Almost Dead at Riverfront Park","Riverfront Park","Sunday, July 19, 2026",music,"Harrisburg","",live
 "",19,"Lake Street Dive with The Dip","Riverfront Park","Friday, July 31, 2026",music,"Harrisburg","",live
 "",21,"Sweet Summer Festival at Cherry Crest","Cherry Crest Adventure Farm","Saturday, July 4, 2026",family,"Ronks","sweet-summer.jpg",expired
@@ -33,7 +33,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "",48,"Pennsylvania National Horse Show","PA Farm Show Complex","Late October 2026",family,"Harrisburg","",live
 "",49,"Hersheypark in the Dark","Hersheypark","Sept 26 – Nov 1, 2026 (weekends)",family,"Hershey","",live
 "2026-06-10",52,"July 4th Food Truck Festival — Harrisburg","Riverfront Park","Saturday, July 4, 2026",food,"Harrisburg","",expired
-"2026-06-10",53,"Tiny Park Concert Series — Coronet Park","Coronet Park","2nd Fridays: July 10, Aug 14, Sept 11",music,"Harrisburg","",live
+"2026-06-10",53,"Tiny Park Concert Series — Coronet Park","Coronet Park","2nd Fridays: July 10, Aug 14, Sept 11",music,"Harrisburg","",split
 "2026-06-10",54,"Son Little at Appell Center","Appell Center — Strand Theatre","Friday, July 10, 2026",music,"York","",live
 "2026-06-10",55,"Herb Alpert & The Tijuana Brass at Appell Center","Appell Center — Strand Theatre","Saturday, August 1, 2026",music,"York","",live
 "2026-06-10",56,"Lancaster Craft Beerfest","Ewell Plaza & Binns Park","Saturday, August 22, 2026",food,"Lancaster","",live
@@ -58,7 +58,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "2026-06-13",88,"Gettysburg Bluegrass Festival (August)","Granite Hill Camping Resort","August 13–16, 2026",music,"Gettysburg","",live
 "2026-06-17",90,"Snack Town Street Fair","Hanover Center Square","Saturday, July 11, 2026",community,"Hanover","",live
 "2026-06-17",91,"Carlisle Chrysler Nationals","Carlisle Fairgrounds","Friday–Sunday, July 10–12, 2026",community,"Carlisle","",live
-"2026-06-17",92,"Greenfield Summer Concert Series","Greenfield — Calvin G. High Pavilion Lawn","Thursday, July 16 & Thursday, August 13, 2026",music,"Lancaster","",live
+"2026-06-17",92,"Greenfield Summer Concert Series","Greenfield — Calvin G. High Pavilion Lawn","Thursday, July 16 & Thursday, August 13, 2026",music,"Lancaster","",split
 "2026-06-17",93,"Thomas Rhett & Niall Horan LIVE","Hersheypark Stadium","Saturday, July 18, 2026",music,"Hershey","",live
 "2026-06-17",94,"Guns N' Roses: World Tour 2026","Hersheypark Stadium","Saturday, August 1, 2026",music,"Hershey","",live
 "2026-06-17",95,"Ephrata Fair","Downtown Ephrata","September 22–26, 2026",festival,"Ephrata","",live
@@ -123,3 +123,11 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 "2026-07-08",154,"Glen Rock Fall Festival","Glen Rock","Saturday, September 26, 2026",community,"Glen Rock","",draft
 "2026-07-08",155,"Lyn's Cars Against Cancer","Manheim Township Community Park","Saturday, August 29, 2026",outdoors,"Lancaster","",draft
 "2026-07-08",156,"Shrewsbury Fireman's Fall Fest","Shrewsbury Volunteer Fire Company","Saturday, October 3, 2026",festival,"Shrewsbury","",live
+"2026-07-08",157,"July Music Series at Reservoir Park — Gospel Night","Reservoir Park Bandshell","Monday, July 13, 2026",music,"Harrisburg","",live
+"2026-07-08",158,"July Music Series at Reservoir Park — Jazz Under the Stars ft. Najee","Reservoir Park Bandshell","Sunday, July 19, 2026",music,"Harrisburg","",live
+"2026-07-08",159,"July Music Series at Reservoir Park — Latin Afro/Soul Night ft. Lakeside","Reservoir Park Bandshell","Sunday, July 26, 2026",music,"Harrisburg","",live
+"2026-07-08",160,"Tiny Park Concert Series — Sons of Pitches","Coronet Park","Friday, July 10, 2026",music,"Harrisburg","",live
+"2026-07-08",161,"Tiny Park Concert Series — Le Ghast","Coronet Park","Friday, August 14, 2026",music,"Harrisburg","",live
+"2026-07-08",162,"Tiny Park Concert Series — RalphReal & The Family Jam","Coronet Park","Friday, September 11, 2026",music,"Harrisburg","",live
+"2026-07-08",163,"Greenfield Summer Concert Series — Sounds of Summer","Greenfield — Calvin G. High Pavilion Lawn","Thursday, July 16, 2026",music,"Lancaster","",live
+"2026-07-08",164,"Greenfield Summer Concert Series — '70s Live!","Greenfield — Calvin G. High Pavilion Lawn","Thursday, August 13, 2026",music,"Lancaster","",live
