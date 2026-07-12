@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TrenEvents — Photo Resizer</title>
+<style>
+  :root { --navy:#1A2238; --red:#EF4E44; --cream:#F4F1EA; --muted:#6B6256; --green:#1F8A5B; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--cream); font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif; color:var(--navy); }
+  header { background:var(--navy); color:#fff; padding:32px; }
+  header h1 { font-family:Georgia,serif; margin:6px 0; font-size:26px; }
+  header p { color:rgba(255,255,255,.8); max-width:720px; line-height:1.6; margin:0; }
+  .wrap { max-width:900px; margin:0 auto; padding:28px; }
+  .controls { background:#fff; border-radius:14px; padding:20px 22px; margin-bottom:20px; box-shadow:0 3px 14px rgba(20,27,51,.08); display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+  .control-group label { font-size:13px; font-weight:700; color:var(--muted); display:block; margin-bottom:6px; }
+  select, input[type=number] { padding:8px 10px; border-radius:8px; border:1px solid #E0DBCE; font-size:14px; }
+  .dropzone {
+    border:2.5px dashed #D9D3C6; border-radius:16px; padding:50px 20px; text-align:center;
+    background:#fff; color:var(--muted); font-size:15px; cursor:pointer; margin-bottom:24px;
+    transition: border-color .15s, background .15s;
+  }
+  .dropzone.drag { border-color:var(--red); background:#FBE3E0; }
+  .dropzone b { color:var(--navy); }
+  #fileInput { display:none; }
+  .results { display:flex; flex-direction:column; gap:14px; }
+  .result-card { background:#fff; border-radius:14px; padding:16px 18px; display:flex; align-items:center; gap:16px; box-shadow:0 3px 14px rgba(20,27,51,.06); }
+  .result-card img { width:80px; height:80px; object-fit:cover; border-radius:10px; flex:none; }
+  .result-info { flex:1; min-width:0; }
+  .result-info .name { font-weight:700; font-size:14px; word-break:break-all; }
+  .result-info .stats { font-size:13px; color:var(--muted); margin-top:4px; }
+  .stats .before { text-decoration:line-through; opacity:.6; }
+  .stats .after { color:var(--green); font-weight:700; }
+  .dl-btn { background:var(--red); color:#fff; border:none; border-radius:999px; padding:9px 18px; font-weight:700; font-size:13.5px; cursor:pointer; flex:none; }
+  .dl-btn:hover { filter:brightness(1.05); }
+  .dl-all { margin-top:18px; }
+  .dl-all button { background:var(--navy); color:#fff; border:none; border-radius:999px; padding:12px 24px; font-weight:700; cursor:pointer; font-size:14px; }
+  footer { text-align:center; color:var(--muted); font-size:13px; padding:24px; }
+</style>
+</head>
+<body>
+<header>
+  <div style="color:#FF8A82;font-weight:800;letter-spacing:.1em;font-size:13px;">TRENEVENTS · PHOTO RESIZER</div>
+  <h1>Shrink photos before they go in images/events/</h1>
+  <p>Drag in the photos you just saved from the Photo Grabber (or anywhere else). Everything happens right here in your browser — nothing is sent anywhere. Resized files download straight to your Downloads folder, ready to drop into your project.</p>
+</header>
+<div class="wrap">
+  <div class="controls">
+    <div class="control-group">
+      <label>Max width/height</label>
+      <select id="maxDim">
+        <option value="1200" selected>1200px (recommended — matches your Post Studio tool)</option>
+        <option value="1600">1600px (larger, for hero-heavy layouts)</option>
+        <option value="900">900px (smallest, fastest loading)</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>Format</label>
+      <select id="format">
+        <option value="image/webp" selected>WebP (recommended — smallest file size)</option>
+        <option value="image/jpeg">JPEG (matches your existing files)</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>Quality</label>
+      <select id="quality">
+        <option value="0.85" selected>0.85 (recommended)</option>
+        <option value="0.75">0.75 (smaller, slightly lower quality)</option>
+        <option value="0.92">0.92 (larger, closer to original)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="dropzone" id="dropzone">
+    <div><b>Drop photos here</b> or click to choose files</div>
+    <div style="margin-top:6px;font-size:13px;">JPG, PNG, or WebP — any size in, resized on the way out</div>
+  </div>
+  <input type="file" id="fileInput" multiple accept="image/*">
+
+  <div class="results" id="results"></div>
+  <div class="dl-all" id="dlAllWrap" style="display:none;">
+    <button id="dlAllBtn">Download all resized photos</button>
+  </div>
+</div>
+<footer>Tip: filenames stay the same as what you dropped in (just with the new extension) so they still match your event titles.</footer>
+
+<script>
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const resultsEl = document.getElementById('results');
+const dlAllWrap = document.getElementById('dlAllWrap');
+const dlAllBtn = document.getElementById('dlAllBtn');
+let processedFiles = [];
+
+dropzone.addEventListener('click', () => fileInput.click());
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
+dropzone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropzone.classList.remove('drag');
+  handleFiles(e.dataTransfer.files);
+});
+fileInput.addEventListener('change', () => handleFiles(fileInput.files));
+
+function fmtKB(bytes) { return (bytes / 1024).toFixed(0) + 'KB'; }
+
+async function handleFiles(fileList) {
+  const maxDim = parseInt(document.getElementById('maxDim').value, 10);
+  const format = document.getElementById('format').value;
+  const quality = parseFloat(document.getElementById('quality').value);
+  const ext = format === 'image/webp' ? '.webp' : '.jpg';
+
+  for (const file of fileList) {
+    if (!file.type.startsWith('image/')) continue;
+    const origSize = file.size;
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, maxDim / Math.max(bitmap.width, bitmap.height));
+    const w = Math.max(1, Math.round(bitmap.width * scale));
+    const h = Math.max(1, Math.round(bitmap.height * scale));
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+    const blob = await new Promise(res => canvas.toBlob(res, format, quality));
+    const baseName = file.name.replace(/\.[^.]+$/, '');
+    const outName = baseName + ext;
+    const url = URL.createObjectURL(blob);
+
+    processedFiles.push({ name: outName, blob, url });
+
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML = `
+      <img src="${url}" alt="">
+      <div class="result-info">
+        <div class="name">${outName}</div>
+        <div class="stats">
+          <span class="before">${bitmap.width}×${bitmap.height} · ${fmtKB(origSize)}</span>
+          →
+          <span class="after">${w}×${h} · ${fmtKB(blob.size)}</span>
+        </div>
+      </div>
+      <button class="dl-btn">Download</button>
+    `;
+    card.querySelector('.dl-btn').addEventListener('click', () => downloadFile(outName, url));
+    resultsEl.appendChild(card);
+    dlAllWrap.style.display = 'block';
+  }
+}
+
+function downloadFile(name, url) {
+  const a = document.createElement('a');
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+dlAllBtn.addEventListener('click', () => {
+  processedFiles.forEach((f, i) => setTimeout(() => downloadFile(f.name, f.url), i * 200));
+});
+</script>
+</body>
+</html>
