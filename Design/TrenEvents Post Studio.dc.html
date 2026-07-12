@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Hanken Grotesk',sans-serif;background:#ECEAE3;}
+  image-slot{display:block;}
+  .dlbtn{cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px;font-family:'Hanken Grotesk',sans-serif;font-weight:800;border-radius:999px;transition:transform .08s ease,filter .15s ease;}
+  .dlbtn:hover{filter:brightness(1.05);}
+  .dlbtn:active{transform:translateY(1px);}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:0 0 80px;">
+
+  <!-- HEADER -->
+  <div style="background:#1A2238;color:#fff;padding:40px 48px 36px;">
+    <div style="max-width:1500px;margin:0 auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:38px;font-weight:800;letter-spacing:-.01em;"><span style="color:#EF4E44;">Tren</span>Events · Weekly Post Studio</div>
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-size:18px;color:rgba(255,255,255,.75);margin-top:6px;">Your reusable workspace. Edit the week's details, drop in photos, hit Download. Come back every week — your last edits stay put.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,.7);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:14px 20px;border-radius:14px;max-width:340px;line-height:1.5;">💡 <b style="color:#fff;">Tip:</b> Click 📷 to upload a photo. Click any text to edit it. Both persist on this device.</div>
+          <button class="dlbtn" onClick="{{ aiCaption }}" style="background:#F5B921;color:#1A2238;font-size:16px;font-weight:800;padding:14px 26px;border-radius:999px;white-space:nowrap;">✨ Generate caption with AI</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATIONS GRID -->
+  <div style="max-width:1500px;margin:0 auto;padding:40px 48px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(470px,1fr));gap:32px;align-items:start;">
+
+    <!-- ============ STATION: FEATURED ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#EF4E44;background:#FBE3E0;padding:6px 14px;border-radius:999px;">FEATURED</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Single event · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-featured" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#fff;display:flex;flex-direction:column;">
+          <div style="position:relative;height:530px;margin:44px 44px 0;border-radius:20px;overflow:hidden;flex:none;">
+            <image-slot id="st-feat" shape="rect" placeholder="Drop event photo" style="width:100%;height:100%;"></image-slot>
+            <div style="position:absolute;left:22px;bottom:22px;display:flex;align-items:center;gap:8px;background:#F5B921;color:#1A2238;font-family:'Hanken Grotesk',sans-serif;font-size:18px;font-weight:800;letter-spacing:.08em;padding:10px 18px;border-radius:999px;">★ FEATURED</div>
+          </div>
+          <div style="flex:1;padding:36px 44px 44px;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:.14em;color:#EF4E44;">MUSIC</div>
+              <div style="font-family: 'Hanken Grotesk',sans-serif; font-size: 19px; font-weight: 700; color: #1F8A5B; padding: 8px 20px; border-radius: 999px; background-color: #E3F2E9">Free</div>
+            </div>
+            <div style="font-family:'Playfair Display',serif;font-size:56px;line-height:1.06;font-weight:700;color:#1A2238;margin-top:18px;letter-spacing:-.01em;">Jazz on the Patio — Swing Street Quartet</div><div style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px; padding-top: 10px">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:29px;color:#5B6173;">📅&nbsp;&nbsp;Wednesday, July 1 · 6:00–8:30 PM</div>
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:29px;color:#5B6173;">📍&nbsp;&nbsp;The Barn at Paradise Station</div>
+            </div>
+            
+            <div style="margin-top:22px;text-align:right;">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:600;color:#9A9388;">Link in bio for details</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-featured" data-file="01-featured" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-feat" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload photo">📷</button>
+        <button class="dlbtn" data-cap="featured" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: CAROUSEL COVER ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#1A4E8A;background:#E2ECF7;padding:6px 14px;border-radius:999px;">CAROUSEL</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Cover · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-cover" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#F4F1EA;display:flex;flex-direction:column;position:relative;overflow:hidden;">
+          <!-- optional background photo -->
+          <image-slot id="st-cover" shape="rect" placeholder="Optional: drop a background photo" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+          <div style="position:absolute;inset:0;background:rgba(244,241,234,.88);"></div>
+          <!-- content -->
+          <div style="position:relative;padding:52px 72px 48px;display:flex;flex-direction:column;height:100%;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:21px;font-weight:800;letter-spacing:.16em;color:#EF4E44;">THIS WEEK'S PICKS</div>
+            <div style="margin:auto 0;">
+              <div style="font-family:'Playfair Display',serif;font-size:88px;line-height:1.0;font-weight:800;color:#1A2238;letter-spacing:-.02em;">5 events to catch in South-Central PA</div>
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:26px;color:#6B6256;margin-top:24px;">Jun 29 – Jul 5, 2026 · Lancaster, York &amp; Harrisburg</div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:48px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span style="width:34px;height:10px;border-radius:999px;background:#EF4E44;"></span>
+                <span style="width:10px;height:10px;border-radius:999px;background:#D9D3C6;"></span>
+                <span style="width:10px;height:10px;border-radius:999px;background:#D9D3C6;"></span>
+                <span style="width:10px;height:10px;border-radius:999px;background:#D9D3C6;"></span>
+                <span style="width:10px;height:10px;border-radius:999px;background:#D9D3C6;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-cover" data-file="02-carousel-cover" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-cover" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload background photo (optional)">📷</button>
+        <button class="dlbtn" data-cap="carousel" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: CAROUSEL SLIDE ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#1A4E8A;background:#E2ECF7;padding:6px 14px;border-radius:999px;">CAROUSEL</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Event slide · duplicate ×5 · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-slide" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#fff;display:flex;flex-direction:column;">
+          <div style="position:relative;height:530px;margin:44px 44px 0;border-radius:20px;overflow:hidden;flex:none;">
+            <image-slot id="st-slide" shape="rect" placeholder="Drop event photo" style="width:100%;height:100%;"><img src="./firstfriday_banner-mr24irzf.webp" alt="firstfriday_banner" style="max-width: 100%; height: auto; display: block; object-fit: cover"></image-slot>
+          </div>
+          <div style="flex:1;padding:36px 44px 44px;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:800;letter-spacing:.14em;color:#EF4E44;">COMMUNITY</div>
+              <div style="font-family: 'Hanken Grotesk',sans-serif; font-size: 19px; font-weight: 700; color: #1F8A5B; padding: 8px 20px; border-radius: 999px; background-color: #E3F2E9">Free</div>
+            </div>
+            <div style="font-family:'Playfair Display',serif;font-size:56px;line-height:1.06;font-weight:700;color:#1A2238;margin-top:18px;letter-spacing:-.01em;">July 4th Food Truck Festival - Harrisburg</div>
+            <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px; padding-top: 10px">
+              
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:29px;color:#5B6173;">🗓️ Saturday, Jul 4 · 12:00-7:00pm</div><div style="font-family:'Hanken Grotesk',sans-serif;font-size:29px;color:#5B6173;">📍 Riverfront Park</div>
+            </div>
+            <div style="margin-top:22px;text-align:right;">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:600;color:#9A9388;">Link in bio for details</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-slide" data-file="03-carousel-slide" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-slide" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload event photo">📷</button>
+        <button class="dlbtn" data-cap="carousel" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: FEATURE ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#1F8A5B;background:#E3F2E9;padding:6px 14px;border-radius:999px;">FEATURE</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Website highlight · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-feature" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#fff;padding:48px 56px;display:flex;flex-direction:column;">
+          <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:8px;background:#FBE3E0;color:#EF4E44;font-family:'Hanken Grotesk',sans-serif;font-size:18px;font-weight:800;letter-spacing:.1em;padding:10px 20px;border-radius:999px;">✦ NEW FEATURE</div>
+          <div style="font-family:'Playfair Display',serif;font-size:66px;line-height:1.03;font-weight:800;color:#1A2238;margin-top:24px;letter-spacing:-.015em;">Build your weekend with Saved</div>
+          <div style="font-family:'Hanken Grotesk',sans-serif;font-size:25px;line-height:1.5;color:#5B6173;margin-top:20px;">Tap the heart on any event and it lands in your Saved list — right in the top nav, ready when you are.</div>
+          <div style="margin-top:40px;background:#F4F1EA;border-radius:22px;padding:34px;display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;align-items:center;gap:12px;align-self:flex-end;background:#fff;border-radius:999px;padding:12px 22px;box-shadow:0 2px 8px rgba(20,27,51,.08);font-family:'Hanken Grotesk',sans-serif;font-size:22px;font-weight:700;color:#1A2238;">♥ Saved <span style="background:#EF4E44;color:#fff;border-radius:999px;padding:2px 12px;font-size:18px;">2</span></div>
+            <div style="display:flex;gap:16px;">
+              <div style="flex:1;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(20,27,51,.08);">
+                <div style="position:relative;height:170px;"><image-slot id="st-feat1" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+                <div style="padding:16px 18px;"><div style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em;color:#EF4E44;">FESTIVALS</div><div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1A2238;margin-top:4px;line-height:1.1;">Long's Park Series</div></div>
+              </div>
+              <div style="flex:1;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(20,27,51,.08);">
+                <div style="position:relative;height:170px;"><image-slot id="st-feat2" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+                <div style="padding:16px 18px;"><div style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.12em;color:#EF4E44;">FOOD &amp; DRINK</div><div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1A2238;margin-top:4px;line-height:1.1;">Lititz Beer Fest</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:auto;padding-top:28px;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:600;color:#9A9388;">Link in bio for details</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-feature" data-file="04-feature" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-feat1" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload card photos">📷</button>
+        <button class="dlbtn" data-cap="feature" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: TESTIMONIAL ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#9A6B00;background:#FBF0D6;padding:6px 14px;border-radius:999px;">TESTIMONIAL</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Review · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-testimonial" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#fff;padding:64px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:20px;">
+            <div style="width:88px;height:88px;border-radius:50%;overflow:hidden;flex:none;border:3px solid #FBE3E0;"><image-slot id="st-av" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+            <div>
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:30px;font-weight:700;color:#1A2238;">Maria R.</div>
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:22px;color:#9A9388;">Lancaster, PA</div>
+            </div>
+            <div style="margin-left:auto;font-size:28px;letter-spacing:4px;color:#F5B921;">★★★★★</div>
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:52px;line-height:1.2;font-weight:600;color:#1A2238;margin-top:40px;letter-spacing:-.01em;">“Finally, one place for everything happening in Lancaster. I check it every Friday morning.”</div>
+          <div style="margin-top:auto;">
+            <div style="display:inline-flex;align-items:center;gap:10px;background:#FBE3E0;color:#EF4E44;font-family:'Hanken Grotesk',sans-serif;font-size:20px;font-weight:700;padding:12px 22px;border-radius:999px;">♥ Real review</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-testimonial" data-file="05-testimonial" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-av" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload reviewer avatar">📷</button>
+        <button class="dlbtn" data-cap="testimonial" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: RECAP ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#5B4B8A;background:#ECE7F7;padding:6px 14px;border-radius:999px;">RECAP</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Photo recap · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-recap" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#fff;padding:36px;display:flex;flex-direction:column;">
+          <div>
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:19px;font-weight:800;letter-spacing:.14em;color:#EF4E44;">EVENT RECAP</div>
+          </div>
+          <div style="position:relative;height:530px;border-radius:20px;overflow:hidden;margin-top:18px;flex:none;">
+            <image-slot id="st-recap" shape="rect" placeholder="Drop recap photo / video still" style="width:100%;height:100%;"></image-slot>
+          </div>
+          <div style="padding-top:30px;">
+            <div style="font-family:'Playfair Display',serif;font-size:54px;line-height:1.04;font-weight:700;color:#1A2238;letter-spacing:-.01em;">July 4th on the River</div>
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:23px;color:#5B6173;margin-top:12px;">Columbia Crossing River Trails Center · fireworks, food trucks &amp; live music</div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:16px;">
+            <div style="flex:1;height:118px;border-radius:14px;overflow:hidden;"><image-slot id="st-recap2" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+            <div style="flex:1;height:118px;border-radius:14px;overflow:hidden;"><image-slot id="st-recap3" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+            <div style="flex:1;height:118px;border-radius:14px;overflow:hidden;"><image-slot id="st-recap4" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+          </div>
+          <div style="margin-top:auto;padding-top:22px;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:21px;font-weight:700;color:#EF4E44;">See upcoming events →</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-recap" data-file="06-recap" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-recap" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload recap photos">📷</button>
+        <button class="dlbtn" data-cap="recap" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: LAST CALL ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#EF4E44;background:#FBE3E0;padding:6px 14px;border-radius:999px;">LAST CALL</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Weekend round-up · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-lastcall" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#fff;padding:44px;display:flex;flex-direction:column;">
+          <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;background:#EF4E44;color:#fff;font-family:'Hanken Grotesk',sans-serif;font-size:19px;font-weight:800;letter-spacing:.1em;padding:12px 22px;border-radius:999px;">⏱ THIS WEEKEND</div>
+          <div style="font-family:'Playfair Display',serif;font-size:74px;line-height:.98;font-weight:800;color:#1A2238;margin-top:24px;letter-spacing:-.02em;">3 plans, sorted.</div>
+          <div style="display:flex;flex-direction:column;gap:18px;margin-top:40px;">
+            <div style="display:flex;align-items:center;gap:20px;background:#FAFAF7;border:1px solid #F0ECE3;border-radius:18px;padding:20px;">
+              <div style="width:120px;height:120px;border-radius:14px;overflow:hidden;flex:none;"><image-slot id="st-lc1" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+              <div style="flex:1;min-width:0;"><div style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:800;letter-spacing:.12em;color:#EF4E44;">FRI · MUSIC</div><div style="font-family:'Playfair Display',serif;font-size:33px;font-weight:700;color:#1A2238;line-height:1.05;margin-top:3px;">Jazz on the Patio</div><div style="font-family:'Hanken Grotesk',sans-serif;font-size:18px;color:#8A8478;margin-top:4px;">6 PM · Paradise Station · Free</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:20px;background:#FAFAF7;border:1px solid #F0ECE3;border-radius:18px;padding:20px;">
+              <div style="width:120px;height:120px;border-radius:14px;overflow:hidden;flex:none;"><image-slot id="st-lc2" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+              <div style="flex:1;min-width:0;"><div style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:800;letter-spacing:.12em;color:#EF4E44;">SAT · COMMUNITY</div><div style="font-family:'Playfair Display',serif;font-size:33px;font-weight:700;color:#1A2238;line-height:1.05;margin-top:3px;">Riverfest Weekend</div><div style="font-family:'Hanken Grotesk',sans-serif;font-size:18px;color:#8A8478;margin-top:4px;">All day · Columbia Crossing · Free</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:20px;background:#FAFAF7;border:1px solid #F0ECE3;border-radius:18px;padding:20px;">
+              <div style="width:120px;height:120px;border-radius:14px;overflow:hidden;flex:none;"><image-slot id="st-lc3" shape="rect" placeholder="Photo" style="width:100%;height:100%;"></image-slot></div>
+              <div style="flex:1;min-width:0;"><div style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:800;letter-spacing:.12em;color:#EF4E44;">SUN · FOOD &amp; DRINK</div><div style="font-family:'Playfair Display',serif;font-size:33px;font-weight:700;color:#1A2238;line-height:1.05;margin-top:3px;">Lititz Beer Fest</div><div style="font-family:'Hanken Grotesk',sans-serif;font-size:18px;color:#8A8478;margin-top:4px;">1 PM · Lititz Springs Park · $35</div></div>
+            </div>
+          </div>
+          <div style="margin-top:auto;padding-top:24px;text-align:right;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:19px;font-weight:600;color:#9A9388;">Link in bio for details</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-lastcall" data-file="07-last-call" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-lc1" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload event photos">📷</button>
+        <button class="dlbtn" data-cap="lastcall" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: STORY ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#6B6256;background:#F0ECE3;padding:6px 14px;border-radius:999px;">STORY</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Vertical · 1080×1920</span>
+      </div>
+      <div style="width:287px;margin:0 auto;aspect-ratio:1080/1920;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-story" data-w="1080" data-h="1920" style="position:absolute;top:0;left:0;width:1080px;height:1920px;transform:scale(.2655);transform-origin:top left;background:#1A2238;">
+          <image-slot id="st-story" shape="rect" placeholder="Drop event photo" style="width:100%;height:100%;position:absolute;inset:0;"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,27,51,.5),rgba(20,27,51,0) 28%,rgba(20,27,51,0) 50%,rgba(20,27,51,.92));"></div>
+
+          <div style="position:absolute;left:48px;right:48px;bottom:60px;color:#fff;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:22px;font-weight:800;letter-spacing:.14em;color:#FF8A82;">TONIGHT · FREE</div>
+            <div style="font-family:'Playfair Display',serif;font-size:80px;line-height:1.0;font-weight:800;letter-spacing:-.02em;margin-top:14px;">Jazz on the Patio</div>
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:28px;color:rgba(255,255,255,.85);margin-top:14px;">6 PM · The Barn at Paradise Station</div>
+            <div style="margin-top:32px;display:flex;align-items:center;justify-content:center;gap:12px;background:#fff;color:#1A2238;font-family:'Hanken Grotesk',sans-serif;font-size:28px;font-weight:800;padding:22px;border-radius:999px;">▲ Swipe up for details</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-story" data-file="08-story" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-story" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload story photo">📷</button>
+        <button class="dlbtn" data-cap="story" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: EVENT GALLERY \u2014 COVER ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#5B4B8A;background:#ECE7F7;padding:6px 14px;border-radius:999px;">GALLERY</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">One event in photos · cover · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-gallery-cover" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#1A2238;">
+          <image-slot id="st-galc" shape="rect" placeholder="Drop the best event photo" style="width:100%;height:100%;position:absolute;inset:0;"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,27,51,.55),rgba(20,27,51,0) 32%,rgba(20,27,51,0) 52%,rgba(20,27,51,.92));"></div>
+
+          <div style="position:absolute;left:48px;right:48px;bottom:48px;color:#fff;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:22px;font-weight:800;letter-spacing:.16em;color:#FF8A82;">📸 IN PHOTOS</div>
+            <div style="font-family:'Playfair Display',serif;font-size:76px;line-height:.98;font-weight:800;letter-spacing:-.02em;margin-top:12px;">Riverfest Weekend</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:22px;">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:24px;color:rgba(255,255,255,.85);">Columbia Crossing · Jun 28</div>
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:24px;font-weight:700;color:#fff;">Swipe →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-gallery-cover" data-file="09-gallery-cover" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-galc" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload cover photo">📷</button>
+        <button class="dlbtn" data-cap="gallery" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: EVENT GALLERY \u2014 PHOTO ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#5B4B8A;background:#ECE7F7;padding:6px 14px;border-radius:999px;">GALLERY</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Photo slide · duplicate per photo · 1080×1080</span>
+      </div>
+      <div style="width:430px;margin:0 auto;aspect-ratio:1/1;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;">
+        <div id="post-gallery-photo" data-w="1080" data-h="1080" style="position:absolute;top:0;left:0;width:1080px;height:1080px;transform:scale(.398);transform-origin:top left;background:#1A2238;">
+          <image-slot id="st-galp" shape="rect" placeholder="Drop event photo" style="width:100%;height:100%;position:absolute;inset:0;"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,27,51,.35),rgba(20,27,51,0) 26%,rgba(20,27,51,0) 64%,rgba(20,27,51,.82));"></div>
+          <div style="position:absolute;left:40px;top:36px;display:inline-flex;align-items:center;gap:8px;background:rgba(20,27,51,.6);color:#fff;font-family:'Hanken Grotesk',sans-serif;font-size:22px;font-weight:800;padding:10px 20px;border-radius:999px;backdrop-filter:blur(4px);">2 / 8</div>
+
+          <div style="position:absolute;left:48px;right:48px;bottom:44px;color:#fff;font-family:'Hanken Grotesk',sans-serif;font-size:30px;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.4);">Main stage, sundown — 12,000 neighbors &amp; counting.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="dlbtn" data-post="post-gallery-photo" data-file="10-gallery-photo" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-slot="st-galp" onClick="{{ pickPhoto }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;" title="Upload event photo">📷</button>
+        <button class="dlbtn" data-cap="gallery" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+    <!-- ============ STATION: REEL VIDEO OVERLAY ============ -->
+    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 18px rgba(20,27,51,.1);padding:22px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:#1A2238;background:#FBF0D6;padding:6px 14px;border-radius:999px;">REEL OVERLAY</span>
+        <span style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#9A9388;">Transparent · 1080×1920</span>
+      </div>
+      <div style="width:287px;margin:0 auto;aspect-ratio:1080/1920;position:relative;overflow:hidden;border-radius:12px;border:1px solid #EFEBE2;background:linear-gradient(160deg,#3A3F4A,#23262E);">
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.45);font-family:'Hanken Grotesk',sans-serif;">
+          <div style="font-size:34px;">▶</div>
+          <div style="font-size:14px;font-weight:700;letter-spacing:.14em;">YOUR VIDEO</div>
+        </div>
+        <div id="post-reel" data-w="1080" data-h="1920" style="position:absolute;top:0;left:0;width:1080px;height:1920px;transform:scale(.2657);transform-origin:top left;background:transparent;">
+          <div style="position:absolute;left:0;right:0;top:0;height:440px;background:linear-gradient(180deg,rgba(15,20,35,.72),rgba(15,20,35,0));"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:760px;background:linear-gradient(0deg,rgba(15,20,35,.9),rgba(15,20,35,0));"></div>
+
+          <div style="position:absolute;left:56px;right:56px;top:150px;color:#fff;">
+            <div style="display:inline-block;background:#EF4E44;color:#fff;font-family:'Hanken Grotesk',sans-serif;font-size:26px;font-weight:800;letter-spacing:.06em;padding:12px 24px;border-radius:14px;transform:rotate(-2deg);">YOU HAD TO BE THERE</div>
+          </div>
+          <div style="position:absolute;left:56px;right:56px;bottom:90px;color:#fff;">
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:26px;font-weight:800;letter-spacing:.14em;color:#FF8A82;">LIVE MUSIC · LANCASTER</div>
+            <div style="font-family:'Playfair Display',serif;font-size:84px;line-height:.96;font-weight:800;letter-spacing:-.02em;margin-top:14px;">Jazz on the Patio</div>
+            <div style="font-family:'Hanken Grotesk',sans-serif;font-size:30px;color:rgba(255,255,255,.9);margin-top:16px;">Every Thursday this summer · Free</div>
+            <div style="margin-top:30px;text-align:right;">
+              <div style="font-family:'Hanken Grotesk',sans-serif;font-size:26px;font-weight:600;color:rgba(255,255,255,.75);">Link in bio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'Hanken Grotesk',sans-serif;font-size:13.5px;color:#9A6B00;background:#FBF0D6;border-radius:10px;padding:11px 14px;margin-top:14px;line-height:1.45;">✨ Exports as a <b>see-through PNG</b> — drop it on top of your video in Instagram, CapCut or Reels. The gray frame just previews where your footage shows.</div>
+      <div style="display:flex;gap:10px;margin-top:12px;">
+        <button class="dlbtn" data-post="post-reel" data-file="11-reel-overlay" onClick="{{ download }}" style="background:#EF4E44;color:#fff;font-size:15px;padding:13px 20px;flex:1;justify-content:center;">⬇ Download PNG</button>
+        <button class="dlbtn" data-cap="reel" onClick="{{ copy }}" style="background:#F0ECE3;color:#1A2238;font-size:15px;padding:13px 18px;">📋 Caption</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="studio-toast" style="position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);background:#1A2238;color:#fff;font-family:'Hanken Grotesk',sans-serif;font-size:17px;font-weight:600;padding:16px 28px;border-radius:999px;box-shadow:0 8px 30px rgba(20,27,51,.3);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;z-index:1000;">Saved</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  _photos = {}; // slotId → data URL, used as reliable source for export
+
+  captions = {
+    featured: "\uD83C\uDFB7 Midweek reset, sorted. Swing Street Quartet brings live jazz to The Barn at Paradise Station this Wednesday \u2014 and it's FREE. Grab a drink, bring a friend, stay for the sunset. Full details at the link in bio. Big thanks to @eventhost for hosting \uD83D\uDC4F\n\n\uD83D\uDCC5 Wed Jul 1 \u00B7 6:00\u20138:30 PM\n\uD83D\uDCCD The Barn at Paradise Station\n\n#LancasterPA #LiveMusic #JazzNight #717 #ThingsToDoLancaster #FreeEvents",
+    carousel: "\uD83D\uDCC5 Your week in South-Central PA is sorted. Swipe for 5 events worth leaving the couch for \u2014 from live jazz to the riverfront. Save this so you don't forget, and tap the link in bio for times, tickets & details. Which one are you doing? \uD83D\uDC47\n\n\uD83D\uDCCD Lancaster \u00B7 York \u00B7 Harrisburg\n\n#LancasterPA #YorkPA #HarrisburgPA #717 #ThingsToDoInPA #SouthCentralPA #LancasterEvents",
+    feature: "\u2764\uFE0F New on TrenEvents: meet your Saved list. See an event you love? Tap the heart and it's waiting in the top nav \u2014 build your whole weekend in one place, no screenshots required. Try it at trenevents.com.\n\nWhat's the first event you'd save? \uD83D\uDC47\n\n#TrenEvents #LancasterPA #EventPlanning #717 #SouthCentralPA",
+    testimonial: "\u2B50\u2B50\u2B50\u2B50\u2B50 \u201CFinally, one place for everything happening in Lancaster. I check it every Friday morning.\u201D \u2014 Maria R., Lancaster\n\nThat's exactly why we built TrenEvents. Start your weekend at the link in bio \uD83D\uDC47\n\n#LancasterPA #717 #SouthCentralPA #CommunityLove #ThingsToDoInPA",
+    recap: "\uD83C\uDF86 That's a wrap on July 4th on the River \u2014 and what a turnout. Fireworks, food trucks, and a whole lot of neighbors. Swipe through the weekend \uD83D\uDCF8 Missed it? There's always next week \u2014 link in bio.\n\n\uD83D\uDCCD Columbia Crossing River Trails Center\nHosted by @eventhost \u2014 give them a follow \uD83D\uDE4C\n\n#LancasterPA #July4th #717 #CommunityEvents #SouthCentralPA",
+    lastcall: "\uD83C\uDF89 Long weekend = no excuses. 3 ways to celebrate across SCPA \u2014 music, the river, and a cold one. All the times, tickets & maps are at the link in bio. Tag who you're bringing \uD83D\uDC47\n\nEvents by @eventhost, @rivertrailscenter & @lititzbeerfest\n\n#July4th #LancasterPA #YorkPA #717 #ThingsToDoInPA #WeekendVibes",
+    story: "[Story caption \u2014 keep it short on the image] TONIGHT \u00B7 Jazz on the Patio \u00B7 6 PM \u00B7 Free. Add a link sticker to trenevents.com and a 'Reminder' sticker so followers get pinged.",
+    gallery: "\uD83D\uDCF8 [Event name] in photos. Swipe through the best moments \u2014 and tag yourself if you spot a familiar face! Hosted by @eventhost. More events like this at the link in bio.\n\n\uD83D\uDCCD [Venue, City]\n\n#LancasterPA #717 #SouthCentralPA #EventPhotos #CommunityEvents #ThingsToDoInPA",
+    reel: "\uD83C\uDFA5 [Event] was a whole vibe \u2014 turn your sound on \uD83D\uDD0A Catch the next one before tickets go; full lineup at the link in bio. Huge thanks to @eventhost for putting it on \uD83D\uDD25\n\n#LancasterPA #717 #Reels #LiveMusic #ThingsToDoInPA #SouthCentralPA"
+  };
+
+  // html-to-image can't read cross-origin Google Fonts via CSSOM, so we fetch the
+  // font CSS + woff2 files ourselves and inline them as base64. Passing this as
+  // fontEmbedCSS makes exports render in the real brand fonts (and silences the
+  // library's remote-CSS errors). Cached after first build.
+  componentDidMount() {
+    if (window.htmlToImage) this.fontCSS();
+  }
+
+  // Open a real file-picker (must be called on a direct user-gesture).
+  // Resolves with {file, dataUrl} or null if cancelled.
+  openPicker() {
+    return new Promise((resolve) => {
+      const inp = document.createElement('input');
+      inp.type = 'file'; inp.accept = 'image/*';
+      inp.style.cssText = 'position:fixed;left:-9999px;opacity:0;';
+      document.body.appendChild(inp);
+      let settled = false;
+      const done = (v) => { if (settled) return; settled = true; inp.remove(); resolve(v); };
+      inp.onchange = () => {
+        const file = inp.files[0];
+        if (!file) { done(null); return; }
+        const fr = new FileReader();
+        fr.onload = () => done({ file, dataUrl: fr.result });
+        fr.onerror = () => done(null);
+        fr.readAsDataURL(file);
+      };
+      // Detect cancel: window gets focus back after picker closes with no change
+      const onFocus = () => setTimeout(() => { if (!settled) done(null); }, 400);
+      window.addEventListener('focus', onFocus, { once: true });
+      inp.click();
+    });
+  }
+
+  async fontCSS() {
+    if (this._fontCSS !== undefined) return this._fontCSS;
+    try {
+      const url = 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap';
+      let css = await (await fetch(url)).text();
+      const fontUrls = [...new Set([...css.matchAll(/url\((https:\/\/[^)]+\.woff2)\)/g)].map((m) => m[1]))];
+      for (const u of fontUrls) {
+        try {
+          const blob = await (await fetch(u)).blob();
+          const dataUrl = await new Promise((res) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(blob); });
+          css = css.split(u).join(dataUrl);
+        } catch (e) { /* skip a font file that won't load */ }
+      }
+      this._fontCSS = css;
+    } catch (e) {
+      this._fontCSS = '';
+    }
+    return this._fontCSS;
+  }
+
+  // Capture a post node as a full-res PNG.
+  // image-slot uses shadow DOM (invisible to html-to-image), so we:
+  //   1. Clone the node off-screen so the live DOM is never touched.
+  //   2. Replace each image-slot in the clone with a plain <img> element
+  //      (html-to-image handles <img> perfectly; CSS background-image with
+  //      large data-URLs is unreliable and caused blank exports).
+  //   3. Use this._photos[id] as the primary source (set on every upload),
+  //      falling back to the shadow-DOM img in case of a direct drag-drop.
+  //   4. Wait for all images to decode before capturing.
+  async captureFlattened(node, w, h) {
+    const fontEmbedCSS = await this.fontCSS();
+    const clone = node.cloneNode(true);
+    clone.removeAttribute('id');
+    const liveSlots = [...node.querySelectorAll('image-slot')];
+    const imgPromises = [];
+    clone.querySelectorAll('image-slot').forEach((c, i) => {
+      const live = liveSlots[i];
+      const slotId = live && live.id;
+      // Primary source: photo uploaded via our 📷 picker (most reliable).
+      // Fallback: data-URL already rendered in the shadow-DOM img (direct drag-drop).
+      const stored = slotId && this._photos[slotId];
+      const shadowImg = live && live.shadowRoot && live.shadowRoot.querySelector('img');
+      const shadowSrc = shadowImg && shadowImg.src;
+      const srcUrl = stored || (shadowSrc && shadowSrc.startsWith('data:') ? shadowSrc : null);
+      const parent = c.parentElement;
+      if (srcUrl) {
+        const img = document.createElement('img');
+        img.src = srcUrl;
+        img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border:none;';
+        const p = new Promise(r => { img.onload = img.onerror = r; if (img.complete && img.naturalWidth) r(); });
+        imgPromises.push(p);
+        parent.replaceChild(img, c);
+      } else {
+        const ph = document.createElement('div');
+        ph.style.cssText = 'position:absolute;inset:0;background:#D9D3C6;';
+        parent.replaceChild(ph, c);
+      }
+    });
+
+    // Place the clone at top-left of the viewport (position:fixed, no transform).
+    // html-to-image captures the element's own bounding box so it doesn't need to
+    // fit entirely in the viewport — but the element MUST be connected to the DOM
+    // and have a visible position (not far off-screen) for the browser to fully
+    // paint it. We set overflow:hidden so the overflowing part of a tall card
+    // doesn't cause page scrollbars. Removed after capture.
+    clone.style.transform = 'none';
+    clone.style.transformOrigin = 'top left';
+    clone.style.position = 'fixed';
+    clone.style.top = '0';
+    clone.style.left = '0';
+    clone.style.width = w + 'px';
+    clone.style.height = h + 'px';
+    clone.style.zIndex = '99999';
+    clone.style.overflow = 'visible';
+    document.body.appendChild(clone);
+
+    // Wait for images to decode + two paint frames so the browser has fully laid out.
+    await Promise.allSettled(imgPromises);
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+    try {
+      const opts = { width: w, height: h, pixelRatio: 2, cacheBust: true };
+      if (fontEmbedCSS) opts.fontEmbedCSS = fontEmbedCSS; else opts.skipFonts = true;
+      return await window.htmlToImage.toPng(clone, opts);
+    } finally {
+      clone.remove();
+    }
+  }
+
+  toast(msg) {
+    const el = document.getElementById('studio-toast');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.opacity = '1';
+    el.style.transform = 'translateX(-50%) translateY(0)';
+    clearTimeout(this._t);
+    this._t = setTimeout(() => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2200);
+  }
+
+  // Show a small modal asking for event details, returns {type, details} or null
+  promptForCaption() {
+    return new Promise((resolve) => {
+      const overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(20,27,51,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;';
+      overlay.innerHTML = `
+        <div style="background:#fff;border-radius:20px;padding:36px;max-width:520px;width:100%;font-family:'Hanken Grotesk',sans-serif;box-shadow:0 20px 60px rgba(20,27,51,.25);">
+          <div style="font-size:22px;font-weight:800;color:#1A2238;margin-bottom:6px;">✨ Generate caption with AI</div>
+          <div style="font-size:15px;color:#8A8478;margin-bottom:22px;">Describe the event and we'll write an Instagram caption + hashtags.</div>
+          <div style="margin-bottom:14px;">
+            <label style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#1A2238;display:block;margin-bottom:6px;">POST TYPE</label>
+            <select id="ai-cap-type" style="width:100%;border:1.5px solid #E0DACD;border-radius:10px;padding:10px 14px;font-size:15px;font-family:'Hanken Grotesk',sans-serif;color:#1A2238;background:#fff;">
+              <option value="featured event">Featured Event</option>
+              <option value="weekly event carousel">Weekly Carousel</option>
+              <option value="event photo gallery">Photo Gallery / Recap</option>
+              <option value="website feature highlight">Website Feature</option>
+              <option value="customer testimonial">Testimonial</option>
+              <option value="weekend last-call round-up">Last Call / Weekend</option>
+              <option value="reel video recap">Reel</option>
+            </select>
+          </div>
+          <div style="margin-bottom:22px;">
+            <label style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#1A2238;display:block;margin-bottom:6px;">EVENT / CONTENT DETAILS</label>
+            <textarea id="ai-cap-details" rows="4" placeholder="e.g. Jazz on the Patio, Swing Street Quartet, free, Thursday Jul 1 at 6pm, The Barn at Paradise Station, Lancaster PA" style="width:100%;border:1.5px solid #E0DACD;border-radius:10px;padding:12px 14px;font-size:15px;font-family:'Hanken Grotesk',sans-serif;color:#1A2238;resize:vertical;line-height:1.5;"></textarea>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button id="ai-cap-go" style="flex:1;background:#EF4E44;color:#fff;border:none;border-radius:999px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;">✨ Write caption</button>
+            <button id="ai-cap-cancel" style="background:#F0ECE3;color:#1A2238;border:none;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;">Cancel</button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+      overlay.querySelector('#ai-cap-cancel').onclick = () => { overlay.remove(); resolve(null); };
+      overlay.querySelector('#ai-cap-go').onclick = () => {
+        const type = overlay.querySelector('#ai-cap-type').value;
+        const details = overlay.querySelector('#ai-cap-details').value.trim();
+        overlay.remove();
+        resolve(details ? { type, details } : null);
+      };
+    });
+  }
+
+  showCaptionResult(caption) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(20,27,51,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px;';
+    overlay.innerHTML = `
+      <div style="background:#fff;border-radius:20px;padding:36px;max-width:520px;width:100%;font-family:'Hanken Grotesk',sans-serif;box-shadow:0 20px 60px rgba(20,27,51,.25);">
+        <div style="font-size:22px;font-weight:800;color:#1A2238;margin-bottom:16px;">✨ Your caption</div>
+        <textarea id="ai-result" style="width:100%;height:260px;border:1.5px solid #E0DACD;border-radius:10px;padding:14px;font-size:15px;font-family:'Hanken Grotesk',sans-serif;color:#1A2238;line-height:1.6;resize:vertical;">${caption}</textarea>
+        <div style="display:flex;gap:10px;margin-top:16px;">
+          <button id="ai-copy" style="flex:1;background:#EF4E44;color:#fff;border:none;border-radius:999px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;">📋 Copy caption</button>
+          <button id="ai-close" style="background:#F0ECE3;color:#1A2238;border:none;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;">Close</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.querySelector('#ai-close').onclick = () => overlay.remove();
+    overlay.querySelector('#ai-copy').onclick = async () => {
+      const text = overlay.querySelector('#ai-result').value;
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; } catch (_) {}
+      if (!ok) { const ta = overlay.querySelector('#ai-result'); ta.select(); try { ok = document.execCommand('copy'); } catch (_) {} }
+      this.toast(ok ? '\u2713 Caption copied \u2014 paste into Instagram' : 'Select all in the box and copy manually');
+    };
+  }
+
+  renderVals() {
+    return {
+      aiCaption: async () => {
+        const input = await this.promptForCaption();
+        if (!input) return;
+        this.toast('\u2728 Writing your caption\u2026');
+        try {
+          const caption = await window.claude.complete({
+            messages: [{ role: 'user', content: `You are writing Instagram captions for @trenevents, a South-Central Pennsylvania events discovery website for Lancaster, York, and Harrisburg.\n\nPost type: ${input.type}\nEvent/content details: ${input.details}\n\nWrite a single Instagram caption that:\n- Opens with a hook (emoji + punchy line)\n- Is conversational, warm, and locally relevant\n- Includes the key who/what/when/where if it's an event\n- Ends with a CTA like "link in bio" or "trenevents.com"\n- Includes 6-8 hashtags on a new line including #717 and at least one of #LancasterPA #YorkPA #HarrisburgPA\n- Is under 150 words total\n\nReturn just the caption text, nothing else.` }]
+          });
+          this.showCaptionResult(caption.trim());
+        } catch (err) {
+          this.toast('Caption generation failed \u2014 try again');
+          console.error(err);
+        }
+      },
+      pickPhoto: async (e) => {
+        const slotId = e.currentTarget.dataset.slot;
+        const result = await this.openPicker();
+        if (!result) return;
+        const { file, dataUrl } = result;
+        // Store for reliable export (shadow DOM can be opaque to html-to-image)
+        this._photos[slotId] = dataUrl;
+        // Feed the file to the image-slot via a synthetic drop event so the
+        // preview updates and the slot's own persist/crop logic runs.
+        const slot = document.getElementById(slotId);
+        if (slot) {
+          try {
+            const dt = new DataTransfer();
+            dt.items.add(file);
+            slot.dispatchEvent(new DragEvent('drop', { bubbles: true, cancelable: true, dataTransfer: dt }));
+          } catch (err) {
+            // Fallback: set src attribute which triggers attributeChangedCallback → _render()
+            slot.setAttribute('src', dataUrl);
+          }
+        }
+        this.toast('\u2713 Photo loaded \u2014 click \u2193 Download when ready');
+      },
+      download: async (e) => {
+        const btn = e.currentTarget;
+        const node = document.getElementById(btn.dataset.post);
+        if (!node || !window.htmlToImage) { this.toast('Export not ready \u2014 try again'); return; }
+        const w = +node.dataset.w, h = +node.dataset.h;
+        const orig = btn.textContent;
+        btn.textContent = '\u23F3 Rendering\u2026';
+        try {
+          const dataUrl = await this.captureFlattened(node, w, h);
+          const a = document.createElement('a');
+          a.href = dataUrl;
+          a.download = btn.dataset.file + '.png';
+          a.click();
+          this.toast('\u2713 Downloaded ' + btn.dataset.file + '.png');
+        } catch (err) {
+          this.toast('Export failed \u2014 check console');
+          console.error(err);
+        } finally {
+          btn.textContent = orig;
+        }
+      },
+      copy: async (e) => {
+        const key = e.currentTarget.dataset.cap;
+        const text = this.captions[key] || '';
+        let ok = false;
+        // Try modern Clipboard API first (works in HTTPS / some iframes)
+        try { await navigator.clipboard.writeText(text); ok = true; } catch (_) {}
+        // execCommand fallback — works in non-secure contexts
+        if (!ok) {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;font-size:12px;';
+          document.body.appendChild(ta);
+          ta.focus(); ta.select();
+          try { ok = document.execCommand('copy'); } catch (_) {}
+          ta.remove();
+        }
+        if (ok) {
+          this.toast('\u2713 Caption copied \u2014 paste into Instagram');
+        } else {
+          // Last resort: show the text in a selectable overlay
+          const box = document.createElement('div');
+          box.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;';
+          box.innerHTML = '<div style="background:#fff;border-radius:18px;padding:28px;max-width:560px;width:100%;"><div style="font-family:sans-serif;font-size:14px;font-weight:700;margin-bottom:12px;color:#1A2238;">Select all &amp; copy \u2192 Ctrl/\u2318+A then C</div><textarea readonly style="width:100%;height:220px;font-family:sans-serif;font-size:14px;padding:12px;border:1px solid #ddd;border-radius:8px;resize:none;">' + text.replace(/</g,'&lt;') + '</textarea><button style="margin-top:12px;background:#EF4E44;color:#fff;border:none;border-radius:999px;padding:10px 24px;font-size:15px;font-weight:700;cursor:pointer;" onclick="this.closest(\'div[style*=fixed]\').remove()">Close</button></div>';
+          document.body.appendChild(box);
+          box.querySelector('textarea').select();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
