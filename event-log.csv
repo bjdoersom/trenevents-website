@@ -6,7 +6,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 ,18,Joe Russo's Almost Dead at Riverfront Park,Riverfront Park,"Sunday, July 19, 2026",music,Harrisburg,,live
 ,19,Lake Street Dive with The Dip,Riverfront Park,"Friday, July 31, 2026",music,Harrisburg,,live
 ,21,Sweet Summer Festival at Cherry Crest,Cherry Crest Adventure Farm,"Saturday, July 4, 2026",family,Ronks,sweet-summer.jpg,expired
-,22,Washington Boro Tomato Festival,Washington Boro Community Park,"July 11 & July 18, 2026",food,Lancaster County,,live
+,22,Washington Boro Tomato Festival,Washington Boro Community Park,"July 11 & July 18, 2026",food,Lancaster County,,expired
 ,23,Lancaster International Piano Festival,Franklin & Marshall College,"July 17 & July 27, 2026",music,Lancaster,,live
 ,24,Highland Cow Festival at Cherry Crest,Cherry Crest Adventure Farm,"Saturday, July 18, 2026",family,Ronks,highland-cows.jpg,live
 ,25,Pennsylvania Renaissance Faire,Mount Hope Estate & Winery,"Aug 15 – Oct 25, 2026 (weekends)",festival,Manheim,,live
@@ -39,17 +39,17 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-06-10,56,Lancaster Craft Beerfest,Ewell Plaza & Binns Park,"Saturday, August 22, 2026",food,Lancaster,,live
 2026-06-10,59,Dauphin County BrewFest,Fort Hunter Mansion & Park,"Saturday, July 18, 2026",food,Harrisburg,,live
 2026-06-10,62,"Dear Jack, Dear Louise — The Belmont Theatre",The Belmont Theatre,"July 24 – 26, 2026",school,York,,draft
-2026-06-10,66,MLB All-Star Game 2026 — Philadelphia,Citizens Bank Park,"Tuesday, July 14, 2026",community,Philadelphia,,live
+2026-06-10,66,MLB All-Star Game 2026 — Philadelphia,Citizens Bank Park,"Tuesday, July 14, 2026",community,Philadelphia,,expired
 2026-06-10,67,53rd Annual Elizabethtown Fair,Elizabethtown Fairgrounds,"August 24 – 29, 2026",festival,Elizabethtown,,live
 2026-06-10,69,Summer Nationals Basketball — Spooky Nook,Spooky Nook Sports,"August 15 – 16, 2026",school,Manheim,,live
-2026-06-12,71,Blueberry Festival & Craft Show — Mt. Airy Orchards,Mt. Airy Orchards,"Sunday, July 12, 2026",food,Dillsburg,,live
+2026-06-12,71,Blueberry Festival & Craft Show — Mt. Airy Orchards,Mt. Airy Orchards,"Sunday, July 12, 2026",food,Dillsburg,,expired
 2026-06-12,72,Live Music Nights at Plain & Fancy Farm,Plain & Fancy Farm (Smokehouse at Plain & Fancy),"3rd Thursdays: July 16 & August 20, 2026",music,Bird in Hand,,live
 2026-06-12,73,The String Cheese Incident at Riverfront Park,Riverfront Park,"Wednesday, August 5, 2026",music,Harrisburg,,live
 2026-06-12,74,Celebrate Lancaster,"North Queen Street, Downtown Lancaster","Friday, August 14, 2026",community,Lancaster,,live
 2026-06-12,76,First Friday — Downtown Lancaster City,Gallery Row & Downtown Lancaster,"Friday, July 3, 2026",community,Lancaster,,expired
 2026-06-12,77,Gettysburg 163rd Anniversary Battle Reenactment,Daniel Lady Farm,"July 3–5, 2026",heritage,Gettysburg,,expired
 2026-06-12,78,A Gettysburg Fourth — 250th Anniversary Celebration,Gettysburg Rec Park,"Saturday, July 4, 2026",community,Gettysburg,,expired
-2026-06-12,79,Freaky Friday The Musical — Dutch Apple Dinner Theatre,Dutch Apple Dinner Theatre,"July 10–August 4, 2026",family,Lancaster,,live
+2026-06-12,79,Freaky Friday The Musical — Dutch Apple Dinner Theatre,Dutch Apple Dinner Theatre,"July 10–August 4, 2026",family,Lancaster,,expired
 2026-06-12,80,Lancaster ArtWalk,Downtown Lancaster City,"Friday, July 17, 2026",community,Lancaster,,live
 2026-06-12,81,San Juan Bautista Hispanic Festival,San Juan Bautista Catholic Church,"July 22–25, 2026",heritage,Lancaster,,live
 2026-06-12,82,Fat Bat Summer Blues Festival,Fat Bat Brewing Company,"Saturday, July 25, 2026",music,Hanover,,live
@@ -57,13 +57,13 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-06-13,87,Lititz Fourth of July Celebration,Lititz Springs Park,"Saturday, July 4, 2026",family,Lititz,,expired
 2026-06-13,88,Gettysburg Bluegrass Festival (August),Granite Hill Camping Resort,"August 13–16, 2026",music,Gettysburg,,live
 2026-06-17,90,Snack Town Street Fair,Hanover Center Square,"Saturday, July 11, 2026",community,Hanover,,expired
-2026-06-17,91,Carlisle Chrysler Nationals,Carlisle Fairgrounds,"Friday–Sunday, July 10–12, 2026",community,Carlisle,,live
+2026-06-17,91,Carlisle Chrysler Nationals,Carlisle Fairgrounds,"Friday–Sunday, July 10–12, 2026",community,Carlisle,,expired
 2026-06-17,92,Greenfield Summer Concert Series,Greenfield — Calvin G. High Pavilion Lawn,"Thursday, July 16 & Thursday, August 13, 2026",music,Lancaster,,split
 2026-06-17,93,Thomas Rhett & Niall Horan LIVE,Hersheypark Stadium,"Saturday, July 18, 2026",music,Hershey,,live
 2026-06-17,94,Guns N' Roses: World Tour 2026,Hersheypark Stadium,"Saturday, August 1, 2026",music,Hershey,,live
 2026-06-17,95,Ephrata Fair,Downtown Ephrata,"September 22–26, 2026",festival,Ephrata,,live
 2026-06-17,96,Jason Isbell & the 400 Unit at Riverfront Park,Riverfront Park,"Sunday, September 27, 2026",music,Harrisburg,,live
-2026-06-20,97,Three Dog Night at American Music Theatre,American Music Theatre,"Sunday, July 12, 2026",music,Lancaster,,live
+2026-06-20,97,Three Dog Night at American Music Theatre,American Music Theatre,"Sunday, July 12, 2026",music,Lancaster,,expired
 2026-06-20,98,Aaron Lewis and The Stateliners at American Music Theatre,American Music Theatre,"Thursday, July 16, 2026",music,Lancaster,,live
 2026-06-20,99,Patty Griffin & Kathleen Edwards at American Music Theatre,American Music Theatre,"Saturday, July 18, 2026",music,Lancaster,,live
 2026-06-20,100,Tommy James & The Shondells at American Music Theatre,American Music Theatre,"Friday, July 24, 2026",music,Lancaster,,live
@@ -123,7 +123,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-07-08,154,Glen Rock Fall Festival,Glen Rock,"Saturday, September 26, 2026",community,Glen Rock,,draft
 2026-07-08,155,Lyn's Cars Against Cancer,Manheim Township Community Park,"Saturday, August 29, 2026",outdoors,Lancaster,,draft
 2026-07-08,156,Shrewsbury Fireman's Fall Fest,Shrewsbury Volunteer Fire Company,"Saturday, October 3, 2026",festival,Shrewsbury,,live
-2026-07-08,157,July Music Series at Reservoir Park — Gospel Night,Reservoir Park Bandshell,"Monday, July 13, 2026",music,Harrisburg,,live
+2026-07-08,157,July Music Series at Reservoir Park — Gospel Night,Reservoir Park Bandshell,"Monday, July 13, 2026",music,Harrisburg,,expired
 2026-07-08,158,July Music Series at Reservoir Park — Jazz Under the Stars ft. Najee,Reservoir Park Bandshell,"Sunday, July 19, 2026",music,Harrisburg,,live
 2026-07-08,159,July Music Series at Reservoir Park — Latin Afro/Soul Night ft. Lakeside,Reservoir Park Bandshell,"Sunday, July 26, 2026",music,Harrisburg,,live
 2026-07-08,160,Tiny Park Concert Series — Sons of Pitches,Coronet Park,"Friday, July 10, 2026",music,Harrisburg,,expired
@@ -144,3 +144,11 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-07-10,175,Flower Festival at Cherry Crest Adventure Farm,Cherry Crest Adventure Farm,"Saturday, September 5, 2026",family,Ronks,,draft
 2026-07-10,176,Bird-in-Hand Hot Air Balloon Festival,Bird-in-Hand Event Field,"September 25–26, 2026",festival,Bird-in-Hand,,draft
 2026-07-10,177,Upper Allen Township Fall Festival,Winding Hill Park North,"Friday, September 25, 2026",community,Mechanicsburg,,draft
+2026-07-15,66,MLB All-Star Game 2026 — Philadelphia,Citizens Bank Park,"Tuesday, July 14, 2026",community,Philadelphia,,expired
+2026-07-15,178,Saturday in the Park — Springettsbury Township,Springettsbury Township Park,"Saturday, August 2, 2026",family,York,,live
+2026-07-15,179,Servant Stage: Joseph and the Amazing Technicolor Dreamcoat (Preview),Historic Ephrata Cloister — Amphitheater,"Wednesday, July 29, 2026",heritage,Ephrata,,live
+2026-07-15,180,Olde Time Festival — Lisburn Community Fire Company,Lisburn Community Fire Company Fairgrounds,"August 5–8, 2026",festival,Mechanicsburg,,draft
+2026-07-15,181,Cumberland Valley Fly Fishing & Outdoor Festival,TCO Boiling Springs & Children's Lake Park,"August 8–9, 2026",outdoors,Boiling Springs,,live
+2026-07-15,182,Music in the Gardens — Hershey Gardens,Hershey Gardens — PNC Terrace,"Thursday, August 13, 2026",music,Hershey,,draft
+2026-07-15,183,Run Wild for Wildwood 5K/10K,Wildwood Park,"Saturday, August 22, 2026",outdoors,Harrisburg,,live
+2026-07-15,184,Brew Kids on the Block,Gift Horse Brewing Company,"Saturday, August 22, 2026",food,York,,live
