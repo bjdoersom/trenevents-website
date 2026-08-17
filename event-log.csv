@@ -23,7 +23,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 ,38,Yorktoberfest,Bob Hoffman Fields,"Sunday, October 18, 2026",food,,,live
 ,39,York Halloween Parade,Downtown York,"Friday, October 30, 2026",community,,,live
 ,40,Harrisburg Senators Fireworks Night,FNB Field,"Friday, July 3, 2026",family,Harrisburg,,expired
-,41,Slightly Stoopid at Riverfront Park,Riverfront Park,"Thursday, August 13, 2026",music,Harrisburg,,live
+,41,Slightly Stoopid at Riverfront Park,Riverfront Park,"Thursday, August 13, 2026",music,Harrisburg,,expired
 ,42,Dauphin County CulturalFest,Riverfront Park,August 2026 (date TBA),festival,Harrisburg,,live
 ,43,Fort Hunter Day,Fort Hunter Mansion & Park,"Sunday, September 20, 2026",community,Harrisburg,,live
 ,44,Kipona Festival,Riverfront Park,"September 5–7, 2026",festival,Harrisburg,,live
@@ -55,7 +55,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-06-12,82,Fat Bat Summer Blues Festival,Fat Bat Brewing Company,"Saturday, July 25, 2026",music,Hanover,,live
 2026-06-13,86,America 250 Celebration at Penn Medicine Park,Penn Medicine Park (Lancaster Stormers),"Friday, July 3, 2026",festival,Lancaster,,expired
 2026-06-13,87,Lititz Fourth of July Celebration,Lititz Springs Park,"Saturday, July 4, 2026",family,Lititz,,expired
-2026-06-13,88,Gettysburg Bluegrass Festival (August),Granite Hill Camping Resort,"August 13–16, 2026",music,Gettysburg,,live
+2026-06-13,88,Gettysburg Bluegrass Festival (August),Granite Hill Camping Resort,"August 13–16, 2026",music,Gettysburg,,expired
 2026-06-17,90,Snack Town Street Fair,Hanover Center Square,"Saturday, July 11, 2026",community,Hanover,,expired
 2026-06-17,91,Carlisle Chrysler Nationals,Carlisle Fairgrounds,"Friday–Sunday, July 10–12, 2026",community,Carlisle,,expired
 2026-06-17,92,Greenfield Summer Concert Series,Greenfield — Calvin G. High Pavilion Lawn,"Thursday, July 16 & Thursday, August 13, 2026",music,Lancaster,,split
@@ -108,7 +108,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-07-03,139,Mechanicsburg Community Day,Soldiers & Sailors Memorial Park,"Saturday, August 1, 2026",family,Mechanicsburg,,draft
 2026-07-03,140,Dear Soldier Boy — Bird-in-Hand Stage,Bird-in-Hand Stage,"Opens Tuesday, August 4, 2026",heritage,Bird-in-Hand,,live
 2026-07-03,141,Lititz recCenter Triathlon & Bike/Run,Lititz recCenter,"Sunday, August 9, 2026",outdoors,Lititz,,live
-2026-07-03,142,Concerts by the Creek — The Nobles & Improvement Movement,Thomas P. Grater Community Park,"Tuesday, August 11, 2026",music,Ephrata,,draft
+2026-07-03,142,Concerts by the Creek — The Nobles & Improvement Movement,Thomas P. Grater Community Park,"Tuesday, August 11, 2026",music,Ephrata,,expired
 2026-07-03,143,Shrewsbury Kickin' Ash Country Music Bash,Shrewsbury Volunteer Fire Company,"Saturday, August 15, 2026",music,Shrewsbury,,live
 2026-07-03,144,Dogstar at Hershey Theatre,Hershey Theatre,"Tuesday, August 18, 2026",music,Hershey,,live
 2026-07-03,145,The Wiggles: Tree of Wisdom Spectacular,Hershey Theatre,"Wednesday, August 19, 2026",family,Hershey,,live
@@ -130,7 +130,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-07-08,161,Tiny Park Concert Series — Le Ghast,Coronet Park,"Friday, August 14, 2026",music,Harrisburg,,live
 2026-07-08,162,Tiny Park Concert Series — RalphReal & The Family Jam,Coronet Park,"Friday, September 11, 2026",music,Harrisburg,,live
 2026-07-08,163,Greenfield Summer Concert Series — Sounds of Summer,Greenfield — Calvin G. High Pavilion Lawn,"Thursday, July 16, 2026",music,Lancaster,,live
-2026-07-08,164,Greenfield Summer Concert Series — '70s Live!,Greenfield — Calvin G. High Pavilion Lawn,"Thursday, August 13, 2026",music,Lancaster,,live
+2026-07-08,164,Greenfield Summer Concert Series — '70s Live!,Greenfield — Calvin G. High Pavilion Lawn,"Thursday, August 13, 2026",music,Lancaster,,expired
 2026-07-10,165,South Mountain Fair,South Mountain Fairgrounds,"July 21–25, 2026",festival,Biglerville,,live
 2026-07-10,166,Gettysburg National 19th Century Base Ball Festival,Schroeder Family Farm,"July 18–19, 2026",heritage,Gettysburg,,expired
 2026-07-10,167,Peach Festival at Hollabaugh Bros.,Hollabaugh Bros. Fruit Farm & Market,"August 8–9, 2026",food,Biglerville,,live
@@ -149,6 +149,6 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-07-15,179,Servant Stage: Joseph and the Amazing Technicolor Dreamcoat (Preview),Historic Ephrata Cloister — Amphitheater,"Wednesday, July 29, 2026",heritage,Ephrata,,expired
 2026-07-15,180,Olde Time Festival — Lisburn Community Fire Company,Lisburn Community Fire Company Fairgrounds,"August 5–8, 2026",festival,Mechanicsburg,,expired
 2026-07-15,181,Cumberland Valley Fly Fishing & Outdoor Festival,TCO Boiling Springs & Children's Lake Park,"August 8–9, 2026",outdoors,Boiling Springs,,live
-2026-07-15,182,Music in the Gardens — Hershey Gardens,Hershey Gardens — PNC Terrace,"Thursday, August 13, 2026",music,Hershey,,draft
+2026-07-15,182,Music in the Gardens — Hershey Gardens,Hershey Gardens — PNC Terrace,"Thursday, August 13, 2026",music,Hershey,,expired
 2026-07-15,183,Run Wild for Wildwood 5K/10K,Wildwood Park,"Saturday, August 22, 2026",outdoors,Harrisburg,,live
 2026-07-15,184,Brew Kids on the Block,Gift Horse Brewing Company,"Saturday, August 22, 2026",food,York,,live
