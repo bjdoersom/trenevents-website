@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrenEvents — Events in York, Lancaster & Harrisburg PA</title>
+<meta name="description" content="Find the best local events in York PA, Lancaster PA, and Harrisburg PA. Festivals, live music, family events, food & drink, and more — updated regularly.">
+<meta name="keywords" content="events in York PA, Lancaster PA events, Harrisburg events, things to do in York Pennsylvania, South Central PA events, Pennsylvania festivals, York county events, Lancaster county events">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://trenevents.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="TrenEvents — Events in York, Lancaster & Harrisburg PA">
+<meta property="og:description" content="Find the best local events in York PA, Lancaster PA, and Harrisburg PA. Festivals, live music, family events, food & drink, and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trenevents.com/">
+<meta property="og:image" content="https://trenevents.com/og-image.png">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TrenEvents — Events in York, Lancaster & Harrisburg PA">
+<meta name="twitter:description" content="Find the best local events in York PA, Lancaster PA, and Harrisburg PA.">
+<meta name="twitter:image" content="https://trenevents.com/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "TrenEvents",
+  "url": "https://trenevents.com/",
+  "description": "Local events in York PA, Lancaster PA, and Harrisburg PA",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://trenevents.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "TrenEvents",
+  "url": "https://trenevents.com/",
+  "description": "Local events guide for York PA, Lancaster PA, and Harrisburg PA",
+  "areaServed": [
+    { "@type": "City", "name": "York", "containedInPlace": { "@type": "State", "name": "Pennsylvania" } },
+    { "@type": "City", "name": "Lancaster", "containedInPlace": { "@type": "State", "name": "Pennsylvania" } },
+    { "@type": "City", "name": "Harrisburg", "containedInPlace": { "@type": "State", "name": "Pennsylvania" } }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF5A5F;
+    --coral-dark: #e04a4f;
+    --navy: #1a1a2e;
+    --warm-white: #F8F6F2;
+    --card-bg: #ffffff;
+    --muted: #717171;
+    --border: #e8e4de;
+    --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    --shadow-hover: 0 8px 32px rgba(0,0,0,0.14);
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--navy); min-height: 100vh; }
+
+  nav { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; padding: 0 5%; }
+  .nav-inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 72px; max-width: 1280px; margin: 0 auto; gap: 16px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 600; color: var(--coral); letter-spacing: -0.5px; cursor: pointer; }
+  .logo span { color: var(--navy); }
+  .search-bar { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 40px; padding: 8px 8px 8px 20px; gap: 12px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: box-shadow 0.2s; width: 420px; max-width: 100%; }
+  .search-bar:focus-within { box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-color: #ccc; }
+  .search-bar input { border: none; outline: none; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; color: var(--navy); background: transparent; width: 100%; }
+  .search-bar input::placeholder { color: var(--muted); }
+  .search-btn { background: var(--coral); border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; transition: background 0.2s, transform 0.1s; flex-shrink: 0; }
+  .search-btn:hover { background: var(--coral-dark); transform: scale(1.05); }
+  .nav-right { display: flex; align-items: center; gap: 8px; justify-self: end; }
+  .nav-link { font-size: 0.875rem; font-weight: 500; color: var(--navy); text-decoration: none; padding: 8px 14px; border-radius: 24px; transition: background 0.15s; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+  .nav-link:hover { background: #f2ede8; }
+  .nav-link.active { color: var(--coral); font-weight: 600; }
+  .saved-count { background: var(--coral); color: white; font-size: 0.7rem; font-weight: 700; border-radius: 50%; width: 18px; height: 18px; display: none; align-items: center; justify-content: center; }
+  .saved-count.visible { display: flex; }
+
+  .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 72px 5% 90px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(255,90,95,0.18) 0%, transparent 70%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,166,153,0.12) 0%, transparent 70%); border-radius: 50%; }
+  .hero-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); margin-bottom: 14px; position: relative; z-index: 1; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 600; line-height: 1.15; margin-bottom: 14px; position: relative; z-index: 1; }
+  .hero h1 em { font-style: italic; color: var(--coral); }
+  .hero p { color: rgba(255,255,255,0.6); font-size: 1rem; font-weight: 300; position: relative; z-index: 1; }
+
+  .filters-wrap { background: white; border-bottom: 1px solid var(--border); padding: 0 5%; position: sticky; top: 72px; z-index: 90; }
+  .filters { display: flex; justify-content: center; max-width: 1280px; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  .filter-tab { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 22px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.18s; color: var(--muted); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; }
+  .filter-tab .icon { font-size: 1.25rem; }
+  .filter-tab:hover { color: var(--navy); border-bottom-color: #ccc; }
+  .filter-tab.active { color: var(--navy); border-bottom-color: var(--navy); font-weight: 600; }
+
+  .main { max-width: 1280px; margin: 0 auto; padding: 40px 5% 80px; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; }
+  .section-count { font-size: 0.85rem; color: var(--muted); }
+
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 28px; }
+  .events-grid.featured-view { grid-template-columns: repeat(auto-fit, minmax(290px, 340px)); justify-content: center; }
+
+  .event-card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.22s ease, box-shadow 0.22s ease; cursor: pointer; display: flex; flex-direction: column; animation: fadeUp 0.5s ease both; }
+  .event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .events-grid.no-anim .event-card { animation: none; }
+
+  .card-img-placeholder { width: 100%; height: 195px; display: flex; align-items: center; justify-content: center; font-size: 3.4rem; flex-shrink: 0; position: relative; }
+  /* If you use a real image instead of an emoji, add an <img> tag inside .card-img-placeholder */
+  .card-img-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .card-badge { position: absolute; bottom: 10px; right: 10px; background: white; color: var(--navy); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; z-index: 1; }
+  .card-badge-featured { background: #f5c518; color: #1a1a2e; }
+  .card-save { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: transform 0.15s; z-index: 2; backdrop-filter: blur(4px); }
+  .card-save:hover { transform: scale(1.18); }
+
+  .card-body { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; }
+  .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .card-category { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--coral); }
+  .card-price-pill { font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 12px; }
+  .free { background: #e8f5e9; color: #2e7d32; }
+  .paid { background: #fff3e0; color: #e65100; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1.08rem; font-weight: 600; line-height: 1.3; margin-bottom: 10px; color: var(--navy); }
+  .card-details { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; flex: 1; }
+  .card-detail { display: flex; align-items: center; gap: 7px; font-size: 0.81rem; color: var(--muted); }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); }
+  .card-date-tag { font-size: 0.78rem; font-weight: 600; color: var(--navy); }
+  .card-spots { font-size: 0.75rem; color: var(--muted); }
+  .card-spots.few { color: var(--coral); font-weight: 600; }
+
+  .event-card.featured { grid-column: span 2; flex-direction: row; }
+  .event-card.featured .card-img-placeholder { width: 280px; height: auto; min-height: 230px; flex-shrink: 0; font-size: 4.5rem; }
+  @media (max-width: 720px) { .event-card.featured { grid-column: span 1; flex-direction: column; } .event-card.featured .card-img-placeholder { width: 100%; height: 195px; font-size: 3.4rem; } }
+
+  .empty-state { text-align: center; padding: 80px 20px; color: var(--muted); }
+  .empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+  .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+  .hidden { display: none !important; }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 500; display: flex; align-items: flex-end; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; backdrop-filter: blur(3px); }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal { background: white; width: 100%; max-width: 700px; max-height: 92vh; border-radius: 24px 24px 0 0; overflow-y: auto; transform: translateY(60px); transition: transform 0.3s cubic-bezier(.34,1.2,.64,1); display: flex; flex-direction: column; }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-hero { width: 100%; height: 240px; display: flex; align-items: center; justify-content: center; font-size: 5rem; flex-shrink: 0; position: relative; }
+  .modal-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+  .modal-close { position: absolute; top: 16px; left: 16px; background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 38px; height: 38px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: transform 0.15s; z-index: 2; }
+  .modal-close:hover { transform: scale(1.1); }
+  .modal-save-btn { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.92); border: none; border-radius: 50%; width: 38px; height: 38px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); transition: transform 0.15s; z-index: 2; }
+  .modal-save-btn:hover { transform: scale(1.1); }
+  .modal-save-btn.saved { color: var(--coral); }
+  .modal-body { padding: 26px 32px 40px; }
+  .modal-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 4px; gap: 12px; }
+  .modal-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 600; line-height: 1.2; margin-bottom: 6px; }
+  .modal-price-badge { font-size: 0.8rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-top: 4px; }
+  .modal-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  .modal-info-item { background: var(--warm-white); border-radius: 12px; padding: 13px 15px; }
+  .modal-info-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .modal-info-value { font-size: 0.92rem; font-weight: 500; color: var(--navy); line-height: 1.3; }
+  .modal-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .modal-section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .modal-description { font-size: 0.93rem; line-height: 1.75; color: #444; margin-bottom: 22px; }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .modal-tag { background: var(--warm-white); border: 1px solid var(--border); border-radius: 20px; padding: 5px 13px; font-size: 0.78rem; color: var(--navy); font-weight: 500; }
+  .modal-cta { display: flex; gap: 12px; }
+  .btn-primary { flex: 1; background: var(--coral); color: white; border: none; border-radius: 12px; padding: 14px 24px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.1s; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+  .btn-primary:hover { background: var(--coral-dark); transform: translateY(-1px); }
+  .btn-secondary { background: white; color: var(--navy); border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 20px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s; }
+  .btn-secondary:hover { border-color: var(--navy); }
+
+  .saved-panel { position: fixed; top: 0; right: 0; width: 380px; height: 100vh; background: white; z-index: 400; box-shadow: -8px 0 40px rgba(0,0,0,0.12); transform: translateX(100%); transition: transform 0.3s cubic-bezier(.34,1.1,.64,1); display: flex; flex-direction: column; }
+  .saved-panel.open { transform: translateX(0); }
+  .saved-panel-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 390; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+  .saved-panel-backdrop.open { opacity: 1; pointer-events: all; }
+  .saved-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 28px 24px 20px; border-bottom: 1px solid var(--border); }
+  .saved-panel-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; }
+  .panel-close { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--muted); padding: 4px; line-height: 1; transition: color 0.15s; }
+  .panel-close:hover { color: var(--navy); }
+  .saved-panel-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+  .saved-empty { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .saved-empty .saved-empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .saved-empty p { font-size: 0.9rem; line-height: 1.6; }
+  .saved-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: opacity 0.15s; }
+  .saved-item:hover { opacity: 0.75; }
+  .saved-item:last-child { border-bottom: none; }
+  .saved-item-emoji { width: 52px; height: 52px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; overflow: hidden; }
+  .saved-item-emoji img { width: 100%; height: 100%; object-fit: cover; }
+  .saved-item-info { flex: 1; min-width: 0; }
+  .saved-item-title { font-weight: 600; font-size: 0.88rem; line-height: 1.3; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .saved-item-date { font-size: 0.78rem; color: var(--muted); }
+  .saved-item-remove { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted); padding: 6px; transition: color 0.15s; flex-shrink: 0; }
+  .saved-item-remove:hover { color: var(--coral); }
+  .saved-item-bell { background: none; border: none; font-size: 1rem; cursor: pointer; padding: 6px; transition: transform 0.15s; flex-shrink: 0; line-height: 1; }
+  .saved-item-bell:hover { transform: scale(1.2); }
+  .reminder-note { font-size: 0.72rem; color: var(--muted); text-align: center; padding: 12px 0 4px; }
+
+  /* Draft section — admin only */
+  .draft-section { display: none; border-top: 3px solid #f59e0b; background: #fffbeb; padding: 32px 5% 48px; }
+  .draft-section.visible { display: block; }
+  .draft-header { max-width: 1280px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .draft-header-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: #92400e; }
+  .draft-header-sub { font-size: 0.82rem; color: #b45309; }
+  .draft-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+  .draft-card-wrap { position: relative; }
+  .draft-needs-image { position: absolute; top: 12px; left: 12px; z-index: 3; background: #f59e0b; color: white; font-size: 0.68rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .draft-card-wrap .event-card { opacity: 0.82; border: 2px dashed #f59e0b; }
+
+  .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--navy); color: white; padding: 12px 22px; border-radius: 30px; font-size: 0.88rem; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 600; white-space: nowrap; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* Eat Nearby */
+
+  footer { border-top: 1px solid var(--border); padding: 32px 5%; background: white; }
+  .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--coral); font-weight: 600; }
+  .footer-logo span { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 400; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--navy); }
+
+  /* Auth nav */
+  .auth-btn { font-size: 0.875rem; font-weight: 500; color: var(--navy); background: none; border: 1.5px solid var(--border); padding: 7px 14px; border-radius: 24px; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+  .auth-btn:hover { background: #f2ede8; }
+  .user-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; cursor: pointer; border: 2px solid var(--coral); display: block; }
+  .user-avatar-initial { width: 32px; height: 32px; border-radius: 50%; background: var(--coral); color: white; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid var(--coral); }
+  .auth-dropdown { position: relative; display: inline-block; }
+  .auth-dropdown-menu { position: absolute; right: 0; top: 42px; background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-hover); padding: 8px; min-width: 160px; display: none; z-index: 200; }
+  .auth-dropdown-menu.open { display: block; }
+  .auth-dropdown-name { font-size: 0.78rem; color: var(--muted); padding: 6px 10px 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .auth-dropdown-item { display: block; width: 100%; text-align: left; font-size: 0.875rem; font-weight: 500; color: var(--navy); background: none; border: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+  .auth-dropdown-item:hover { background: #f2ede8; }
+
+  /* Sign-in modal */
+  .signin-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .signin-overlay.open { opacity: 1; pointer-events: all; }
+  .signin-card { background: white; border-radius: 20px; padding: 36px 32px; max-width: 380px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: translateY(16px); transition: transform 0.2s; }
+  .signin-overlay.open .signin-card { transform: translateY(0); }
+  .signin-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .signin-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .signin-subtitle { font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+  .btn-google { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px 20px; background: white; border: 1.5px solid var(--border); border-radius: 12px; font-size: 0.9rem; font-weight: 500; color: var(--navy); cursor: pointer; transition: background 0.15s, box-shadow 0.15s; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; }
+  .btn-google:hover { background: #f8f8f8; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .signin-close-btn { font-size: 0.82rem; color: var(--muted); cursor: pointer; background: none; border: none; text-decoration: underline; font-family: 'DM Sans', sans-serif; }
+  .signin-close-btn:hover { color: var(--navy); }
+  .signin-error { font-size: 0.82rem; color: var(--coral); margin-top: 10px; min-height: 18px; }
+
+  /* Calendar & Share */
+  .modal-utility-row { display: flex; gap: 10px; margin-top: 10px; }
+  .btn-cal-wrap { flex: 1; position: relative; }
+  .btn-cal-trigger { width: 100%; background: white; color: var(--navy); border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 16px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .btn-cal-trigger:hover { border-color: var(--navy); }
+  .cal-menu { position: absolute; bottom: calc(100% + 8px); left: 0; right: 0; background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-hover); padding: 6px; z-index: 10; display: none; min-width: 180px; }
+  .cal-menu.open { display: block; }
+  .cal-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 0.88rem; font-weight: 500; color: var(--navy); cursor: pointer; transition: background 0.15s; text-decoration: none; border: none; background: none; width: 100%; font-family: 'DM Sans', sans-serif; text-align: left; }
+  .cal-item:hover { background: var(--warm-white); }
+  .btn-share-trigger { background: white; color: var(--navy); border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 18px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .btn-share-trigger:hover { border-color: var(--navy); }
+
+  /* Mobile */
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 7px 5px; border-radius: 8px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; flex-shrink: 0; }
+  .hamburger:hover { background: #f2ede8; }
+  .ham-bar { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+  .hamburger.is-open .ham-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.is-open .ham-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.is-open .ham-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; border-bottom: 1.5px solid var(--border); z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
+  .mobile-menu.open { display: flex; }
+  .mob-link { display: flex; align-items: center; padding: 15px 24px; font-size: 0.95rem; font-weight: 500; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--border); transition: background 0.15s; cursor: pointer; user-select: none; }
+  .mob-link:last-child { border-bottom: none; }
+  .mob-link:hover { background: var(--warm-white); }
+  .mob-link.active { color: var(--coral); font-weight: 600; }
+  .mob-link-icon { margin-right: 12px; font-size: 1.1rem; }
+
+  /* ── MOBILE OVERRIDES ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .nav-inner { display: flex; flex-wrap: wrap; align-items: center; height: auto; padding: 10px 0; gap: 10px; }
+    .logo { font-size: 1.35rem; flex: 1; cursor: pointer; }
+    .search-bar { order: 4; flex: 0 0 100%; width: 100%; max-width: none; }
+    .nav-right { display: none; }
+    .hamburger { display: flex; }
+    .filters-wrap { top: 108px; }
+    .filters { justify-content: flex-start; padding-left: 4px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .section-title { font-size: 1.2rem; }
+    .section-count { font-size: 0.8rem; }
+    .hero { padding: 36px 5% 44px; }
+    .hero p { font-size: 0.9rem; }
+    .main { padding: 20px 4% 60px; }
+    .events-grid { gap: 16px; }
+    .modal-body { padding: 20px 18px 32px; }
+    .modal-title { font-size: 1.35rem; }
+    .modal-info-grid { grid-template-columns: 1fr; }
+    .saved-panel { width: 100%; }
+    .modal-cta { flex-direction: column; }
+    .modal-utility-row { flex-direction: column; }
+    .btn-share-trigger { justify-content: center; }
+    .cal-menu { bottom: auto; top: calc(100% + 8px); }
+    .hero-eyebrow { font-size: 0.65rem; }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .search-bar { width: 240px; }
+  }
+  @view-transition { navigation: auto; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="showAll()">Tren<span>Events</span></div>
+    <div class="search-bar">
+      <svg width="15" height="15" fill="none" stroke="#717171" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search Lancaster, York & Harrisburg events…" oninput="filterAndRender()">
+      <button class="search-btn"><svg width="13" height="13" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </div>
+    <div class="nav-right">
+      <span class="nav-link active" onclick="showAll()">Events</span>
+      <a class="nav-link" href="/submit-event/">Submit an Event</a>
+      <a class="nav-link" href="/work-with-us/">For Event Hosts</a>
+      <span class="nav-link" onclick="openSavedPanel()">♡ Saved <span class="saved-count" id="savedCount">0</span></span>
+      <div id="authNav"><button class="auth-btn" onclick="showSignInModal()">Sign In</button></div>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleHamburger()">
+      <span class="ham-bar"></span><span class="ham-bar"></span><span class="ham-bar"></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="mob-link active" onclick="showAll();closeHamburger()"><span class="mob-link-icon">🗓</span>Events</span>
+    <a class="mob-link" href="/submit-event/"><span class="mob-link-icon">✉️</span>Submit an Event</a>
+    <a class="mob-link" href="/work-with-us/"><span class="mob-link-icon">🎟</span>For Event Hosts</a>
+    <span class="mob-link" onclick="openSavedPanel();closeHamburger()"><span class="mob-link-icon">♡</span>Saved Events <span class="saved-count" id="savedCountMob" style="margin-left:6px;display:none;"></span></span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">📍 Lancaster · York · Harrisburg · Philadelphia · Elizabethtown · Mechanicsburg</div>
+  <h1>South-Central PA's best<br>events, <em>all in one place</em></h1>
+  <p>Festivals, live music, food fairs, family fun — covering Lancaster, York, Harrisburg, Philadelphia & beyond.</p>
+</div>
+
+<!--
+  ============================================================
+  FILTER TABS
+  To add a new category tab:
+    1. Add a new <div class="filter-tab"> below
+    2. Use the same category string in your event's "category" field
+  ============================================================
+-->
+<div class="filters-wrap">
+  <div class="filters">
+    <div class="filter-tab active" onclick="setFilter('all',this)"><span class="icon">✦</span>All Events</div>
+    <div class="filter-tab" onclick="setFilter('new',this)"><span class="icon">🆕</span>New</div>
+    <div class="filter-tab" onclick="setFilter('featured',this)"><span class="icon">⭐</span>Featured</div>
+    <div class="filter-tab" onclick="setFilter('free',this)"><span class="icon">🆓</span>Free</div>
+    <div class="filter-tab" onclick="setFilter('festival',this)"><span class="icon">🎪</span>Festivals</div>
+    <div class="filter-tab" onclick="setFilter('music',this)"><span class="icon">🎶</span>Live Music</div>
+    <div class="filter-tab" onclick="setFilter('family',this)"><span class="icon">🏡</span>Family</div>
+    <div class="filter-tab" onclick="setFilter('food',this)"><span class="icon">🍽️</span>Food & Drink</div>
+    <div class="filter-tab" onclick="setFilter('outdoors',this)"><span class="icon">🌿</span>Outdoors</div>
+    <div class="filter-tab" onclick="setFilter('community',this)"><span class="icon">🤝</span>Community</div>
+    <div class="filter-tab" onclick="setFilter('school',this)"><span class="icon">🏫</span>School & Arts</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-header">
+    <h2 class="section-title">Upcoming in South-Central PA</h2>
+    <span class="section-count" id="eventCount"></span>
+  </div>
+  <div class="events-grid" id="eventsGrid"></div>
+  <div id="emptyState" class="empty-state hidden">
+    <div class="empty-icon">🔍</div>
+    <h3>No events found</h3>
+    <p>Try a different search or category.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBackdrop(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hero" id="modalHero">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-save-btn" id="modalSaveBtn" onclick="toggleSaveFromModal()">♡</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-category" id="modalCategory"></div>
+      <div class="modal-top">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-price-badge" id="modalPriceBadge"></div>
+      </div>
+      <div class="modal-info-grid" id="modalInfoGrid"></div>
+      <hr class="modal-divider">
+      <div class="modal-section-label">About this event</div>
+      <div class="modal-description" id="modalDescription"></div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-cta">
+        <a class="btn-primary" id="modalCtaBtn" href="#" target="_blank" rel="noopener"></a>
+        <button class="btn-secondary" onclick="closeModal()">Close</button>
+      </div>
+      <div class="modal-utility-row">
+        <div class="btn-cal-wrap">
+          <button class="btn-cal-trigger" onclick="toggleCalMenu(event)">📅 Add to Calendar</button>
+          <div class="cal-menu" id="calMenu">
+            <a class="cal-item" id="calGoogle" href="#" target="_blank" rel="noopener">🗓 Google Calendar</a>
+            <button class="cal-item" onclick="downloadICS()">🍎 Apple Calendar</button>
+            <button class="cal-item" onclick="downloadICS()">📧 Outlook</button>
+          </div>
+        </div>
+        <div style="position:relative">
+          <button class="btn-share-trigger" onclick="toggleShareMenu(event)">↗ Share Event</button>
+          <div class="cal-menu" id="shareMenu">
+            <button class="cal-item" onclick="copyEventLink()">🔗 Copy Link</button>
+            <button class="cal-item" onclick="nativeShareEvent()">📱 Share via...</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="saved-panel-backdrop" id="savedBackdrop" onclick="closeSavedPanel()"></div>
+<div class="saved-panel" id="savedPanel">
+  <div class="saved-panel-header">
+    <span class="saved-panel-title">Saved Events</span>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="toggleAllRemindersBtn" onclick="toggleAllReminders()" title="Toggle all reminders" style="display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.75rem;color:var(--muted);cursor:pointer;"></button>
+      <button class="panel-close" onclick="closeSavedPanel()">✕</button>
+    </div>
+  </div>
+  <div class="saved-panel-body" id="savedPanelBody"></div>
+</div>
+
+<div class="signin-overlay" id="signinOverlay" onclick="closeSignInModal(event)">
+  <div class="signin-card">
+    <div class="signin-icon">♡</div>
+    <div class="signin-title">Save your events</div>
+    <div class="signin-subtitle">Sign in so your saved events show up on any device you use.</div>
+    <button class="btn-google" onclick="signInWithGoogle()">
+      <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continue with Google
+    </button>
+    <div id="signinError" class="signin-error"></div>
+    <button class="signin-close-btn" onclick="closeSignInModal()">Maybe later</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Draft section — only visible to admin -->
+<div id="draftSection" class="draft-section">
+  <div class="draft-header">
+    <div>
+      <div class="draft-header-title">📋 Draft Events — Needs Image</div>
+      <div class="draft-header-sub" id="draftSubtitle">These events are hidden from visitors until you add an image.</div>
+    </div>
+    <div class="draft-header-sub" id="draftCount" style="font-weight:600;"></div>
+  </div>
+  <div class="draft-grid" id="draftGrid"></div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">TrenEvents <span>· Lancaster · York · Harrisburg, PA · Updated weekly</span></div>
+    <div class="footer-links">
+      <a href="/submit-event/">Submit an Event</a>
+      <a href="/work-with-us/">For Event Hosts</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/image-credits">Photo Credits</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+
+/* ============================================================
+   ✏️  HOW TO EDIT EVENTS
+   ============================================================
+   All events live in the EVENTS array below.
+   Each event is one object { } separated by a comma.
+
+   REQUIRED FIELDS (you must fill these in):
+   ─────────────────────────────────────────
+   id          → Unique number. Increment by 1 for each new event. Never reuse.
+   sortDate    → "YYYY-MM-DD" format. Used for date ordering. For multi-day events, use the START date.
+   category    → Must match one of the filter tab values (all lowercase):
+                 "festival" | "music" | "family" | "food" | "outdoors" | "community" | "heritage"
+                 (To add a new category, also add a filter tab in the HTML above.)
+   title       → Event name shown on the card and modal.
+   price       → Price string shown on the badge, e.g. "Free" or "$20–$40"
+   priceClass  → "free" (green badge) or "paid" (orange badge)
+   date        → Human-readable date shown in modal, e.g. "Saturday, June 20, 2026"
+   time        → Time string, e.g. "7:30 PM" or "12:00–6:00 PM"
+   duration    → e.g. "2 hours" or "3-day event"
+   location    → Venue name
+   address     → Full street address
+   description → Paragraph shown in the modal detail view.
+   tags        → Array of short strings, e.g. ["Free","All Ages","Outdoor"]
+   ctaLabel    → Button text, e.g. "Buy Tickets" or "Learn More"
+   ctaUrl      → Full URL for the button, e.g. "https://example.com"
+
+   CARD DISPLAY FIELDS (pick one style per event):
+   ─────────────────────────────────────────────────
+   OPTION A — Emoji + color gradient (easiest):
+     emoji     → Any emoji, e.g. "🎶"
+     bg        → CSS gradient, e.g. "linear-gradient(135deg,#1a1a2e,#0f3460)"
+
+   OPTION B — Real photo:
+     image     → URL to an image, e.g. "https://example.com/photo.jpg"
+                 OR a local file path, e.g. "images/my-event.jpg"
+     bg        → Still needed as a fallback color if image fails to load.
+     (Leave emoji blank or omit it when using a real image.)
+
+   OPTIONAL FIELDS:
+   ─────────────────────────────────────────────────
+   featured    → true  → makes the card span 2 columns (use for 1 hero event at most)
+   badge       → Text for a small label on the card image, e.g. "⭐ Featured" or "New"
+   spotsLabel  → Short text in card footer, e.g. "Tickets selling fast" or "Free admission"
+   spotsUrgent → true  → shows spotsLabel in red (for low availability warnings)
+   addedDate   → "YYYY-MM-DD" — the date this event block was first created. Used as a
+                 fallback for the "New" filter tab (see publishedDate below).
+   draft       → true  → hides the event from the site completely. Use this while you're
+                 still tracking down a real photo. Omit this field entirely (don't set it
+                 to false) once the event is ready to go live.
+   publishedDate → "YYYY-MM-DD" — set this to TODAY'S date whenever you remove `draft: true`
+                 from an event to make it live. This is what the "New" filter tab checks —
+                 without it, "New" falls back to addedDate, which may already be old if the
+                 event sat as a draft for a while before you found a photo for it.
+
+   ADDING A NEW EVENT:
+   ─────────────────────────────────────────────────
+   1. Copy an existing event block from { ... },
+   2. Paste it at the bottom of the array (before the closing ] )
+   3. Change the id to the next number
+   4. Fill in all the fields
+   5. Save the file — done!
+
+   REMOVING AN EVENT:
+   ─────────────────────────────────────────────────
+   Delete the entire { ... }, block for that event (including the trailing comma).
+
+   CHANGING A PHOTO:
+   ─────────────────────────────────────────────────
+   Set `image` to a URL or local file path.
+   Remove or leave `emoji` blank.
+
+   PUBLISHING A DRAFT EVENT (making it go live):
+   ─────────────────────────────────────────────────
+   1. Set `image` to the photo's URL or local file path.
+   2. Delete the `draft: true,` line for that event.
+   3. Add (or update) `publishedDate: "YYYY-MM-DD",` with today's date.
+      This makes it show up under the "New" filter tab, even if the event
+      was originally added as a draft a while ago.
+
+   ============================================================ */
+
+const EVENTS = [
+
+
+  /* ── YORK, PA EVENTS ──────────────────────────────────────── */
+
+
+
+  
+
+  /* ── HARRISBURG, PA EVENTS ─────────────────────────────────── */
+
+  
+  
+  
+
+
+  
+
+  {
+    id: 27,
+    sortDate:    "2026-09-18",
+    category:    "festival",
+    categories:  ["festival","food","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🏈",
+    image:       "https://www.kitchenkettle.com/Uploads/images/Pumpkin_Scarecrows_Tailgate.jpg",
+    bg:          "linear-gradient(135deg,#bc4749,#d4a017)",
+    title:       "Tailgate Festival at Kitchen Kettle Village",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Sept 18–19, 2026",
+    time:        "All day",
+    duration:    "2-day festival",
+    location:    "Kitchen Kettle Village",
+    address:     "3529 Old Philadelphia Pike, Intercourse, PA 17534",
+    spotsLabel:  "Free admission",
+    spotsUrgent: false,
+    description: "Kitchen Kettle Village's oldest and most beloved festival, the Tailgate Festival is a two-day autumn celebration of food, fall flavors, and community. Sample tailgate-style bites — salsas, pickles, burgers, dips, and PA Dutch comfort food — while browsing artisan vendors and enjoying live music. Set amid the charming shops and harvest decorations of Intercourse's iconic shopping village, it's the perfect kickoff to fall in Lancaster County.",
+    tags:        ["Lancaster","Free","Food Festival","Fall","Live Music","Family","PA Dutch Country","Intercourse"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://www.kitchenkettle.com/events/tailgating-festival.asp"
+  },
+
+  {
+    id: 28,
+    sortDate:    "2026-09-26",
+    category:    "food",
+    categories:  ["food","family","festival"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍩",
+    image:       "https://cherrycrestfarm.com/wp-content/uploads/2024/02/festival-cider-donut.jpg",
+    bg:          "linear-gradient(135deg,#e85d04,#faa307)",
+    title:       "Cider Donut Fall Festival at Cherry Crest",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Saturday, September 26, 2026",
+    time:        "All day",
+    duration:    "Full day",
+    location:    "Cherry Crest Adventure Farm",
+    address:     "150 Cherry Hill Road, Ronks, PA 17572",
+    spotsLabel:  "Book ahead",
+    spotsUrgent: false,
+    description: "Fall in Lancaster County doesn't get more classic than this. Cherry Crest's Cider Donut Fall Festival is a celebration of everything the season does best — fresh-pressed apple cider, warm cider donuts, creative donut creations, pumpkins, farm activities, and crisp autumn air. A beloved annual tradition for families and anyone who takes their fall seriously. Arrive hungry.",
+    tags:        ["Lancaster","Fall","Cider Donuts","Family","Farm","Autumn","Food","Seasonal"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://cherrycrestfarm.com/things-to-do/festivals/"
+  },
+
+  {
+    id: 29,
+    sortDate:    "2026-10-03",
+    category:    "community",
+    categories:  ["community","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🌾",
+    image:       "https://cherrycrestfarm.com/wp-content/uploads/2024/02/festival-cider-donut.jpg",
+    bg:          "linear-gradient(135deg,#606c38,#283618)",
+    title:       "Landis Valley Museum Harvest Days",
+    price:       "Paid",
+    priceClass:  "paid",
+    date:        "October 3–4, 2026",
+    time:        "10:00 AM – 5:00 PM",
+    duration:    "2-day event",
+    location:    "Landis Valley Village & Farm Museum",
+    address:     "2451 Kissel Hill Rd, Lancaster, PA 17601",
+    spotsLabel:  "All ages welcome",
+    spotsUrgent: false,
+    description: "Step back into Pennsylvania German rural life at Landis Valley Museum's annual Harvest Days. One of Lancaster County's premier heritage events, it brings the 19th-century village to life with costumed interpreters demonstrating traditional crafts, tinsmithing, blacksmithing, broom-making, spinning, and more. Horse-drawn wagon rides, seasonal food, and artisan vendors round out the weekend. A meaningful, hands-on history experience for all ages.",
+    tags:        ["Lancaster","Heritage","History","PA German","Living History","Crafts","Family","Outdoor","Seasonal"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://landisvalleymuseum.org/"
+  },
+
+  /* ── YORK, PA ─────────────────────────────────────────────── */
+
+
+
+
+
+  
+
+  
+
+  {
+    id: 36,
+    sortDate:    "2026-09-17",
+    category:    "outdoors",
+    categories:  ["outdoors","community","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🦅",
+    image:       "https://hornfarmcenter.org/wp-content/uploads/2025/06/pawpaw-festival-2024-attendees-1024x683.jpg",
+    bg:          "linear-gradient(135deg,#1b4332,#52b788)",
+    title:       "Wild & Uncommon Weekend (Pawpaw Fest)",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Sept 17–20, 2026",
+    time:        "Various times",
+    duration:    "4-day event",
+    location:    "Horn Farm Center & Lower Susquehanna Riverlands",
+    address:     "4945 Horn Rd, York, PA 17406",
+    spotsLabel:  "Most programs free",
+    spotsUrgent: false,
+    description: "Wild & Uncommon Weekend is a four-day celebration of local food and connection with nature in the Lower Susquehanna Riverlands. The centerpiece is the York County Pawpaw Festival at Horn Farm Center — now in its 22nd year — featuring the unique, tropical-flavored native fruit alongside elderberries, figs, kiwiberries, and other wild and regenerative crops. Expect food vendors, artisans, guided nature tours, farm activities, talks, tastings, and more. A uniquely York County experience.",
+    tags:        ["Free","York County","Outdoors","Pawpaw Festival","Nature","Local Food","Family","Artisans","Annual Tradition"],
+    ctaLabel:    "View Programs",
+    ctaUrl:      "https://hornfarmcenter.org/pawpawfest/"
+  },
+
+  {
+    id: 37,
+    sortDate:    "2026-09-19",
+    category:    "family",
+    categories:  ["family","festival"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🧚",
+    image:       "https://static.wixstatic.com/media/f973d1_3d7b91fe97c74601a512057a952df0ca%7Emv2.png/v1/fit/w_2500,h_1330,al_c/f973d1_3d7b91fe97c74601a512057a952df0ca%7Emv2.png",
+    bg:          "linear-gradient(135deg,#9d4edd,#f72585)",
+    title:       "Enchanted Fairy Festival",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Saturday, September 19, 2026",
+    time:        "All day",
+    duration:    "Full day",
+    location:    "Springettsbury Township Park",
+    address:     "2700 N Sherman St, York, PA 17406",
+    spotsLabel:  "5,000+ expected",
+    spotsUrgent: false,
+    description: "Springettsbury Park transforms into a magical world at the Enchanted Fairy Festival, York's beloved family festival now in its seventh year. Four enchanted lands — Fairy Land, Wonderland, Pirate Cove, and the Bounce Zone — come alive with performance artists, immersive art installations, live music, animals, and whimsical characters. Two stages run all-day entertainment. Perfect for families with young children and anyone who believes in a little magic.",
+    tags:        ["York","Family","Festival","Magic","Kids","Outdoor","Performance Art","Animals","Weekend"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://www.enchantedfairyfestival.com/"
+  },
+
+  {
+    id: 38,
+    sortDate:    "2026-10-18",
+    category:    "food",
+    categories:  ["food","festival","community","music"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍺",
+    image:       "https://festivalnet.com/festival-community/media/373052/fno_event_61401_image.jpeg",
+    bg:          "linear-gradient(135deg,#7f4f24,#d4a017)",
+    title:       "Yorktoberfest",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Sunday, October 18, 2026",
+    time:        "All day",
+    duration:    "Full day",
+    location:    "Bob Hoffman Fields",
+    address:     "York, PA 17403",
+    spotsLabel:  "Free admission",
+    spotsUrgent: false,
+    description: "York celebrates fall the Bavarian way at Yorktoberfest — a lively, family-friendly festival featuring a variety of craft libations, unique local vendors, fun fall food, and live music at Bob Hoffman Fields. Inspired by the classic German tradition, Yorktoberfest puts a York County spin on the celebration with local flavor and community spirit. A great reason to get out and enjoy autumn in South-Central PA.",
+    tags:        ["Free","York","Oktoberfest","Craft Beer","Live Music","Food","Fall","Community","Family Friendly","Vendors"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://www.yorkpa.org/events/annual-events/festivals/"
+  },
+
+  {
+    id: 39,
+    sortDate:    "2026-10-30",
+    category:    "community",
+    categories:  ["community","family","festival"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎃",
+    image:       "https://static.wixstatic.com/media/718370_a99ca214163e40dea212cd7188ecc605~mv2.jpg/v1/fill/w_1200,h_800,al_c,q_85/718370_a99ca214163e40dea212cd7188ecc605~mv2.jpg",
+    bg:          "linear-gradient(135deg,#7f2704,#d05a00)",
+    title:       "York Halloween Parade",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Friday, October 30, 2026",
+    time:        "Evening",
+    duration:    "~2 hours",
+    location:    "Downtown York",
+    address:     "York, PA 17401",
+    spotsLabel:  "Free · Line the streets early",
+    spotsUrgent: false,
+    description: "One of Pennsylvania's most beloved Halloween traditions, the York Halloween Parade draws tens of thousands of spectators to downtown York each year. Floats, marching bands, costumed groups, and community organizations fill the streets in a spirited procession through York's historic downtown. Arrive early to grab a good spot along the route. The city comes alive for this iconic autumn celebration that the whole family will remember.",
+    tags:        ["Free","York","Halloween","Parade","Family","Community","Downtown","Annual Tradition"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://www.yorkhalloweenparade.com/"
+  },
+
+  /* ── HARRISBURG, PA ───────────────────────────────────────── */
+
+
+
+  
+
+  {
+    id: 43,
+    sortDate:    "2026-09-20",
+    category:    "community",
+    categories:  ["community","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🏛️",
+    image:       "https://forthunter.org/wp-content/uploads/2023/01/Main-Photo.jpg",
+    bg:          "linear-gradient(135deg,#7f4f24,#dda15e)",
+    title:       "Fort Hunter Day",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Sunday, September 20, 2026",
+    time:        "All day",
+    duration:    "Full day",
+    location:    "Fort Hunter Mansion & Park",
+    address:     "5300 N Front St, Harrisburg, PA 17110",
+    spotsLabel:  "Free · All ages",
+    spotsUrgent: false,
+    description: "Fort Hunter Day is an annual celebration at Fort Hunter Mansion & Park, one of the most scenic historic properties along the Susquehanna River. Costumed interpreters, period demonstrations, artisan vendors, children's activities, and tours of the historic mansion make for a memorable late-summer day. Set on beautifully preserved grounds north of the city, Fort Hunter is one of Harrisburg's hidden gems — and Fort Hunter Day is the perfect day to discover it.",
+    tags:        ["Free","Harrisburg","Heritage","History","Living History","Family","Outdoor","Mansion","Scenic"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://forthunter.org/"
+  },
+
+  
+
+  {
+    id: 48,
+    sortDate:    "2026-10-24",
+    category:    "family",
+    categories:  ["family","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🐴",
+    image:       "https://panational.org/wp-content/uploads/2026/05/PNHS-ProgramCover-Draft-042926-1024x802.jpg",
+    bg:          "linear-gradient(135deg,#1b4332,#d4a017)",
+    title:       "Pennsylvania National Horse Show",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Late October 2026",
+    time:        "Various sessions",
+    duration:    "Multi-day event",
+    location:    "PA Farm Show Complex",
+    address:     "2300 N Cameron St, Harrisburg, PA 17110",
+    spotsLabel:  "World-class competition",
+    spotsUrgent: false,
+    description: "One of the most prestigious hunter/jumper horse shows in the country, the Pennsylvania National Horse Show brings world-class equestrian competition to the Farm Show Complex in Harrisburg. Watch Olympic-caliber athletes and their horses compete in hunter, jumper, and equitation events across multiple rings. Whether you're a lifelong equestrian fan or simply curious, the athleticism and pageantry on display are genuinely jaw-dropping.",
+    tags:        ["Harrisburg","Horse Show","Equestrian","Competition","Family","Indoor","Ticketed","Annual","October"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://www.panhs.org/"
+  },
+
+  {
+    id: 49,
+    sortDate:    "2026-09-26",
+    category:    "family",
+    categories:  ["family","festival","outdoors"],
+    featured:    false,
+    badge:       "Runs Oct–Nov",
+    emoji:       "🎃",
+    image:       "https://content.presspage.com/uploads/1795/c7614043-3f18-40db-8920-e0922ad418b4/800_hersheypark-hersheyparkhalloween-frontgate-family.jpg?10000",
+    bg:          "linear-gradient(135deg,#3d1c02,#e85d04)",
+    title:       "Hersheypark in the Dark",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Sept 26 – Nov 1, 2026 (weekends)",
+    time:        "Varies by date",
+    duration:    "Select weekends",
+    location:    "Hersheypark",
+    address:     "100 W Hersheypark Dr, Hershey, PA 17033",
+    spotsLabel:  "Buy ahead for discounts",
+    spotsUrgent: false,
+    description: "Hersheypark transforms into a spooky fall wonderland for Hersheypark in the Dark — one of Pennsylvania's most popular Halloween events. Running select weekends from late September through November 1, it features the full lineup of Hersheypark rides and attractions dressed up with Halloween theming, scare zones, live entertainment, seasonal treats, and more. Family-friendly during the day with a slightly scarier experience after dark. The sweetest Halloween event in Central PA.",
+    tags:        ["Hershey","Harrisburg Area","Halloween","Theme Park","Family","Fall","Rides","Ticketed","Seasonal","Weekend"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://www.hersheypark.com/play/events/hersheypark-in-the-dark/"
+  }
+
+  /* ── NEW EVENTS ADDED 2026-06-10 ─────────────────────────── */
+
+  ,
+
+  
+
+  
+
+  
+
+  /* ── NEW EVENTS ADDED 2026-06-10 (second batch) ────────────── */
+
+
+  
+
+  /* ── NEW EVENTS ADDED 2026-06-12 ─────────────────────────── */
+
+
+  
+
+  
+
+  
+
+  
+
+
+  /* ── NEW EVENTS ADDED 2026-06-13 ─────────────────────────── */
+
+
+
+
+  /* ── NEW EVENTS ADDED 2026-06-17 ─────────────────────────── */
+
+
+
+
+
+  
+
+  {
+    id: 95,
+    addedDate:   "2026-06-17",
+    sortDate:    "2026-09-22",
+    category:    "festival",
+    categories:  ["festival","community","family"],
+    featured:    false,
+    badge:       "Lancaster County",
+    emoji:       "🎡",
+    image:       "https://lancasterpa.com/wp-content/uploads/2023/01/Fair-Event-Ephrata-Fair.png",
+    bg:          "linear-gradient(135deg,#5c3a00,#d4a017)",
+    title:       "Ephrata Fair",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "September 22–26, 2026",
+    time:        "All day",
+    duration:    "5-day street fair",
+    location:    "Downtown Ephrata",
+    address:     "19 S State St, Ephrata, PA 17522",
+    spotsLabel:  "PA's largest street fair",
+    spotsUrgent: false,
+    description: "The Ephrata Fair is the largest street fair in Pennsylvania, taking over several blocks of downtown Ephrata each fall with rides, games, live entertainment, food vendors, craft exhibitors, and the festive energy of a classic community fair. Free to attend and five days long, this beloved Lancaster County tradition draws visitors from across the region every September.",
+    tags:        ["Free","Lancaster County","Ephrata","Street Fair","Family","Rides","Food","Community","Annual","Fall"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://lancasterpa.com/events-calendar/ephrata-fair/"
+  },
+
+  {
+    id: 96,
+    addedDate:   "2026-06-17",
+    sortDate:    "2026-09-27",
+    category:    "music",
+    categories:  ["music","outdoors"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎸",
+    image:       "https://www.harrisburgu.edu/wp-content/uploads/jason-isbell-river-1.jpg",
+    bg:          "linear-gradient(135deg,#1a3c34,#e07a5f)",
+    title:       "Jason Isbell & the 400 Unit at Riverfront Park",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Sunday, September 27, 2026",
+    time:        "8:00 PM",
+    duration:    "Evening concert",
+    location:    "Riverfront Park",
+    address:     "Riverfront Park, Harrisburg, PA 17101",
+    spotsLabel:  "General admission · No reentry",
+    spotsUrgent: false,
+    description: "Four-time Grammy Award winner Jason Isbell and his band the 400 Unit bring their Fall 2026 tour to Harrisburg's Riverfront Park. Widely regarded as one of the most important voices in American roots music, Isbell delivers emotionally powerful performances built on deeply personal songwriting and masterful musicianship. A late-September evening along the Susquehanna with one of Americana's finest.",
+    tags:        ["Harrisburg","Ticketed","Americana","Roots Rock","Outdoor","Riverfront","Jason Isbell","September"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://www.ticketmaster.com/jason-isbell-and-the-400-unit-harrisburg-pennsylvania-09-27-2026/event/020064BA9B3186C3"
+  },
+
+  /* ── NEW EVENTS ADDED 2026-06-20 ─────────────────────────── */
+
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  {
+    id: 115,
+    addedDate:   "2026-06-24",
+    sortDate:    "2026-09-25",
+    category:    "music",
+    categories:  ["music"],
+    featured:    false,
+    badge:       "York",
+    emoji:       "🎸",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#2c3e50,#3498db)",
+    title:       "Everclear at Appell Center",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Friday, September 25, 2026",
+    time:        "7:30 PM",
+    duration:    "Evening concert",
+    location:    "Appell Center — Strand Theatre",
+    address:     "50 North George Street, York, PA 17401",
+    spotsLabel:  "Indie rock icons",
+    spotsUrgent: false,
+    description: "90s alternative rock favorites Everclear bring their tour to the intimate Strand Theatre stage at York's Appell Center. With hits like 'Santa Monica,' 'Father of Mine,' 'Wonderful,' and 'Everything to Everyone,' Everclear's catalog captures the anthems of a generation. An up-close evening with one of alternative rock's most enduring acts in one of York County's premier performance venues.",
+    tags:        ["York","Ticketed","Alternative Rock","90s","Indoor","Strand Theatre","Appell Center","Live Music","Nostalgia"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://appellcenter.org/shows-and-tickets/"
+  },
+
+  
+
+  
+
+  
+
+  
+
+  {
+    id: 126,
+    addedDate:   "2026-06-27",
+    sortDate:    "2026-10-10",
+    category:    "food",
+    categories:  ["food","music","community","festival"],
+    featured:    false,
+    badge:       "Hershey",
+    emoji:       "🍫",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#3e1c00,#c8860a)",
+    title:       "Choctoberfest — Hershey's Fall Chocolate Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Saturday, October 10, 2026",
+    time:        "All day",
+    duration:    "Full day",
+    location:    "ChocolateTowne Square Park",
+    address:     "Downtown Hershey, PA 17033",
+    spotsLabel:  "Free · Beer, chocolate & bands",
+    spotsUrgent: false,
+    description: "Choctoberfest is the Downtown Hershey Association's signature fall street party — a free celebration of bands, beers, bites, and chocolate in the heart of the sweetest town on Earth. Three rotating live bands perform throughout the day alongside a beer and wine garden, food trucks, local artisans, and of course, plenty of chocolate. The perfect way to kick off fall in Central Pennsylvania.",
+    tags:        ["Free","Hershey","Dauphin County","Chocolate","Beer","Live Music","Food","Fall Festival","Street Party","Outdoor"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://www.downtownhershey.com/"
+  }
+
+  ,
+
+  /* ── LANCASTER / LITITZ AREA ──────────────────────────────── */
+
+  
+
+  /* ── DILLSBURG / CUMBERLAND / PERRY COUNTY ───────────────────── */
+
+  {
+    id: 128,
+    addedDate:   "2026-07-01",
+    sortDate:    "2026-10-12",
+    category:    "heritage",
+    categories:  ["heritage","family","festival"],
+    featured:    false,
+    badge:       "111th Annual",
+    emoji:       "🎡",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#bc6c25,#dda15e)",
+    title:       "111th Annual Dillsburg Farmers Fair",
+    price:       "Free admission (pay per ride/activity)",
+    priceClass:  "free",
+    date:        "October 12–17, 2026",
+    time:        "Evenings, gates open daily",
+    duration:    "6-day fair",
+    location:    "Dillsburg Community Hall & Grounds",
+    address:     "109 S Baltimore St, Dillsburg, PA 17019",
+    spotsLabel:  "Parade caps off the week",
+    spotsUrgent: false,
+    description: "Dillsburg's Farmers Fair has been a Northern York County tradition for over a century, filling the town with carnival rides, a queen pageant, antique car and tractor shows, arts & crafts exhibits, and live music all week. The week wraps up with the Fantastic Parade through downtown on Saturday evening.",
+    tags:        ["Heritage","Family Friendly","Carnival Rides","Parade","Northern York County"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.dillsburgfarmersfair.org/"
+  },
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  /* ── YORK AREA ────────────────────────────────────────────── */
+
+  
+
+  
+  {
+    id: 147,
+    addedDate:   "2026-07-08",
+    sortDate:    "2026-09-22",
+    category:    "heritage",
+    categories:  ["heritage","festival","food"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎡",
+    image:       "https://static.wixstatic.com/media/8c4277_8a0197a171384c0b89c6388d3276745a~mv2.jpg",
+    bg:          "linear-gradient(135deg,#d4a017,#7c4a02)",
+    title:       "Ephrata Fair",
+    price:       "Free admission (rides/food extra)",
+    priceClass:  "free",
+    date:        "Tuesday–Saturday, September 22–26, 2026",
+    time:        "Varies by day; Midway opens 11 AM daily",
+    duration:    "5-day event",
+    location:    "Uptown Ephrata",
+    address:     "Main St & State St, Ephrata, PA 17522",
+    spotsLabel:  "Free admission, no tickets needed",
+    spotsUrgent: false,
+    description: "Now in its 107th year, the Ephrata Fair bills itself as the largest street fair in Pennsylvania. Uptown Ephrata fills with a midway, rides, and live entertainment while Tent City hosts agricultural exhibits, livestock judging, and a petting zoo. Don't miss Wednesday's parade and Saturday's Scrapple Eating Contest.",
+    tags:        ["Street Fair","Agriculture","Rides","Live Music","Family"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.ephratafair.org/"
+  },
+  {
+    id: 148,
+    addedDate:   "2026-07-08",
+    sortDate:    "2026-09-19",
+    category:    "community",
+    categories:  ["community","festival","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎨",
+    image:       "http://www.newfreedomheritage.org/wp-content/gallery/new-freedom-fest/rw100_3411.jpg",
+    bg:          "linear-gradient(135deg,#e07a5f,#3d5a80)",
+    title:       "New Freedom Fest",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Saturday, September 19, 2026",
+    time:        "10 AM – 4 PM",
+    duration:    "6 hours",
+    location:    "Freedom Green",
+    address:     "New Freedom Train Station area, New Freedom, PA 17349",
+    spotsLabel:  "Free parking and admission",
+    spotsUrgent: false,
+    description: "This old-time \"festival of small town life\" fills historic New Freedom with fine art and craft vendors, kids' games, a pet parade, and live entertainment at the Freedom Green. Ride the Northern Central Railway's vintage train, then head to the Oktoberfest Tent for bratwurst and local brews.",
+    tags:        ["Arts & Crafts","Pet Parade","Live Music","Train Rides","Family"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "http://www.newfreedomheritage.org/?page_id=35"
+  },
+  
+  
+  
+  
+  {
+    id: 153,
+    addedDate:   "2026-07-08",
+    sortDate:    "2026-09-30",
+    category:    "heritage",
+    categories:  ["heritage","festival","food","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎪",
+    image:       "https://newhollandfair.org/wp-content/uploads/Ferris-Wheel-2022.webp",
+    bg:          "linear-gradient(135deg,#e9c46a,#6a4c2c)",
+    title:       "New Holland Farmers Fair",
+    price:       "Free admission",
+    priceClass:  "free",
+    date:        "Wednesday–Saturday, September 30 – October 3, 2026",
+    time:        "Midway hours vary by day",
+    duration:    "4-day event",
+    location:    "Downtown New Holland",
+    address:     "E & W Main St, New Holland, PA 17557",
+    spotsLabel:  "Free admission, paid parking nearby",
+    spotsUrgent: false,
+    description: "For over 90 years, New Holland's streets have hosted this celebration of farm and community life. Enjoy a midway packed with food, games, and rides alongside livestock shows, exhibits, and the beloved Spectacle of Bands Parade on Wednesday evening.",
+    tags:        ["Farm Fair","Parade","Livestock","Rides","Family"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://newhollandfair.org/"
+  },
+  {
+    id: 154,
+    addedDate:   "2026-07-08",
+    sortDate:    "2026-09-26",
+    category:    "community",
+    categories:  ["community","festival"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍂",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#d97904,#6b3e26)",
+    title:       "Glen Rock Fall Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Saturday, September 26, 2026",
+    time:        "10 AM onward",
+    duration:    "Half-day event",
+    location:    "Glen Rock",
+    address:     "5400 Fair School Rd, Glen Rock, PA 17327",
+    spotsLabel:  "Free admission",
+    spotsUrgent: false,
+    description: "This community festival brings fall fun to Glen Rock with local vendors, food, and family-friendly activities — a great low-key way to spend a September Saturday in southern York County.",
+    tags:        ["Fall Festival","Community","Family","York County"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://allevents.in/glen-rock-pa/festivals"
+  },
+  
+  {
+    id: 156,
+    addedDate:   "2026-07-08",
+    sortDate:    "2026-10-03",
+    category:    "festival",
+    categories:  ["festival","food","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎡",
+    image:       "https://shrewsburyfire.com/beninin/2022/07/244432385_4302787376441965_3705016414566372907_n.jpg",
+    bg:          "linear-gradient(135deg,#ff7b00,#9d0208)",
+    title:       "Shrewsbury Fireman's Fall Fest",
+    price:       "Free admission",
+    priceClass:  "free",
+    date:        "Saturday, October 3, 2026",
+    time:        "10 AM – 4 PM",
+    duration:    "6 hours",
+    location:    "Shrewsbury Volunteer Fire Company",
+    address:     "21 West Forrest Ave, Shrewsbury, PA 17361",
+    spotsLabel:  "Free admission, food/games priced individually",
+    spotsUrgent: false,
+    description: "The Shrewsbury Volunteer Fire Company hosts a free fall festival with carnival games, a beer garden featuring local craft breweries, a lineup of food trucks, and live entertainment on the band stand stage — all supporting the local fire company.",
+    tags:        ["Fall Festival","Food Trucks","Beer Garden","Fundraiser"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://shrewsburyfire.com/fall-fest/"
+  },
+    
+  
+  
+  
+
+  /* ── ADAMS / CUMBERLAND / LANCASTER — ADDED 2026-07-10 ──────── */
+
+  
+
+
+  
+
+  
+
+  
+
+  {
+    id: 170,
+    addedDate:   "2026-07-10",
+    sortDate:    "2026-09-18",
+    category:    "food",
+    categories:  ["food","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍵",
+    image:       "https://lh3.googleusercontent.com/sitesv/AA5AbUBA0H1lKu-A1OYbTJOu3ALU5ZtOikd2uohMkW0EsFvgwmETRhpPCNT_DRq-zIt5UqjxXO7DbXOP_cGMp1E1qOWAfFQRaz_PsBLmb7Lvq4Ycn-M7-NoS7gFI_f9vmVzwt59BOzOVTuzsuQXswIKKaMNUwZqa6CqQFruvRs24O-XL3ChCDoX1Iveg_NbcemjxId9yMusHbohsOYKKW_clfMRsYKe28-o2pGRRHCvmAtM=w1280",
+    bg:          "linear-gradient(135deg,#2a9d8f,#e9c46a)",
+    title:       "Pennsylvania Tea Festival",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "September 18–19, 2026",
+    time:        "9:00 AM – 4:00 PM",
+    duration:    "2-day festival",
+    location:    "The Rosemary House & Sweet Remembrances Tea Room",
+    address:     "120 S Market St, Mechanicsburg, PA 17055",
+    spotsLabel:  "9th annual — Pennsylvania's only tea festival",
+    spotsUrgent: false,
+    description: "Pennsylvania's only festival dedicated exclusively to tea fills the fragrant herb gardens of downtown Mechanicsburg's Rosemary House for a weekend of guided tastings, lectures, live music, and garden tours. General admission includes a souvenir tasting cup and tote bag, with optional add-on tea pairing workshops.",
+    tags:        ["Mechanicsburg","Tea","Herb Gardens","Tastings","Live Music"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://www.teafestpa.com/"
+  },
+
+  {
+    id: 171,
+    addedDate:   "2026-07-10",
+    sortDate:    "2026-09-19",
+    category:    "school",
+    categories:  ["school","heritage","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎨",
+    image:       "https://lh3.googleusercontent.com/sitesv/AA5AbUBecCEgxGAFQiJA3TyACEM1HqL72DUVzkA97AplpKpf44YIrZ_yQb0R5PCJUD8iEi9BzsNGoKxFEyxzUNyfX32opZtqRVZcVniQpsnsrgTEs07xAY909yE-4jTZsAzwplN4fDSB9y5WBATtoeUlW5CQG5JaPWxYVuDs_awQ7YTUIjtZ18zOB4RsvL6LtdxekoWDz6slbpDUPtvP4afKeS8Aj3VCaKWYQY23PmLx4TE=w1280",
+    bg:          "linear-gradient(135deg,#e63946,#457b9d)",
+    title:       "Hummelstown Arts Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Saturday, September 19, 2026",
+    time:        "9:00 AM – 4:00 PM",
+    duration:    "7 hours",
+    location:    "Historic Downtown Hummelstown",
+    address:     "E & W Main St, Hummelstown, PA 17036",
+    spotsLabel:  "44th annual — 150+ juried artists",
+    spotsUrgent: false,
+    description: "More than 150 juried artists line East and West Main Street for Hummelstown's annual Arts Festival, with a food court, children's area, and free entertainment throughout the day. Proceeds benefit the Robert M. Nisley Memorial Scholarship for Lower Dauphin seniors pursuing visual or performing arts.",
+    tags:        ["Hummelstown","Arts","Free","Juried Artists","Dauphin County"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://www.hummelstownartsfest.com/"
+  },
+
+  {
+    id: 172,
+    addedDate:   "2026-07-10",
+    sortDate:    "2026-09-19",
+    category:    "heritage",
+    categories:  ["heritage","food","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🇮🇹",
+    image:       "https://images.squarespace-cdn.com/content/v1/685ef443cadcf77eacb892b9/1783001210526-FDBTQMSTCMM64PP3IFSV/723118175_987420807439560_1465783171248579938_n.jpg",
+    bg:          "linear-gradient(135deg,#008C45,#CD212A)",
+    title:       "L'Italia Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Saturday, September 19, 2026",
+    time:        "10:00 AM – 5:00 PM",
+    duration:    "7 hours",
+    location:    "Downtown Lititz (E. Main Street)",
+    address:     "E Main St between Cedar St & Cherry Ln, Lititz, PA 17543",
+    spotsLabel:  "Free · ~20,000 guests expected",
+    spotsUrgent: false,
+    description: "Lititz's L'Italia Festival returns for its 5th year with authentic Italian food, classic cars, crafts, and music filling a new stretch of East Main Street. A kid-zone offers face-painting, Italian storytelling, and dancing, while the free, family-friendly event has grown into one of the region's biggest cultural celebrations.",
+    tags:        ["Lititz","Italian","Food","Cars","Free","Family"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://lititzpa.com/events/litalia-festival-2026"
+  },
+
+  {
+    id: 174,
+    addedDate:   "2026-07-10",
+    sortDate:    "2026-09-26",
+    category:    "food",
+    categories:  ["food","music"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍺",
+    image:       "https://lititzcraftbeerfest.com/wp-content/uploads/2025-65-scaled.jpg",
+    bg:          "linear-gradient(135deg,#6a4c93,#f2a541)",
+    title:       "Lititz Craft Beer Fest",
+    price:       "Ticketed",
+    priceClass:  "paid",
+    date:        "Saturday, September 26, 2026",
+    time:        "3:00 – 6:00 PM",
+    duration:    "3 hours",
+    location:    "TAIT",
+    address:     "401 W Lincoln Ave, Lititz, PA 17543",
+    spotsLabel:  "12th annual charity fundraiser",
+    spotsUrgent: false,
+    description: "Sample 180+ pours from up to 75 craft breweries and cideries at this charity beer festival benefiting Lititz AMBUCS, which has raised more than $800,000 for local causes since 2014. Expect live music, local food trucks, and the finals of the homebrew competition, all in one outdoor session.",
+    tags:        ["Lititz","Craft Beer","Charity","Live Music","Food Trucks"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://lititzcraftbeerfest.com/"
+  },
+
+  {
+    id: 176,
+    addedDate:   "2026-07-10",
+    sortDate:    "2026-09-25",
+    category:    "festival",
+    categories:  ["festival","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎈",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#ff6b35,#f7c59f)",
+    title:       "Bird-in-Hand Hot Air Balloon Festival",
+    price:       "From $25/day",
+    priceClass:  "paid",
+    date:        "September 25–26, 2026",
+    time:        "3:00 – 10:00 PM",
+    duration:    "2-day festival",
+    location:    "Bird-in-Hand Event Field",
+    address:     "320 North Ronks Road, Bird-in-Hand, PA 17505",
+    spotsLabel:  "Grand Finale balloon glow at 8:30 PM",
+    spotsUrgent: false,
+    description: "Balloon Shows USA brings a brand-new hot air balloon festival to Bird-in-Hand, with tethered balloon rides, a laser light show, food trucks serving bacon-themed specials, and a Kids Zone with bounce houses. The Grand Finale each night pairs a synchronized balloon glow with a laser display starting at 8:30 PM.",
+    tags:        ["Bird-in-Hand","Hot Air Balloons","Laser Show","Food Trucks","Family"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://bird-in-hand.com/event/bird-in-hand-hot-air-balloon-festival/"
+  },
+
+  {
+    id: 177,
+    addedDate:   "2026-07-10",
+    sortDate:    "2026-09-25",
+    category:    "community",
+    categories:  ["community","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍂",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#bc6c25,#606c38)",
+    title:       "Upper Allen Township Fall Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Friday, September 25, 2026",
+    time:        "4:00 PM onward",
+    duration:    "Evening event",
+    location:    "Winding Hill Park North",
+    address:     "901 E Winding Hill Rd, Mechanicsburg, PA 17055",
+    spotsLabel:  "Free · 4th annual",
+    spotsUrgent: false,
+    description: "Upper Allen Township's free Fall Festival brings live music, food trucks, games, and hayrides to Winding Hill Park North for a family evening kicking off the season. Now in its 4th year, it's grown into one of Cumberland County's favorite community fall gatherings.",
+    tags:        ["Mechanicsburg","Cumberland County","Free","Family","Fall"],
+    ctaLabel:    "Event Info",
+    ctaUrl:      "https://uatwp.org/fall_festival_2026/index.php"
+  },{
+    id: 188,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-09-26",
+    category:    "heritage",
+    categories:  ["heritage","food","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍎",
+    image:       "https://applefestivalnewcumberlandpa.com/wp-content/uploads/2017/08/caroumel-apples.jpg",
+    bg:          "linear-gradient(135deg,#b45309,#dc2626)",
+    title:       "New Cumberland Apple Festival",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "September 26, 2026",
+    time:        "9:00 AM – 4:00 PM",
+    duration:    "7 hours",
+    location:    "New Cumberland Borough Park",
+    address:     "501 Front Street, New Cumberland, PA 17070",
+    spotsLabel:  "~12,000 attendees each year",
+    spotsUrgent: false,
+    description: "This beloved Cumberland County tradition fills Borough Park with more than 70 food vendors and 200 craft vendors, plus pony rides, live music, a chicken BBQ and pig roast, and apple treats galore.",
+    tags:        ["Apples","Festival","Family","Free"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://applefestivalnewcumberlandpa.com/"
+  },{
+    id: 189,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-09-26",
+    category:    "food",
+    categories:  ["food","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍢",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#ea580c,#facc15)",
+    title:       "Sip Shop & Sizzle Fall Fest",
+    price:       "Free entry",
+    priceClass:  "free",
+    date:        "September 26, 2026",
+    time:        "9:00 AM – 4:00 PM",
+    duration:    "7 hours",
+    location:    "Soldiers & Sailors Memorial Park",
+    address:     "Soldiers & Sailors Memorial Park, Mechanicsburg, PA 17055",
+    spotsLabel:  "Vendor tastings & shopping",
+    spotsUrgent: false,
+    description: "A fall market from The Mercantile featuring local food and drink tastings, shopping from area makers, and sizzling seasonal bites in Mechanicsburg.",
+    tags:        ["Food","Shopping","Community","Fall"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.facebook.com/32ndStreetMercantile/"
+  },{
+    id: 190,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-10-03",
+    category:    "heritage",
+    categories:  ["heritage","food","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍏",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#dc2626,#16a34a)",
+    title:       "National Apple Harvest Festival",
+    price:       "Paid (children 12 & under free)",
+    priceClass:  "paid",
+    date:        "October 3–4 & 10–11, 2026",
+    time:        "Sat 8am–6pm, Sun 8am–5pm",
+    duration:    "4 days (two weekends)",
+    location:    "South Mountain Fairgrounds",
+    address:     "615 Narrows Road, Biglerville, PA 17307",
+    spotsLabel:  "Two weekends",
+    spotsUrgent: false,
+    description: "More than 50 years running, this Adams County tradition celebrates fall with hundreds of arts and crafts vendors, live music, apple-themed food, antique cars and family activities across two full weekends.",
+    tags:        ["Apples","Crafts","Music","Fall"],
+    ctaLabel:    "Buy Tickets",
+    ctaUrl:      "https://www.appleharvest.com/buy-tickets.html"
+  },{
+    id: 191,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-10-03",
+    category:    "family",
+    categories:  ["family","outdoors"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🌽",
+    image:       "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://storage.googleapis.com/msgsndr/t6PdX0fW71GkO1K4i5JX/media/66c76658570ebe0be9c79488.jpeg",
+    bg:          "linear-gradient(135deg,#ca8a04,#92400e)",
+    title:       "Maple Valley Acres Fall Festival",
+    price:       "$8–$10",
+    priceClass:  "paid",
+    date:        "October 3–4, 2026",
+    time:        "10:00 AM – 6:00 PM",
+    duration:    "2 days",
+    location:    "Maple Valley Acres",
+    address:     "1951 Parkway West, Harrisburg, PA 17112",
+    spotsLabel:  "Children 2 & under free",
+    spotsUrgent: false,
+    description: "This working farm's fifth annual fall festival brings a corn maze, petting zoo, hay wagon and barrel train rides, pony rides, a pumpkin patch and vendor shopping to a Harrisburg-area farm.",
+    tags:        ["Farm","Corn Maze","Pumpkins","Family"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://maplevalleyacres.com/fall-days"
+  },{
+    id: 192,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-10-10",
+    category:    "family",
+    categories:  ["family","outdoors","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🔥",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#f97316,#1e40af)",
+    title:       "Creekfire",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "October 10, 2026",
+    time:        "5:00 PM – 9:00 PM",
+    duration:    "4 hours",
+    location:    "Foundry Park on the Codorus",
+    address:     "Foundry Park, York, PA 17401",
+    spotsLabel:  "Free family event",
+    spotsUrgent: false,
+    description: "York's WeCo District lights up the Codorus Creek with glowing firepits on land and floating in the water, live music, children's activities, s'mores and free hot dogs for kids.",
+    tags:        ["Free","Outdoors","Music","Family"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.york365.com/event/creekfire-2/"
+  },{
+    id: 193,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-10-10",
+    category:    "food",
+    categories:  ["food","heritage","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍫",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#7c2d12,#a16207)",
+    title:       "Lititz Chocolate Walk",
+    price:       "Paid",
+    priceClass:  "paid",
+    date:        "October 10, 2026",
+    time:        "See event map for hours",
+    duration:    "1 day",
+    location:    "Downtown Lititz",
+    address:     "Downtown Lititz, PA 17543",
+    spotsLabel:  "25th anniversary",
+    spotsUrgent: false,
+    description: "Chocoholics converge on downtown Lititz for the 25th annual Chocolate Walk, touring more than 25 shops for mouth-watering chocolate samples from the region's top chefs, bakers and candy makers. Proceeds benefit children's charities.",
+    tags:        ["Chocolate","Shopping","Charity","Anniversary"],
+    ctaLabel:    "Buy Tickets",
+    ctaUrl:      "https://www.lititzchocolatewalk.com/buy-tickets/"
+  },{
+    id: 194,
+    addedDate:   "2026-08-22",
+    sortDate:    "2026-10-18",
+    category:    "food",
+    categories:  ["food","heritage","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🦪",
+    image:       "https://www.yorkhistorycenter.org/wp-content/uploads/Osyter24_76-scaled.jpg",
+    bg:          "linear-gradient(135deg,#0f766e,#78350f)",
+    title:       "Fall Oyster Festival",
+    price:       "Free (food/drinks pay as you go)",
+    priceClass:  "free",
+    date:        "October 18, 2026",
+    time:        "11:00 AM – 4:00 PM",
+    duration:    "5 hours",
+    location:    "Colonial Complex",
+    address:     "157 W. Market St., York, PA 17401",
+    spotsLabel:  "52nd annual",
+    spotsUrgent: false,
+    description: "York County History Center's 52nd Fall Oyster Festival fills the historic Colonial Complex with live music, oysters and fall comfort food, a kids corral and an array of local vendors and artisans.",
+    tags:        ["Oysters","History","Food","Free"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.yorkhistorycenter.org/events/special-events/fall-oyster-festival/"
+  },{
+    id: 197,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-09-19",
+    category:    "community",
+    categories:  ["community","family"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍂",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#c2410c,#78350f)",
+    title:       "St. John's Herr Estate Fall Fest",
+    price:       "Free admission",
+    priceClass:  "free",
+    date:        "Saturday, September 19, 2026",
+    time:        "8:00 AM – 2:00 PM",
+    duration:    "6 hours",
+    location:    "St. John's Herr Estate",
+    address:     "200 Luther Ln, Columbia, PA 17512",
+    spotsLabel:  "Indoor yard sale & bake sale",
+    spotsUrgent: false,
+    description: "This Columbia senior living community hosts its annual Fall Fest with an indoor yard sale, bake sale, homemade food and family-friendly fall activities — a low-key community tradition open to the public.",
+    tags:        ["Community","Bake Sale","Columbia","Free"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.luthercare.org/community/welcome-to-st-johns-herr-estate/"
+  },{
+    id: 198,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-09-20",
+    category:    "community",
+    categories:  ["community","music"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎭",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#0891b2,#4338ca)",
+    title:       "The Best of Steve Martin & Martin Short",
+    price:       "From $120",
+    priceClass:  "paid",
+    date:        "Sunday, September 20, 2026",
+    time:        "4:00 PM & 8:00 PM",
+    duration:    "2 hours",
+    location:    "Hershey Theatre",
+    address:     "15 E Caracas Ave, Hershey, PA 17033",
+    spotsLabel:  "Two shows",
+    spotsUrgent: false,
+    description: "Two of comedy's most influential talents bring their acclaimed live show to Hershey Theatre — a fast-paced night of stand-up, storytelling and good-natured ribbing between two lifelong friends and legends of the craft.",
+    tags:        ["Comedy","Live Show","Hershey Theatre"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://www.hersheyentertainment.com/hershey-theatre/events/steve-martin-and-martin-short/"
+  },{
+    id: 199,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-09-26",
+    category:    "family",
+    categories:  ["family","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎃",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#ea580c,#166534)",
+    title:       "Hueter's Annual Fall Fest",
+    price:       "Free admission",
+    priceClass:  "free",
+    date:        "Saturday, September 26, 2026",
+    time:        "9:00 AM – 2:00 PM",
+    duration:    "5 hours",
+    location:    "Hueter's Greenhouses",
+    address:     "3465 Deininger Rd, York, PA 17406",
+    spotsLabel:  "Handmade vendors & kids crafts",
+    spotsUrgent: false,
+    description: "York's favorite greenhouse hosts its annual Fall Fest with a lineup of local handmade vendors, kids crafts, a marshmallow roast and pumpkins, mums and asters for sale — a cozy autumn tradition for the whole family.",
+    tags:        ["Free","Vendors","Family","York"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://huetersgreenhouses.com/upcoming-activities"
+  },{
+    id: 200,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-09-26",
+    category:    "heritage",
+    categories:  ["heritage","community","food"],
+    featured:    true,
+    badge:       "America's 250th",
+    emoji:       "🔔",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#991b1b,#1e3a8a)",
+    title:       "Lancaster Capital Day",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "Saturday, September 26, 2026",
+    time:        "10:00 AM – 5:00 PM",
+    duration:    "7 hours",
+    location:    "Penn Square",
+    address:     "Penn Square, Lancaster, PA 17603",
+    spotsLabel:  "New annual event, America's 250th",
+    spotsUrgent: false,
+    description: "A brand-new downtown Lancaster festival commemorating the city's brief 1777 stint as the U.S. capital, with local food, vendors, family activities, historical programming and crafts centered on Penn Square as part of America's 250th celebrations.",
+    tags:        ["History","Free","Downtown Lancaster","America250"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://lancastercapitalday.org/"
+  },{
+    id: 201,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-09-29",
+    category:    "music",
+    categories:  ["music"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎸",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#1e3a8a,#7c2d12)",
+    title:       "Kansas at Appell Center",
+    price:       "From $92",
+    priceClass:  "paid",
+    date:        "Tuesday, September 29, 2026",
+    time:        "7:30 PM",
+    duration:    "2 hours",
+    location:    "Strand Theatre, Appell Center for the Performing Arts",
+    address:     "50 N George St, York, PA 17401",
+    spotsLabel:  "Reserved seating",
+    spotsUrgent: false,
+    description: "Classic rock legends Kansas — known for \"Carry On Wayward Son\" and \"Dust in the Wind\" — bring their live show to York's historic Strand Theatre for a night of arena-rock hits in an intimate downtown setting.",
+    tags:        ["Classic Rock","Concert","York","Strand Theatre"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://appellcenter.org/"
+  },{
+    id: 202,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-10-04",
+    category:    "music",
+    categories:  ["music","festival"],
+    featured:    true,
+    badge:       "10,000+ Fans",
+    emoji:       "🤠",
+    image:       "https://static.wixstatic.com/media/701f5f_21be214a15954a87bb23331022e83b35~mv2.jpg",
+    bg:          "linear-gradient(135deg,#b45309,#7c2d12)",
+    title:       "I-105 FallFest Country Music Festival",
+    price:       "$25 GA / $70 VIP",
+    priceClass:  "paid",
+    date:        "Sunday, October 4, 2026",
+    time:        "11:00 AM – 6:00 PM",
+    duration:    "7 hours",
+    location:    "Overlook Community Campus",
+    address:     "301 Golf Dr, Lancaster, PA 17601",
+    spotsLabel:  "Rain or shine, festival seating",
+    spotsUrgent: false,
+    description: "I-105 WIOV's annual country music festival returns to Overlook Park with headliners Tyler Hubbard and Nate Smith, plus Josh Ross, Harper Grace and Trent Becker & The Collective. Bring chairs and blankets for a full day of country music, food and vendors.",
+    tags:        ["Country Music","Festival","Concert","Lancaster"],
+    ctaLabel:    "Buy Tickets",
+    ctaUrl:      "https://www.fallfestconcert.com/buy-tickets"
+  },{
+    id: 203,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-10-10",
+    category:    "outdoors",
+    categories:  ["outdoors","family","food"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🍎",
+    image:       "https://www.brecknockorchard.com/wp-content/uploads/2026/08/IMG_1832.jpg",
+    bg:          "linear-gradient(135deg,#ca8a04,#166534)",
+    title:       "Brecknock Orchard Fall Festival",
+    price:       "Free entry; activities priced individually",
+    priceClass:  "free",
+    date:        "Saturday, October 10, 2026",
+    time:        "9:00 AM – 4:00 PM",
+    duration:    "7 hours",
+    location:    "Brecknock Orchard",
+    address:     "390 Orchard Rd, Mohnton, PA 19540",
+    spotsLabel:  "No entrance fee, pay per activity",
+    spotsUrgent: false,
+    description: "Pick your own pumpkins and apples, take a wagon ride through the orchard, make your own caramel apple, and enjoy fresh apple cider donuts and slushies at this family-run Berks County orchard's fall festival weekend.",
+    tags:        ["Orchard","Pumpkins","Pick Your Own","Family"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.brecknockorchard.com/festivals"
+  },{
+    id: 204,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-10-16",
+    category:    "music",
+    categories:  ["music"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎹",
+    image:       "https://appellcenter.org/wp-content/uploads/FiveForFighting16x92.jpg",
+    bg:          "linear-gradient(135deg,#4338ca,#7c2d12)",
+    title:       "Five for Fighting with String Quartet",
+    price:       "From $45",
+    priceClass:  "paid",
+    date:        "Friday, October 16, 2026",
+    time:        "7:30 PM",
+    duration:    "2 hours",
+    location:    "Capitol Theatre, Appell Center for the Performing Arts",
+    address:     "50 N George St, York, PA 17401",
+    spotsLabel:  "Reserved seating",
+    spotsUrgent: false,
+    description: "Five for Fighting — the voice behind \"100 Years\" and \"Superman (It's Not Easy)\" — performs alongside a live string quartet led by Tony winner Katie Kresek, reimagining his biggest hits with rich orchestral arrangements and stories from his career.",
+    tags:        ["Concert","Orchestral","York","Strand Theatre"],
+    ctaLabel:    "Get Tickets",
+    ctaUrl:      "https://appellcenter.org/show/caplive-five-for-fighting/"
+  },{
+    id: 205,
+    addedDate:   "2026-08-28",
+    sortDate:    "2026-10-17",
+    category:    "heritage",
+    categories:  ["heritage","community"],
+    featured:    false,
+    badge:       "",
+    emoji:       "🎨",
+    image:       "",
+    draft:       true,
+    bg:          "linear-gradient(135deg,#7c3aed,#be185d)",
+    title:       "Lancaster Art Walk",
+    price:       "Free",
+    priceClass:  "free",
+    date:        "October 17–18, 2026",
+    time:        "Sat 10am–5pm, Sun 12pm–4pm",
+    duration:    "2 days",
+    location:    "Gallery Row & Downtown Lancaster",
+    address:     "100 Block N Prince St, Lancaster, PA 17603",
+    spotsLabel:  "Self-guided, free to attend",
+    spotsUrgent: false,
+    description: "Participating galleries, studios, museums and local businesses across downtown Lancaster open their doors for a weekend of art, exhibits, demonstrations and hands-on activities — a self-guided way to explore the city's creative community.",
+    tags:        ["Art","Galleries","Free","Downtown Lancaster"],
+    ctaLabel:    "Learn More",
+    ctaUrl:      "https://www.discoverlancaster.com/events/annual-events/art-walk/"
+  }
+
+  /* ── ADD NEW EVENTS ABOVE THIS LINE ──────────────────────────
+     Copy one of the event blocks above, paste it here,
+     increment the id, and fill in your details.
+     Don't forget the comma after the closing } of the event above yours!
+  ──────────────────────────────────────────────────────────── */
+
+]; // ← Do not delete this closing bracket — updated 2026-08-28
+
+/* ── EVENTS ARRAY VALIDATOR ────────────────────────────────────
+   Runs automatically on every page load.
+   If you delete an event and forget a comma, this will catch it
+   and show a visible error instead of a blank page.
+   ─────────────────────────────────────────────────────────────*/
+(function validateEvents() {
+  const problems = [];
+  for (let i = 0; i < EVENTS.length; i++) {
+    if (!Object.prototype.hasOwnProperty.call(EVENTS, i) || EVENTS[i] == null) {
+      problems.push('Index ' + i);
+    }
+  }
+  if (problems.length) {
+    document.addEventListener('DOMContentLoaded', function() {
+      const banner = document.createElement('div');
+      banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#c0392b;color:#fff;padding:16px 20px;font-family:monospace;font-size:14px;';
+      banner.innerHTML = '<strong>⚠️ EVENTS ARRAY ERROR</strong> — Missing comma when deleting an event created a gap at: ' + problems.join(', ') + '. Fix the comma in index.html and re-save.';
+      document.body.prepend(banner);
+    });
+  }
+})();
+
+/* ============================================================
+   ENGINE — no need to edit below this line
+   ============================================================ */
+
+// ─── Firebase setup ──────────────────────────────────────────
+const firebaseConfig = {
+  apiKey: "AIzaSyDBE_OaP7shrY3_4uMU0G0Zo7p5M6ilnUY",
+  authDomain: "trenevents.firebaseapp.com",
+  projectId: "trenevents",
+  storageBucket: "trenevents.firebasestorage.app",
+  messagingSenderId: "828886152836",
+  appId: "1:828886152836:web:2e1eefbad735fc9e6f74d1"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let currentUser = null;
+let saved = new Set();
+let reminders = new Set(); // eventIds with email reminders set
+let activeFilter = 'all';
+let currentModalId = null;
+
+// Watch for sign-in / sign-out
+auth.onAuthStateChanged(async user => {
+  currentUser = user;
+  updateAuthUI();
+  if (user) {
+    await loadSavedFromFirestore();
+    await loadRemindersFromFirestore();
+    renderDraftSection();
+  } else {
+    saved = new Set();
+    reminders = new Set();
+    updateSavedCount();
+    refreshHearts();
+    renderSavedPanel();
+    renderDraftSection();
+  }
+});
+
+async function loadSavedFromFirestore() {
+  try {
+    const doc = await db.collection('users').doc(currentUser.uid).get();
+    const rawSaved = doc.data()?.saved || [];
+    // Remove IDs for events that no longer exist in the EVENTS array
+    const validIds = rawSaved.filter(id => eventMap[id] != null);
+    saved = new Set(validIds);
+    if (validIds.length !== rawSaved.length) {
+      // Clean up stale IDs from Firestore
+      await db.collection('users').doc(currentUser.uid).set({ saved: validIds }, { merge: true });
+    }
+    const providerName = currentUser.providerData?.[0]?.displayName || currentUser.displayName || '';
+    const providerEmail = currentUser.providerData?.[0]?.email || currentUser.email || '';
+    await db.collection('users').doc(currentUser.uid).set({
+      name: providerName,
+      email: providerEmail
+    }, { merge: true });
+  } catch(err) { saved = new Set(); }
+  updateSavedCount();
+  refreshHearts();
+  renderSavedPanel();
+}
+
+async function persistSaved() {
+  if (!currentUser) return;
+  try {
+    await db.collection('users').doc(currentUser.uid).set({
+      saved: [...saved],
+      name: currentUser.displayName || '',
+      email: currentUser.email || ''
+    }, { merge: true });
+  } catch(err) { console.error('Save error:', err); }
+}
+
+// ── Email Reminders ──────────────────────────────────────────
+async function loadRemindersFromFirestore() {
+  try {
+    const snap = await db.collection('reminders')
+      .where('userId', '==', currentUser.uid)
+      .where('sent', '==', false)
+      .get();
+    reminders = new Set(snap.docs.map(d => d.data().eventId));
+  } catch(err) { reminders = new Set(); }
+  renderSavedPanel();
+}
+
+async function toggleReminder(id) {
+  if (!currentUser) { showToast('Sign in to set reminders'); return; }
+  const e = eventMap[id];
+  if (!e) return;
+  const docId = `${currentUser.uid}_${id}`;
+  const ref = db.collection('reminders').doc(docId);
+  const wasOn = reminders.has(id);
+  // Optimistic update — change the bell immediately
+  if (wasOn) { reminders.delete(id); } else { reminders.add(id); }
+  renderSavedPanel();
+  try {
+    if (wasOn) {
+      await ref.delete();
+      showToast('Reminder cancelled');
+    } else {
+      await ref.set({
+        userId: currentUser.uid,
+        userEmail: currentUser.email || '',
+        eventId: id,
+        eventTitle: e.title,
+        eventDate: e.date,
+        sortDate: e.sortDate,
+        eventTime: e.time || '',
+        eventLocation: e.location || '',
+        ctaUrl: e.ctaUrl || '',
+        sent: false,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      showToast('Reminder set! You\'ll get an email the day before.');
+    }
+  } catch(err) {
+    // Revert on failure
+    if (wasOn) { reminders.add(id); } else { reminders.delete(id); }
+    renderSavedPanel();
+    showToast('Something went wrong — try again');
+  }
+}
+
+async function toggleAllReminders() {
+  if (!currentUser) return;
+  const savedEvents = [...saved].map(id => eventMap[id]).filter(Boolean);
+  const allOn = savedEvents.every(e => reminders.has(e.id));
+  // Optimistic update
+  if (allOn) {
+    savedEvents.forEach(e => reminders.delete(e.id));
+  } else {
+    savedEvents.forEach(e => reminders.add(e.id));
+  }
+  renderSavedPanel();
+  try {
+    const batch = db.batch();
+    if (allOn) {
+      savedEvents.forEach(e => {
+        batch.delete(db.collection('reminders').doc(`${currentUser.uid}_${e.id}`));
+      });
+      await batch.commit();
+      showToast('All reminders turned off');
+    } else {
+      savedEvents.forEach(e => {
+        const ref = db.collection('reminders').doc(`${currentUser.uid}_${e.id}`);
+        batch.set(ref, {
+          userId: currentUser.uid,
+          userEmail: currentUser.email || '',
+          eventId: e.id,
+          eventTitle: e.title,
+          eventDate: e.date,
+          sortDate: e.sortDate,
+          eventTime: e.time || '',
+          eventLocation: e.location || '',
+          ctaUrl: e.ctaUrl || '',
+          sent: false,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      });
+      await batch.commit();
+      showToast('All reminders turned on');
+    }
+  } catch(err) {
+    // Revert on failure
+    if (allOn) {
+      savedEvents.forEach(e => reminders.add(e.id));
+    } else {
+      savedEvents.forEach(e => reminders.delete(e.id));
+    }
+    renderSavedPanel();
+    showToast('Something went wrong — try again');
+  }
+}
+
+// Auth UI
+function updateAuthUI() {
+  const navEl = document.getElementById('authNav');
+  if (!navEl) return;
+  if (currentUser) {
+    const name = currentUser.displayName || currentUser.email || 'You';
+    const initial = name.charAt(0).toUpperCase();
+    const avatarHTML = currentUser.photoURL
+      ? `<img class="user-avatar" src="${currentUser.photoURL}" alt="${name}" onclick="toggleAuthDropdown()">`
+      : `<div class="user-avatar-initial" onclick="toggleAuthDropdown()">${initial}</div>`;
+    navEl.innerHTML = `<div class="auth-dropdown">${avatarHTML}<div class="auth-dropdown-menu" id="authDropdown"><div class="auth-dropdown-name">${name}</div><button class="auth-dropdown-item" onclick="doSignOut()">Sign out</button></div></div>`;
+  } else {
+    navEl.innerHTML = `<button class="auth-btn" onclick="showSignInModal()">Sign In</button>`;
+  }
+}
+function toggleAuthDropdown() { document.getElementById('authDropdown')?.classList.toggle('open'); }
+document.addEventListener('click', e => { if (!e.target.closest('.auth-dropdown')) document.getElementById('authDropdown')?.classList.remove('open'); });
+
+// Sign-in modal
+function showSignInModal() { document.getElementById('signinOverlay').classList.add('open'); document.getElementById('signinError').textContent = ''; }
+function closeSignInModal(e) { if (!e || e.target === document.getElementById('signinOverlay')) { document.getElementById('signinOverlay').classList.remove('open'); } }
+function signInWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(() => { closeSignInModal(); showToast('Signed in!'); })
+    .catch(err => { document.getElementById('signinError').textContent = 'Sign-in failed. Please try again.'; });
+}
+function doSignOut() {
+  auth.signOut().then(() => { showToast('Signed out'); });
+}
+
+// Admin check
+function isAdmin() {
+  return !!(currentUser && currentUser.email === 'bjdoersom@gmail.com');
+}
+
+// Sort events by sortDate ascending
+const sortedEvents = [...EVENTS].sort((a,b) => a.sortDate.localeCompare(b.sortDate));
+
+// Build lookup map
+const eventMap = {};
+EVENTS.forEach(e => { eventMap[e.id] = e; });
+
+const calIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>`;
+const pinIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const clockIcon = `<svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`;
+
+function buildCardHTML(e) {
+  const heartId = `heart-${e.id}`;
+  const isSaved = saved.has(e.id);
+  const heartChar = isSaved ? '♥' : '♡';
+  const heartColor = isSaved ? 'style="color:var(--coral)"' : '';
+
+  const isFeaturedView = activeFilter === 'featured';
+  const featuredClass = (e.featured && isFeaturedView) ? ' featured' : '';
+  const emojiSize = (e.featured && isFeaturedView) ? '4.5rem' : '3.4rem';
+  const imgContent = e.image
+    ? `<img src="${e.image}" alt="${e.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="font-size:${emojiSize};position:relative;z-index:1;display:none">${e.emoji}</span>`
+    : `<span style="font-size:${emojiSize};position:relative;z-index:1">${e.emoji}</span>`;
+
+  // Show ⭐ Featured badge when a featured event appears outside the Featured filter
+  let badgeHTML = '';
+  if (e.featured && !isFeaturedView) {
+    badgeHTML = `<div class="card-badge card-badge-featured">⭐ Featured</div>`;
+  } else if (e.badge) {
+    badgeHTML = `<div class="card-badge">${e.badge}</div>`;
+  }
+
+  return `
+    <div class="event-card${featuredClass}" data-id="${e.id}" data-category="${e.category}" onclick="openModal(${e.id})">
+      <div class="card-img-placeholder" style="background:${e.bg}">
+        ${imgContent}
+        ${badgeHTML}
+        <button class="card-save" id="${heartId}" ${heartColor} onclick="toggleSave(event,${e.id})">${heartChar}</button>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-category">${e.category.charAt(0).toUpperCase()+e.category.slice(1)}</span>
+          <span class="card-price-pill ${e.priceClass}">${e.price}</span>
+        </div>
+        <div class="card-title">${e.title}</div>
+        <div class="card-details">
+          <div class="card-detail">${calIcon}${e.date} · ${e.time}</div>
+          <div class="card-detail">${pinIcon}${e.location}</div>
+          ${e.duration ? `<div class="card-detail">${clockIcon}${e.duration}</div>` : ''}
+        </div>
+        <div class="card-footer">
+          <div class="card-date-tag">${e.sortDate.slice(5).replace('-','/')}</div>
+          <div class="card-spots${e.spotsUrgent ? ' few' : ''}">${e.spotsLabel || ''}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+let _initialRender = true;
+function filterAndRender() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const grid = document.getElementById('eventsGrid');
+  if (!_initialRender) grid.classList.add('no-anim');
+  grid.classList.toggle('featured-view', activeFilter === 'featured');
+  const filtered = sortedEvents.filter(e => {
+    if (e.draft) return false; // always hide drafts from main grid
+    const today = new Date(); const fiveDaysAgo = new Date(today - 5*24*60*60*1000).toISOString().slice(0,10);
+    // "New" uses publishedDate when set (the date a draft actually went live for visitors),
+    // falling back to addedDate for events that were never a draft.
+    const newSinceDate = e.publishedDate || e.addedDate;
+    const matchCat = activeFilter === 'all' || (activeFilter === 'new' ? (newSinceDate && newSinceDate >= fiveDaysAgo) : activeFilter === 'featured' ? e.featured === true : activeFilter === 'free' ? e.priceClass === 'free' : (e.categories ? e.categories.includes(activeFilter) : e.category === activeFilter));
+    const matchQ = !q || (e.title+e.description+e.location+e.date+e.tags.join(' ')).toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  grid.innerHTML = filtered.map(buildCardHTML).join('');
+  document.getElementById('eventCount').textContent = `${filtered.length} event${filtered.length !== 1 ? 's' : ''}`;
+  document.getElementById('emptyState').classList.toggle('hidden', filtered.length > 0);
+  if (_initialRender) {
+    grid.querySelectorAll('.event-card').forEach((c,i) => { c.style.animationDelay = `${i*0.03}s`; });
+    _initialRender = false;
+  } else {
+    grid.classList.remove('no-anim');
+  }
+}
+
+function renderDraftSection() {
+  const section = document.getElementById('draftSection');
+  const grid = document.getElementById('draftGrid');
+  const countEl = document.getElementById('draftCount');
+  if (!section || !grid) return;
+  if (!isAdmin()) { section.classList.remove('visible'); return; }
+  const drafts = sortedEvents.filter(e => e.draft);
+  if (drafts.length === 0) { section.classList.remove('visible'); return; }
+  section.classList.add('visible');
+  countEl.textContent = `${drafts.length} event${drafts.length !== 1 ? 's' : ''} waiting`;
+  grid.innerHTML = drafts.map(e => `
+    <div class="draft-card-wrap">
+      <div class="draft-needs-image">📷 Needs Image</div>
+      ${buildCardHTML(e)}
+    </div>`).join('');
+}
+
+function setFilter(cat, el) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  filterAndRender();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showAll() {
+  document.getElementById('searchInput').value = '';
+  activeFilter = 'all';
+  document.querySelectorAll('.filter-tab').forEach((t,i) => t.classList.toggle('active', i===0));
+  filterAndRender();
+}
+
+// Modal
+function openModal(id) {
+  const e = eventMap[id];
+  currentModalId = id;
+  const hero = document.getElementById('modalHero');
+  const closeBtn = hero.querySelector('.modal-close');
+  const saveBtn  = hero.querySelector('.modal-save-btn');
+  hero.style.background = e.bg;
+  hero.innerHTML = '';
+  hero.appendChild(closeBtn);
+  hero.appendChild(saveBtn);
+
+  if (e.image) {
+    const img = document.createElement('img');
+    img.src = e.image; img.alt = e.title;
+    const sp = document.createElement('span');
+    sp.style.cssText = 'font-size:5rem;position:relative;z-index:1;display:none';
+    sp.textContent = e.emoji;
+    img.onerror = function() { this.style.display='none'; sp.style.display='block'; };
+    hero.insertBefore(sp, closeBtn);
+    hero.insertBefore(img, sp);
+  } else {
+    const sp = document.createElement('span');
+    sp.style.cssText = 'font-size:5rem;position:relative;z-index:1';
+    sp.textContent = e.emoji;
+    hero.insertBefore(sp, closeBtn);
+  }
+
+  const msb = document.getElementById('modalSaveBtn');
+  msb.textContent = saved.has(id) ? '♥' : '♡';
+  msb.style.color  = saved.has(id) ? 'var(--coral)' : '';
+
+  document.getElementById('modalCategory').textContent = e.category.charAt(0).toUpperCase()+e.category.slice(1);
+  document.getElementById('modalTitle').textContent = e.title;
+  const badge = document.getElementById('modalPriceBadge');
+  badge.textContent = e.price; badge.className = `modal-price-badge ${e.priceClass}`;
+
+  document.getElementById('modalInfoGrid').innerHTML = `
+    <div class="modal-info-item"><div class="modal-info-label">📅 Date</div><div class="modal-info-value">${e.date}</div></div>
+    <div class="modal-info-item"><div class="modal-info-label">🕐 Time</div><div class="modal-info-value">${e.time}</div></div>
+    <div class="modal-info-item"><div class="modal-info-label">📍 Venue</div><div class="modal-info-value">${e.location}</div></div>
+    <div class="modal-info-item"><div class="modal-info-label">🗺 Address</div><div class="modal-info-value">${e.address}</div></div>
+    <div class="modal-info-item"><div class="modal-info-label">⏱ Duration</div><div class="modal-info-value">${e.duration}</div></div>
+    <div class="modal-info-item"><div class="modal-info-label">💰 Price</div><div class="modal-info-value">${e.price}</div></div>`;
+
+  document.getElementById('modalDescription').textContent = e.description;
+  document.getElementById('modalTags').innerHTML = e.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('');
+  const cta = document.getElementById('modalCtaBtn');
+  cta.textContent = e.ctaLabel; cta.href = e.ctaUrl;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  history.pushState(null,'',window.location.pathname+'#event-'+id);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  currentModalId=null;
+  history.pushState(null,'',window.location.pathname);
+}
+function closeModalOnBackdrop(e) { if(e.target===document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape'){closeModal();closeSavedPanel();} });
+
+// Hash routing handled in DOMContentLoaded below
+
+// Calendar
+function toggleCalMenu(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('calMenu');
+  const isOpen = menu.classList.contains('open');
+  document.querySelectorAll('.cal-menu').forEach(m=>m.classList.remove('open'));
+  if (!isOpen) {
+    menu.classList.add('open');
+    const ev = eventMap[currentModalId];
+    if (ev) document.getElementById('calGoogle').href = buildGoogleCalUrl(ev);
+  }
+}
+document.addEventListener('click', () => document.querySelectorAll('.cal-menu').forEach(m=>m.classList.remove('open')));
+
+function parseEventTime(timeStr) {
+  const m = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!m) return '120000';
+  let h = parseInt(m[1]), mn = m[2], ap = m[3].toUpperCase();
+  if (ap==='PM' && h!==12) h+=12;
+  if (ap==='AM' && h===12) h=0;
+  return String(h).padStart(2,'0')+mn+'00';
+}
+function shiftHours(t, hrs) {
+  let h = parseInt(t.slice(0,2))+hrs;
+  if (h>=24) h=23;
+  return String(h).padStart(2,'0')+t.slice(2);
+}
+function buildGoogleCalUrl(ev) {
+  const d = ev.sortDate.replace(/-/g,'');
+  const start = parseEventTime(ev.time);
+  const end = shiftHours(start, 2);
+  const p = new URLSearchParams({
+    action:'TEMPLATE', text:ev.title,
+    dates:`${d}T${start}/${d}T${end}`,
+    details:ev.description.slice(0,300),
+    location:ev.address||ev.location
+  });
+  return 'https://calendar.google.com/calendar/render?'+p.toString();
+}
+function downloadICS() {
+  const ev = eventMap[currentModalId];
+  if (!ev) return;
+  const d = ev.sortDate.replace(/-/g,'');
+  const start = parseEventTime(ev.time);
+  const end = shiftHours(start, 2);
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//TrenEvents//EN',
+    'BEGIN:VEVENT',
+    'DTSTART:'+d+'T'+start,
+    'DTEND:'+d+'T'+end,
+    'SUMMARY:'+ev.title,
+    'DESCRIPTION:'+ev.description.slice(0,200).replace(/[\r\n]+/g,' '),
+    'LOCATION:'+( ev.address||ev.location),
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const url = URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+  const a = document.createElement('a');
+  a.href=url; a.download=ev.title.replace(/[^a-z0-9]/gi,'_')+'.ics'; a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('calMenu').classList.remove('open');
+}
+
+// Share
+function getShareUrl() {
+  const ev = eventMap[currentModalId];
+  return ev ? window.location.origin+window.location.pathname+'#event-'+ev.id : window.location.href;
+}
+function toggleShareMenu(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('shareMenu');
+  const isOpen = menu.classList.contains('open');
+  document.querySelectorAll('.cal-menu').forEach(m=>m.classList.remove('open'));
+  if (!isOpen) {
+    const ev = eventMap[currentModalId];
+    const url = getShareUrl();
+    if (ev) {
+    }
+    menu.classList.add('open');
+  }
+}
+function copyEventLink() {
+  const url = getShareUrl();
+  navigator.clipboard.writeText(url).then(()=>showToast('Link copied!')).catch(()=>showToast('Copy: '+url));
+  document.getElementById('shareMenu').classList.remove('open');
+}
+function nativeShareEvent() {
+  const ev = eventMap[currentModalId];
+  if (!ev) return;
+  const url = getShareUrl();
+  if (navigator.share) {
+    navigator.share({title:ev.title, text:ev.title+' — '+ev.date+' at '+ev.location, url}).catch(()=>{});
+  } else {
+    showToast('Native sharing not supported in this browser');
+  }
+  document.getElementById('shareMenu').classList.remove('open');
+}
+
+// Save / heart
+function toggleSave(e, id) {
+  e.stopPropagation();
+  if (!currentUser) { showSignInModal(); return; }
+  const nowSaved = !saved.has(id);
+  if (nowSaved) { saved.add(id); } else { saved.delete(id); }
+  persistSaved(); applyHeartUI(id, nowSaved); updateSavedCount();
+  if (currentModalId === id) { const msb = document.getElementById('modalSaveBtn'); msb.textContent = nowSaved ? '♥' : '♡'; msb.style.color = nowSaved ? 'var(--coral)' : ''; }
+  showToast(nowSaved ? 'Saved!' : 'Removed from saved');
+  renderSavedPanel();
+}
+function toggleSaveFromModal() {
+  if (!currentModalId) return;
+  if (!currentUser) { showSignInModal(); return; }
+  const id = currentModalId, nowSaved = !saved.has(id);
+  if (nowSaved) { saved.add(id); } else { saved.delete(id); }
+  persistSaved(); applyHeartUI(id, nowSaved); updateSavedCount();
+  const msb = document.getElementById('modalSaveBtn'); msb.textContent = nowSaved ? '♥' : '♡'; msb.style.color = nowSaved ? 'var(--coral)' : '';
+  showToast(nowSaved ? 'Saved!' : 'Removed from saved'); renderSavedPanel();
+}
+function refreshHearts() {
+  document.querySelectorAll('.event-card[data-id]').forEach(card => {
+    const id = parseInt(card.dataset.id);
+    if (!isNaN(id)) applyHeartUI(id, saved.has(id));
+  });
+}
+function applyHeartUI(id, isSaved) {
+  const btn = document.getElementById(`heart-${id}`);
+  if (!btn) return;
+  btn.textContent = isSaved ? '♥' : '♡';
+  btn.style.color = isSaved ? 'var(--coral)' : '';
+  btn.style.fontSize = isSaved ? '1.4rem' : '1.1rem';
+}
+function updateSavedCount() {
+  const el = document.getElementById('savedCount'); el.textContent = saved.size; el.classList.toggle('visible', saved.size > 0);
+}
+
+// Saved panel
+function openSavedPanel() { renderSavedPanel(); document.getElementById('savedPanel').classList.add('open'); document.getElementById('savedBackdrop').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeSavedPanel() { document.getElementById('savedPanel').classList.remove('open'); document.getElementById('savedBackdrop').classList.remove('open'); document.body.style.overflow = ''; }
+function renderSavedPanel() {
+  const body = document.getElementById('savedPanelBody');
+  if (!currentUser) {
+    body.innerHTML = `<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>Sign in to save events and access them from any device.</p><button class="auth-btn" style="margin-top:16px" onclick="closeSavedPanel();showSignInModal()">Sign In</button></div>`;
+    return;
+  }
+  if (saved.size === 0) { body.innerHTML = `<div class="saved-empty"><div class="saved-empty-icon">♡</div><p>No saved events yet.<br>Tap the heart on any event to save it here.</p></div>`; return; }
+  const toggleBtn = document.getElementById('toggleAllRemindersBtn');
+  if (toggleBtn) {
+    const savedEvents = [...saved].map(id => eventMap[id]).filter(Boolean);
+    const allOn = savedEvents.length > 0 && savedEvents.every(e => reminders.has(e.id));
+    toggleBtn.style.display = savedEvents.length > 0 ? 'block' : 'none';
+    toggleBtn.textContent = allOn ? '🔔 All reminders on' : '🔕 All reminders off';
+    toggleBtn.title = allOn ? 'Turn off all reminders' : 'Turn on all reminders';
+  }
+  const sorted = [...saved].map(id => eventMap[id]).filter(Boolean).sort((a, b) => a.sortDate.localeCompare(b.sortDate));
+  body.innerHTML = sorted.map(e => `
+    <div class="saved-item" onclick="closeSavedPanel();setTimeout(()=>openModal(${e.id}),150)">
+      <div class="saved-item-emoji" style="background:${e.bg}">${e.image ? `<img src="${e.image}" alt="">` : e.emoji}</div>
+      <div class="saved-item-info"><div class="saved-item-title">${e.title}</div><div class="saved-item-date">${e.date}</div></div>
+      <button class="saved-item-bell" onclick="event.stopPropagation();toggleReminder(${e.id})" title="${reminders.has(e.id) ? 'Reminder on — click to turn off' : 'Reminder off — click to get an email the day before'}">${reminders.has(e.id) ? '🔔' : '🔕'}</button>
+      <button class="saved-item-remove" onclick="event.stopPropagation();removeSaved(${e.id})" title="Remove">✕</button>
+    </div>`).join('') + `<p class="reminder-note">🔔 reminder on &nbsp;·&nbsp; 🔕 reminder off</p>`;
+}
+function removeSaved(id) {
+  saved.delete(id); persistSaved(); applyHeartUI(id, false); updateSavedCount(); renderSavedPanel();
+  if (currentModalId === id) { const msb = document.getElementById('modalSaveBtn'); msb.textContent = '♡'; msb.style.color = ''; }
+  showToast('Removed from saved');
+}
+
+// Toast
+let toastTimer;
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2200); }
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  filterAndRender();
+  updateSavedCount();
+  // Hash routing — open saved panel or event from URL
+  const hash = window.location.hash;
+  if (hash === '#saved') { openSavedPanel(); history.replaceState(null,'',window.location.pathname); }
+  else { const m = hash.match(/^#event-(\d+)$/); if(m && eventMap[+m[1]]) openModal(+m[1]); }
+});
+
+
+function toggleHamburger() {
+  document.getElementById('hamburgerBtn').classList.toggle('is-open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeHamburger() {
+  document.getElementById('hamburgerBtn').classList.remove('is-open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  const nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) closeHamburger();
+});
+</script>
+</body>
+</html>
