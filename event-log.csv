@@ -21,7 +21,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 ,36,Wild & Uncommon Weekend (Pawpaw Fest),Horn Farm Center & Lower Susquehanna Riverlands,"Sept 17–20, 2026",outdoors,York,,live
 ,37,Enchanted Fairy Festival,Springettsbury Township Park,"Saturday, September 19, 2026",family,York,,expired
 ,38,Yorktoberfest,Bob Hoffman Fields,"Sunday, October 18, 2026",food,,,expired
-,39,York Halloween Parade,Downtown York,"Friday, October 30, 2026",community,,,live
+,39,York Halloween Parade,Downtown York,"Friday, October 30, 2026",community,,,expired
 ,40,Harrisburg Senators Fireworks Night,FNB Field,"Friday, July 3, 2026",family,Harrisburg,,expired
 ,41,Slightly Stoopid at Riverfront Park,Riverfront Park,"Thursday, August 13, 2026",music,Harrisburg,,expired
 ,42,Dauphin County CulturalFest,Riverfront Park,August 2026 (date TBA),festival,Harrisburg,,live
@@ -30,7 +30,7 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 ,45,Dauphin County Jazz & Wine Festival,Fort Hunter Park,"September 12–13, 2026",music,Harrisburg,,expired
 ,46,Rainbow Kitten Surprise at Riverfront Park,Riverfront Park,"Tuesday, September 15, 2026",music,Harrisburg,,expired
 ,47,Harrisburg Restaurant Week,Restaurants citywide,"Sept 14–18 & Sept 21–25, 2026",food,,,expired
-,48,Pennsylvania National Horse Show,PA Farm Show Complex,Late October 2026,family,Harrisburg,,live
+,48,Pennsylvania National Horse Show,PA Farm Show Complex,Late October 2026,family,Harrisburg,,expired
 ,49,Hersheypark in the Dark,Hersheypark,"Sept 26 – Nov 1, 2026 (weekends)",family,Hershey,,live
 2026-06-10,52,July 4th Food Truck Festival — Harrisburg,Riverfront Park,"Saturday, July 4, 2026",food,Harrisburg,,expired
 2026-06-10,53,Tiny Park Concert Series — Coronet Park,Coronet Park,"2nd Fridays: July 10, Aug 14, Sept 11",music,Harrisburg,,split
@@ -187,13 +187,13 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-09-18,217,Manheim Community Farm Show,Manheim Farm Show Grounds,"October 5–9, 2026",community,Manheim,,expired
 2026-09-18,218,Tales From The Shadows: A Cryptid & Paranormal Weekend,Decades Lancaster,"October 16–18, 2026",community,Lancaster,,expired
 2026-09-18,219,Hispanic Heritage Month Celebration,Ewell Plaza & Binns Park,"Saturday, October 3, 2026",community,Lancaster,,expired
-2026-09-18,220,Red Rose Film Festival,Penn Cinema IMAX & Lancaster venues,"November 12–15, 2026",community,Lititz,,live
+2026-09-18,220,Red Rose Film Festival,Penn Cinema IMAX & Lancaster venues,"November 12–15, 2026",community,Lititz,,expired
 2026-09-18,221,Snack Town Fall Fest,Long Arm Reservoir,"Saturday, October 3, 2026",food,Hanover,,expired
 2026-09-18,222,"Blues, Brews, and ""Boos""","Front Street, Marietta","Saturday, October 10, 2026",music,Marietta,,expired
-2026-09-18,223,Haunted Marietta,Historic Downtown Marietta,"October 23–24, 2026",community,Marietta,,live
-2026-09-18,224,Candlelight: Tribute to Michael Jackson,"Sunoco Performance Theater, Whitaker Center","Saturday, November 14, 2026",music,Harrisburg,,live
+2026-09-18,223,Haunted Marietta,Historic Downtown Marietta,"October 23–24, 2026",community,Marietta,,expired
+2026-09-18,224,Candlelight: Tribute to Michael Jackson,"Sunoco Performance Theater, Whitaker Center","Saturday, November 14, 2026",music,Harrisburg,,expired
 2026-09-18,225,Over the Edge: BBBS Rooftop Rappel,Market Square Plaza,"Friday, October 9, 2026",community,Harrisburg,,expired
-2026-09-18,226,WGHSEA Fall Fest,Williams Grove Historical Steam Engine Association,"October 23–25, 2026",heritage,Mechanicsburg,,draft
+2026-09-18,226,WGHSEA Fall Fest,Williams Grove Historical Steam Engine Association,"October 23–25, 2026",heritage,Mechanicsburg,,expired
 2026-09-18,227,York County Fall Fest,York Expo Center,"Saturday, September 26, 2026",festival,York,,draft
 2026-09-23,228,Harvest Breakfast at Lancaster Central Market,Lancaster Central Market,"Saturday, October 3, 2026",food,Lancaster,,expired
 2026-09-23,229,Maize & Snitz Fest,1719 Museum (Herr House & Lancaster Longhouse),"Saturday, October 3, 2026",heritage,Willow Street,,expired
@@ -205,45 +205,45 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-09-23,235,GEARS Fall Festival,Elizabethtown Fairgrounds,"Saturday, October 17, 2026",family,Elizabethtown,,expired
 2026-09-23,236,AppleUmpkin Fall Festival,Adamstown Grove,"Saturday, October 17, 2026",festival,Adamstown,,expired
 2026-09-23,237,Old Crow Medicine Show: Union Made Tour,"Strand Theatre, Appell Center","Sunday, October 18, 2026",music,York,,expired
-2026-09-23,238,Whose Live Anyway? Improv Comedy,Hershey Theatre,"Thursday, October 29, 2026",community,Hershey,,live
-2026-09-23,239,Clue at Hershey Theatre,Hershey Theatre,"October 30 – November 1, 2026",community,Hershey,,draft
+2026-09-23,238,Whose Live Anyway? Improv Comedy,Hershey Theatre,"Thursday, October 29, 2026",community,Hershey,,expired
+2026-09-23,239,Clue at Hershey Theatre,Hershey Theatre,"October 30 – November 1, 2026",community,Hershey,,expired
 2026-09-27,240,Happy Hauntings at Dutch Wonderland,Dutch Wonderland,"Weekends through October 31, 2026",family,Lancaster,,expired
 2026-09-27,241,Pumpkins in Paradise at Strasburg Rail Road,Strasburg Rail Road,"Saturday, October 3, 2026",family,Ronks,,expired
 2026-09-27,242,Ragtime at the Fulton Theatre,Fulton Theatre,"Now through October 18, 2026",community,Lancaster,,expired
 2026-09-27,243,York Symphony: Beethoven's Fifth,"Strand Theatre, Appell Center","Saturday, October 3, 2026",music,York,,expired
 2026-09-27,244,Nosferatu with Live Theatre Organ,"Capitol Theatre, Appell Center","Saturday, October 10, 2026",community,York,,expired
 2026-09-27,245,Stayin' Alive – One Night of the Bee Gees,"Strand Theatre, Appell Center","Friday, October 16, 2026",music,York,,expired
-2026-09-27,246,The Wiz at the Strand Theatre,"Strand Theatre, Appell Center","Wednesday, October 21, 2026",community,York,,live
-2026-09-27,247,New Oxford Harvest Day Festival & Parade,Downtown New Oxford,"Saturday, October 24, 2026",festival,New Oxford,,live
-2026-09-27,248,Trick or Treat Trek at Fort Hunter,Fort Hunter Mansion & Park,"Sunday, October 25, 2026",family,Harrisburg,,draft
+2026-09-27,246,The Wiz at the Strand Theatre,"Strand Theatre, Appell Center","Wednesday, October 21, 2026",community,York,,expired
+2026-09-27,247,New Oxford Harvest Day Festival & Parade,Downtown New Oxford,"Saturday, October 24, 2026",festival,New Oxford,,expired
+2026-09-27,248,Trick or Treat Trek at Fort Hunter,Fort Hunter Mansion & Park,"Sunday, October 25, 2026",family,Harrisburg,,expired
 2026-09-27,249,Downtown Camp Hill Harvest Hop,"Market Street, Downtown Camp Hill","Saturday, October 17, 2026",community,Camp Hill,,expired
 2026-09-27,250,Pumpkin Palooza at Hershey Gardens,Hershey Gardens,"October 17, 18, 24 & 25, 2026",family,Hershey,,expired
 2026-09-27,251,Creatures of the Night at ZooAmerica,ZooAmerica North American Wildlife Park,"Fri–Sun, October 16 – November 1, 2026",family,Hershey,,expired
 2026-09-27,252,Scarecrows on the Square in Hummelstown,Downtown Hummelstown,"October 9 – 26, 2026",community,Hummelstown,,expired
-2026-09-27,253,Halloween Scooptacular at Turkey Hill Experience,Turkey Hill Experience,"Sunday, October 25, 2026",family,Columbia,,live
+2026-09-27,253,Halloween Scooptacular at Turkey Hill Experience,Turkey Hill Experience,"Sunday, October 25, 2026",family,Columbia,,expired
 2026-09-27,254,Lititz Outdoor Fine Art Show,Moravian Church Square,"Saturday, October 3, 2026",community,Lititz,,expired
 2026-09-30,255,Fall Carlisle Collector Car Flea Market & Auction,Carlisle PA Fairgrounds,"September 30 – October 4, 2026",community,Carlisle,,expired
 2026-09-30,256,Explore York Cultural Fair,N. Pershing Avenue (near York County History Center),"Friday, October 2, 2026",community,York,,draft
 2026-09-30,257,Space Day 2026 with Astronaut Bob Hines,Whitaker Center,"Saturday, October 10, 2026",family,Harrisburg,,expired
 2026-09-30,258,Murder at Ackerton Manor at the Fulton Theatre,Fulton Theatre (Studio Series),"October 16 – November 8, 2026",music,Lancaster,,expired
 2026-09-30,259,Fall Furnace Fest at Pine Grove Furnace State Park,Pine Grove Furnace State Park,"October 17 – 18, 2026",outdoors,Gardners,,expired
-2026-09-30,260,Gettysburg Halloween Dance Party and Parade,Lincoln Square,"Tuesday, October 20, 2026",community,Gettysburg,,live
-2026-09-30,261,Glenn Miller Orchestra at Whitaker Center,"Sunoco Performance Theater, Whitaker Center","Wednesday, October 28, 2026",music,Harrisburg,,draft
-2026-09-30,262,Trick or Treat on the Farm at Cherry Crest,Cherry Crest Adventure Farm,"Friday, October 30, 2026",family,Ronks,,live
-2026-09-30,263,Spooky Walking Tour of Downtown York,York County History Center Museum,"Friday, October 30, 2026",heritage,York,,live
-2026-09-30,264,The Robert Cray Band: All Amped Up Tour,"Sunoco Performance Theater, Whitaker Center","Wednesday, November 4, 2026",music,Harrisburg,,live
-2026-09-30,265,Pumpkin Madness Festival at Cherry Crest,Cherry Crest Adventure Farm,"Saturday, November 7, 2026",festival,Ronks,,live
-2026-09-30,266,Articles of Confederation Day,"Colonial Complex, York County History Center","Saturday, November 14, 2026",heritage,York,,draft
+2026-09-30,260,Gettysburg Halloween Dance Party and Parade,Lincoln Square,"Tuesday, October 20, 2026",community,Gettysburg,,expired
+2026-09-30,261,Glenn Miller Orchestra at Whitaker Center,"Sunoco Performance Theater, Whitaker Center","Wednesday, October 28, 2026",music,Harrisburg,,expired
+2026-09-30,262,Trick or Treat on the Farm at Cherry Crest,Cherry Crest Adventure Farm,"Friday, October 30, 2026",family,Ronks,,expired
+2026-09-30,263,Spooky Walking Tour of Downtown York,York County History Center Museum,"Friday, October 30, 2026",heritage,York,,expired
+2026-09-30,264,The Robert Cray Band: All Amped Up Tour,"Sunoco Performance Theater, Whitaker Center","Wednesday, November 4, 2026",music,Harrisburg,,expired
+2026-09-30,265,Pumpkin Madness Festival at Cherry Crest,Cherry Crest Adventure Farm,"Saturday, November 7, 2026",festival,Ronks,,expired
+2026-09-30,266,Articles of Confederation Day,"Colonial Complex, York County History Center","Saturday, November 14, 2026",heritage,York,,expired
 2026-09-30,267,The Machine Performs Pink Floyd,"Sunoco Performance Theater, Whitaker Center","Wednesday, November 25, 2026",music,Harrisburg,,draft
 2026-10-03,268,York County Coffee Crawl,Participating cafés across York County,"September 28 – October 4, 2026",food,York,,expired
-2026-10-03,269,AMT Christmas Show: Winter Wonderland,American Music Theatre,"November 3 – December 27, 2026",music,Lancaster,,live
-2026-10-03,270,Alice Cooper: Alice's Attic Tour,Hershey Theatre,"Wednesday, November 4, 2026",music,Hershey,,live
-2026-10-03,271,Marty Stuart and His Fabulous Superlatives,"Strand Theatre, Appell Center","Thursday, November 5, 2026",music,York,,live
-2026-10-03,272,Fall Fest at Millport Conservancy,Millport Conservancy,"Saturday, November 7, 2026",outdoors,Lititz,,draft
-2026-10-03,273,"YMCA Harrisburg Marathon, Half & Relay",City Island,"Sunday, November 8, 2026",outdoors,Harrisburg,,draft
-2026-10-03,274,"TobyMac, Chris Tomlin & Third Day",GIANT Center,"Thursday, November 12, 2026",music,Hershey,,live
-2026-10-03,275,Hersheypark Christmas Candylane,Hersheypark,"Select dates, Nov 13, 2026 – Jan 3, 2027",family,Hershey,,live
-2026-10-03,276,Gettysburg Remembrance Day Parade,Downtown Gettysburg,"Saturday, November 14, 2026",heritage,Gettysburg,,live
+2026-10-03,269,AMT Christmas Show: Winter Wonderland,American Music Theatre,"November 3 – December 27, 2026",music,Lancaster,,expired
+2026-10-03,270,Alice Cooper: Alice's Attic Tour,Hershey Theatre,"Wednesday, November 4, 2026",music,Hershey,,expired
+2026-10-03,271,Marty Stuart and His Fabulous Superlatives,"Strand Theatre, Appell Center","Thursday, November 5, 2026",music,York,,expired
+2026-10-03,272,Fall Fest at Millport Conservancy,Millport Conservancy,"Saturday, November 7, 2026",outdoors,Lititz,,expired
+2026-10-03,273,"YMCA Harrisburg Marathon, Half & Relay",City Island,"Sunday, November 8, 2026",outdoors,Harrisburg,,expired
+2026-10-03,274,"TobyMac, Chris Tomlin & Third Day",GIANT Center,"Thursday, November 12, 2026",music,Hershey,,expired
+2026-10-03,275,Hersheypark Christmas Candylane,Hersheypark,"Select dates, Nov 13, 2026 – Jan 3, 2027",family,Hershey,,expired
+2026-10-03,276,Gettysburg Remembrance Day Parade,Downtown Gettysburg,"Saturday, November 14, 2026",heritage,Gettysburg,,expired
 2026-10-03,277,Lincoln at Gettysburg: Dedication Day,Lincoln Square & Soldiers' National Cemetery,"November 18–19, 2026",heritage,Gettysburg,,live
 2026-10-03,278,Lancaster Mayor's Tree Lighting,Penn Square,"Friday, November 27, 2026",community,Lancaster,,live
 2026-10-03,279,Christmas Magic: A Festival of Lights,Rocky Ridge County Park,"November 27 – December 30, 2026",family,York,,live
@@ -255,16 +255,65 @@ Date Added,Event ID,Event Title,Venue / Organization,Event Date,Category,City,Im
 2026-10-06,285,Candlelight: Tribute to Fleetwood Mac,"Barshinger Center, Franklin & Marshall College","Saturday, October 17, 2026",music,Lancaster,,expired
 2026-10-06,286,Almost Queen: A Tribute to Queen,Eichelberger Performing Arts Center,"Saturday, October 17, 2026",music,Hanover,,expired
 2026-10-06,287,52nd Fall Oyster Festival,"Colonial Complex, York County History Center","Sunday, October 18, 2026",food,York,,expired
-2026-10-06,288,U.S. Army Field Band Jazz Ambassadors,Eichelberger Performing Arts Center,"Thursday, October 22, 2026",music,Hanover,,live
-2026-10-06,289,Lititz Lions Halloween Parade,"Main Street, Lititz","Friday, October 30, 2026",community,Lititz,,draft
-2026-10-06,290,Battlefield BookFest & GettysNerd 3.0,Gettysburg History (Beyond the Battle Museum),"November 12–13, 2026",heritage,Gettysburg,,draft
+2026-10-06,288,U.S. Army Field Band Jazz Ambassadors,Eichelberger Performing Arts Center,"Thursday, October 22, 2026",music,Hanover,,expired
+2026-10-06,289,Lititz Lions Halloween Parade,"Main Street, Lititz","Friday, October 30, 2026",community,Lititz,,expired
+2026-10-06,290,Battlefield BookFest & GettysNerd 3.0,Gettysburg History (Beyond the Battle Museum),"November 12–13, 2026",heritage,Gettysburg,,expired
 2026-10-06,291,Harrisburg Holiday Parade,"Front & 2nd Streets, Downtown Harrisburg","Saturday, November 21, 2026",community,Harrisburg,,live
 2026-10-06,292,Intercourse Village Christkindlmarkt,Intercourse Library,"December 4–5, 2026",festival,Intercourse,,draft
-2026-10-14,293,Geoff Tate's Operation: Mindcrime,Strand Theatre at Appell Center,"Tuesday, November 17, 2026",music,York,,draft
+2026-10-14,293,Geoff Tate's Operation: Mindcrime,Strand Theatre at Appell Center,"Tuesday, November 17, 2026",music,York,,expired
 2026-10-14,294,Greensky Bluegrass,Strand Theatre at Appell Center,"Thursday, November 19, 2026",music,York,,draft
 2026-10-14,295,Stewart Copeland at the Strand Theatre,Strand Theatre at Appell Center,"Friday, November 20, 2026",music,York,,draft
 2026-10-14,296,A Motown Christmas,Strand Theatre at Appell Center,"Monday, November 23, 2026",music,York,,draft
 2026-10-14,297,Candlelight: Queen vs. The Beatles,Barshinger Center for Musical Arts,"Friday, November 20, 2026",music,Lancaster,,draft
-2026-10-14,298,Carsie Blanton at Tellus360,Tellus360,"Sunday, November 8, 2026",music,Lancaster,,draft
+2026-10-14,298,Carsie Blanton at Tellus360,Tellus360,"Sunday, November 8, 2026",music,Lancaster,,expired
 2026-10-14,299,Emo Orchestra,XL Live,"Friday, November 20, 2026",music,Harrisburg,,draft
 2026-10-14,300,STS9 – Sound Tribe Sector 9,XL Live,"Saturday, November 21, 2026",music,Harrisburg,,draft
+2026-10-21,301,A Gettysburg Christmas Festival,Downtown Gettysburg,"Friday–Sunday, December 4–6, 2026",festival,Gettysburg,,live
+2026-10-21,302,York Symphony Holiday Pops with Lawrence Golan,Appell Center for the Performing Arts,"Saturday, November 28, 2026",music,York,,draft
+2026-10-21,303,Choir! Choir! Choir! Toronto Can't Keep Quiet,Capitol Theatre at Appell Center,"Thursday, November 5, 2026",music,York,,expired
+2026-10-21,304,Pennsylvania Christmas & Gift Show,PA Farm Show Complex & Expo Center,"Wednesday–Sunday, December 2–6, 2026",community,Harrisburg,,draft
+2026-10-21,305,Dave Hause and The Mermaid at Tellus360,Tellus360,"Friday, November 20, 2026",music,Lancaster,,draft
+2026-10-28,306,Disney Pixar COCO in Concert,Capitol Theatre at Appell Center,"Wednesday, November 4, 2026",music,York,,expired
+2026-10-28,307,Jazz in the City Goes Psychedelic '60s,Appell Center for the Performing Arts,"Friday, November 6, 2026",music,York,,expired
+2026-10-28,308,Shine Foundation First Responders Benefit Concert,Appell Center for the Performing Arts,"Saturday, November 7, 2026",community,York,,expired
+2026-10-28,309,CAPFILM: Ferris Bueller's Day Off 40th Anniversary,Capitol Theatre at Appell Center,"Thursday, November 12, 2026",community,York,,expired
+2026-10-28,310,Holly Jolly Holiday at Dutch Apple,Dutch Apple Dinner Theatre,"November 13, 2026 – January 3, 2027",music,Lancaster,,expired
+2026-10-28,311,Annie at the Fulton Theatre,Fulton Theatre,"November 20 – December 31, 2026",music,Lancaster,,draft
+2026-10-28,312,Illumination at Prima Theatre,Prima Theatre,"November 20 – December 23, 2026",music,Lancaster,,draft
+2026-10-28,313,Festival of Trees at Fort Hunter,"Tavern House, Fort Hunter Mansion & Park","November 28 – December 20, 2026 (Sat & Sun)",family,Harrisburg,,draft
+2026-10-28,314,'Twas the Night Before Christmas at the Fulton,Fulton Theatre,"November 28 – December 26, 2026",family,Lancaster,,draft
+2026-10-28,315,The Christmas Rush at Bird-in-Hand Stage,Bird-in-Hand Stage,"October 30 – December 31, 2026",family,Bird-in-Hand,,expired
+2026-10-28,316,Cinderella at Ephrata Performing Arts Center,Ephrata Performing Arts Center,"December 4–20, 2026",family,Ephrata,,draft
+2026-10-28,317,Ebenezer Scrooge's Big Lancaster Christmas Show,Fulton Theatre (Studio Series),"December 4 – 27, 2026",family,Lancaster,,draft
+2026-10-28,318,The Nutcracker Ballet – Dance It Forward,Capitol Theatre at Appell Center,"Saturday, December 12, 2026",family,York,,draft
+2026-10-28,319,Beetlejuice – Glatfelter Insurance Broadway Series,Strand Theatre at Appell Center,"Tuesday, December 15, 2026",music,York,,draft
+2026-11-04,320,Christmas Lights Experience at Refreshing Mountain,Refreshing Mountain,"November 13, 2026 – January 2, 2027",family,Stevens,,expired
+2026-11-04,321,Amish Farmhouse Christmas Experience at Old Windmill Farm,Old Windmill Farm,"November 19 – December 18, 2026",family,Lancaster County,,draft
+2026-11-04,322,Winter Wonderland at Magic & Wonder,Magic & Wonder,"November 5, 2026 – January 2, 2027",music,Paradise,,expired
+2026-11-11,323,"Carlisle's ""Making Spirits Bright"" Holiday Parade",Downtown Carlisle,"Thursday, November 19, 2026",community,Carlisle,,draft
+2026-11-11,324,Santa's Paradise Express at Strasburg Rail Road,Strasburg Rail Road,"November 21 – December 24, 2026",family,Ronks,,draft
+2026-11-11,325,Remembrance Day Illumination,Soldiers' National Cemetery,"Saturday, November 21, 2026",heritage,Gettysburg,,draft
+2026-11-11,326,Christmas in Hanover Festival & Santa Parade,"Center Square, Downtown Hanover","Saturday, November 28, 2026",festival,Hanover,,draft
+2026-11-11,327,Messiah by Candlelight – Lancaster Symphony,First Presbyterian Church of Lancaster,"December 3–5, 2026",music,Lancaster,,draft
+2026-11-11,328,Christmas in the Park – Lititz,Lititz Springs Park,"Friday, December 4, 2026",community,Lititz,,draft
+2026-11-11,329,A Christmas Carol at the Majestic Theater,Gettysburg Majestic Theater,"December 4–13, 2026",family,Gettysburg,,draft
+2026-11-11,330,Christmas Tours of the Eisenhower Home,Eisenhower National Historic Site,"Weekends, December 5–20, 2026",heritage,Gettysburg,,draft
+2026-11-11,331,New Holland Band – 15th Annual Holiday Pops,The Barn at Paradise Station,"Sunday, December 6, 2026",music,Ronks,,draft
+2026-11-11,332,Straight No Chaser: Making Spirits Bright Tour,Hershey Theatre,"Sunday, December 6, 2026",music,Hershey,,draft
+2026-11-11,333,Holiday Open House at the York County History Center,York County History Center Museum,"Sunday, December 6, 2026",community,York,,draft
+2026-11-11,334,Lower Paxton Christkindlmarkt,Village of Linglestown,"Saturday, December 12, 2026",festival,Harrisburg,,draft
+2026-11-11,335,53rd Annual Candlelight House Tour,Historic Harrisburg Resource Center,"Sunday, December 13, 2026",heritage,Harrisburg,,draft
+2026-11-11,336,Christmas in the Village at Landis Valley,Landis Valley Village & Farm Museum,"Sunday, December 27, 2026",heritage,Lancaster,,draft
+2026-11-18,337,Bright Nights at WellSpan Park,WellSpan Park,"November 20 – December 27, 2026",festival,York,,draft
+2026-11-18,338,Christmas at Fort Hunter Mansion,Fort Hunter Mansion & Park,"December 1–23, 2026",heritage,Harrisburg,,draft
+2026-11-18,339,Jazz in the City: Swingin' in the Holidays,The Studio at the Appell Center,"Friday, December 4, 2026",music,York,,live
+2026-11-18,340,Free Family Film: Home Alone at the Strand,Strand Theatre (Appell Center),"Friday, December 4, 2026",family,York,,live
+2026-11-18,341,Hershey Symphony: Sounds of the Season,Hershey Theatre,"Saturday, December 5, 2026",music,Hershey,,draft
+2026-11-18,342,CapFilm: White Christmas,Capitol Theatre (Appell Center),"Saturday, December 5, 2026",family,York,,live
+2026-11-18,343,Mrs. Doubtfire – Hershey Theatre Broadway Series,Hershey Theatre,"December 9–11, 2026",music,Hershey,,draft
+2026-11-18,344,Annual Christmas Candlelight Tours in Lititz,Lititz Historical Foundation,"December 11–12, 2026",heritage,Lititz,,draft
+2026-11-18,345,Candlelight: Christmas Classics,Barshinger Center for Musical Arts,"December 18–19, 2026",music,Lancaster,,live
+2026-11-18,346,Cirque Dreams Holidaze,Hershey Theatre,"Tuesday, December 22, 2026",family,Hershey,,draft
+2026-11-18,347,AMT Christmas Show: Winter Wonderland,American Music Theatre,"Now through December 30, 2026",music,Lancaster,,draft
+2026-11-18,348,Harrisburg New Year's Eve Strawberry Drop,2nd Street at City Hall,"Thursday, December 31, 2026",festival,Harrisburg,,draft
+2026-11-18,349,2027 Pennsylvania Farm Show,PA Farm Show Complex & Expo Center,"January 9–16, 2027",food,Harrisburg,,draft
